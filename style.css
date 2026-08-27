@@ -31,9 +31,7 @@ body {
   margin: 0;
   padding: 0;
 }
-.navbar ul li {
-  margin: 0 15px;
-}
+.navbar ul li { margin: 0 15px; }
 .navbar ul li a {
   color: #00ffff;
   text-decoration: none;
@@ -47,10 +45,7 @@ body {
 html { scroll-behavior: smooth; }
 
 /* Hero Section */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-}
+.hero { text-align: center; padding: 100px 20px; }
 .gradient-text {
   background: linear-gradient(to right, #00ffff, #ff00ff);
   -webkit-background-clip: text;
@@ -65,10 +60,25 @@ html { scroll-behavior: smooth; }
 }
 
 /* Sections */
-.section, .cards, .timeline, #contact {
+.section, .grid {
   margin: 30px;
   padding: 20px;
   background: rgba(30,30,50,0.8);
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0,255,255,0.3);
-  animation: fadeInUp 1s
+  animation: fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Grid Layout */
+.grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Glow Cards
