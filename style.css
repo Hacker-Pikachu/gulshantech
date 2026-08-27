@@ -87,3 +87,140 @@ html {
 .cards {
   display: flex;
   gap: 20px;
+  flex-wrap:Got it Gulshan ✨ — I’ll give you a **clean, stylish portfolio code** without any unnecessary reference links, and with **popups, transitions, and a perfect structure** that looks futuristic and recruiter‑friendly.
+
+---
+
+## 📂 index.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gulshan's Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#softskills">Soft Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#futuregoals">Future Goals</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1 class="gradient-text">Gulshan</h1>
+    <p class="subtitle">Aspiring Computer Scientist | Innovator | Problem Solver</p>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section fade-in">
+    <h2>About Me</h2>
+    <p>
+      I am Gulshan, a dedicated Computer Science student at Lovely Professional University (LPU), with a strong academic foundation from Government Polytechnic Gaya, Bihar.  
+      My journey is driven by curiosity, innovation, and a commitment to excellence. I thrive on solving complex problems, exploring emerging technologies, and creating impactful solutions that bridge the gap between theory and practice.
+    </p>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="cards fade-in">
+    <h2>Education</h2>
+    <div class="card popup">
+      <i class="fa-solid fa-graduation-cap"></i> Diploma in Computer Science
+      <span class="popuptext">Govt Polytechnic Gaya, Bihar — 73.4%</span>
+    </div>
+    <div class="card popup">
+      <i class="fa-solid fa-university"></i> B.Tech CSE Core
+      <span class="popuptext">Lovely Professional University, Punjab</span>
+    </div>
+  </section>
+
+  <!-- Technical Skills -->
+  <section id="skills" class="cards fade-in">
+    <h2>Technical Skills</h2>
+    <div class="card"><i class="fa-brands fa-java"></i> Java</div>
+    <div class="card"><i class="fa-brands fa-python"></i> Python</div>
+    <div class="card"><i class="fa-solid fa-code"></i> Web Development</div>
+    <div class="card"><i class="fa-solid fa-mobile"></i> Mobile Computing</div>
+  </section>
+
+  <!-- Soft Skills -->
+  <section id="softskills" class="cards fade-in">
+    <h2>Soft Skills</h2>
+    <div class="card">Effective Communication</div>
+    <div class="card">Collaborative Teamwork</div>
+    <div class="card">Analytical Problem-Solving</div>
+    <div class="card">Time & Task Management</div>
+    <div class="card">Adaptability</div>
+    <div class="card">Leadership</div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="cards fade-in">
+    <h2>Projects</h2>
+    <div class="card popup">
+      <h3>Smart Agriculture</h3>
+      <p>IoT-based farming solution to enhance efficiency and sustainability.</p>
+      <span class="popuptext">Sensors + automation for optimized farming practices</span>
+    </div>
+  </section>
+
+  <!-- Certificates -->
+  <section id="certificates" class="cards fade-in">
+    <h2>Certificates</h2>
+    <div class="card popup">
+      <img src="images/diploma.jpg" alt="Diploma Certificate">
+      <span class="popuptext">Diploma – Govt Polytechnic Gaya</span>
+    </div>
+    <div class="card popup">
+      <img src="images/kyp.jpg" alt="KYP Certificate">
+      <span class="popuptext">KYP Certificate</span>
+    </div>
+    <div class="card popup">
+      <img src="images/cisco.jpg" alt="Cisco Python Certificate">
+      <span class="popuptext">Cisco Python (coming soon)</span>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements" class="timeline fade-in">
+    <h2>Achievements</h2>
+    <p>Diploma with distinction (73.4%)</p>
+    <p>Active participant in LPU technical fests</p>
+    <p>Developed Smart Agriculture IoT project</p>
+    <p>Built digital portfolio across GitHub, WordPress, and Wix</p>
+  </section>
+
+  <!-- Future Goals -->
+  <section id="futuregoals" class="cards fade-in">
+    <h2>Future Goals</h2>
+    <div class="card">Secure placement in leading technology companies</div>
+    <div class="card">Design and develop innovative software solutions</div>
+    <div class="card">Contribute to impactful projects such as Smart Agriculture</div>
+    <div class="card">Establish a strong digital portfolio and professional brand</div>
+    <div class="card">Stay ahead with emerging technologies and modern gadgets</div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="fade-in">
+    <h2>Contact</h2>
+    <p>Email: gulshan@example.com | LinkedIn | GitHub</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Gulshan Portfolio</p>
+  </footer>
+</body>
+</html>
