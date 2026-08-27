@@ -4,305 +4,156 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Gulshan — Portfolio</title>
-<meta name="description" content="Gulshan's portfolio — Frontend, UI, Projects, Contact" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg-dark-1:#071029;
-    --bg-dark-2:#0f1724;
-    --bg-light-1:#f6f8fb;
-    --bg-light-2:#e9eef6;
-    --accent:#7c5cff;
-    --accent-2:#00d4ff;
-    --glass: rgba(255,255,255,0.06);
-    --muted-dark:#9aa4b2;
-    --muted-light:#4b5563;
-    --card-radius:14px;
-    --text-dark:#e6eef8;
-    --text-light:#0b1220;
-    --transition: 300ms cubic-bezier(.2,.9,.3,1);
-  }
-  html,body{height:100%}
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
-    background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.12), transparent),
-                radial-gradient(900px 400px at 90% 90%, rgba(0,212,255,0.06), transparent),
-                linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2));
-    color:var(--text-dark);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    overflow-x:hidden;
-    transition: background var(--transition), color var(--transition);
-  }
-
-  /* Light theme */
-  body.light{
-    background: linear-gradient(180deg,var(--bg-light-1),var(--bg-light-2));
-    color:var(--text-light);
-  }
-
-  /* Container */
-  .container{max-width:1100px; margin:0 auto; padding:40px 20px 120px; position:relative; z-index:2}
-
-  /* Header */
-  header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px}
-  .brand{display:flex; align-items:center; gap:12px}
-  .logo{
-    width:56px; height:56px; border-radius:12px;
-    background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    display:grid; place-items:center; font-weight:800; color:white; font-family:JetBrains Mono;
-    box-shadow:0 8px 30px rgba(2,6,23,0.5);
-  }
-  nav{display:flex; gap:12px; align-items:center}
-  nav a{color:inherit; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:10px; transition:background .18s, transform .18s}
-  nav a:hover{background:rgba(255,255,255,0.03); transform:translateY(-2px)}
-  .controls{display:flex; gap:8px; align-items:center}
-
-  /* Theme toggle */
-  .theme-toggle{padding:8px 10px; border-radius:10px; cursor:pointer; border:1px solid rgba(255,255,255,0.04); background:transparent; font-weight:700}
-
-  /* Greeting + hero */
-  .hero{display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center; margin-top:6px}
-  .hero-left{padding:28px; border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); box-shadow:0 6px 30px rgba(2,6,23,0.6); backdrop-filter: blur(8px)}
-  .eyebrow{display:inline-block; padding:6px 10px; border-radius:999px; background:linear-gradient(90deg, rgba(124,92,255,0.14), rgba(0,212,255,0.06)); color:var(--accent); font-weight:700; font-size:13px}
-  h1{font-size:36px; margin:12px 0 6px; line-height:1.02}
-  .greeting{display:inline-block; font-weight:700; color:var(--accent-2); margin-right:8px}
-  .typed{color:var(--accent-2); font-weight:700}
-  p.lead{color:rgba(230,238,248,0.85); margin:12px 0 18px; max-width:60%}
-  body.light p.lead{color:rgba(11,18,32,0.75)}
-
-  .cta-row{display:flex; gap:12px; align-items:center}
-  .btn{
-    display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer;
-    border:1px solid rgba(255,255,255,0.04); background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-    transition:transform .18s ease, box-shadow .18s;
-  }
-  .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#021026; box-shadow:0 10px 30px rgba(124,92,255,0.18)}
-  .btn.ghost{color:var(--accent); border:1px solid rgba(124,92,255,0.12); background:transparent}
-
-  /* Profile card */
-  .profile-card{
-    padding:18px; border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    box-shadow:0 8px 40px rgba(2,6,23,0.6); display:flex; gap:14px; align-items:center; position:relative;
-    transition:transform .35s cubic-bezier(.2,.9,.3,1);
-  }
-  .avatar{width:84px; height:84px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:grid; place-items:center; font-weight:800; font-family:JetBrains Mono; color:white; font-size:28px}
-  .profile-info h3{margin:0 0 6px}
-  .profile-info p{margin:0; color:rgba(230,238,248,0.8); font-size:14px}
-  body.light .profile-info p{color:var(--muted-light)}
-
-  /* Sections */
-  section{margin-top:48px}
-  .section-title{display:flex; align-items:center; gap:12px; margin-bottom:18px}
-  .section-title h2{margin:0; font-size:20px}
-  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-
-  /* Project card */
-  .card{
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:var(--card-radius);
-    box-shadow:0 6px 30px rgba(2,6,23,0.5); transition:transform .28s ease, box-shadow .28s, background .28s;
-    transform-style:preserve-3d; perspective:1000px; overflow:hidden; position:relative;
-  }
-  .card:hover{transform:translateY(-12px) rotateX(4deg); box-shadow:0 18px 60px rgba(2,6,23,0.6)}
-  .card .thumb{height:140px; border-radius:12px; overflow:hidden; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); display:grid; place-items:center; color:var(--muted-dark); font-weight:700}
-  .card .meta{display:flex; justify-content:space-between; align-items:center; margin-top:12px}
-
-  /* Show more button */
-  .show-more{padding:8px 10px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.04); cursor:pointer; font-weight:700}
-
-  /* Modal for project details */
-  .modal-backdrop{position:fixed; inset:0; background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.8)); display:none; align-items:center; justify-content:center; z-index:60}
-  .modal{width:min(820px,94%); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:16px; padding:22px; box-shadow:0 30px 80px rgba(2,6,23,0.8); transform:translateY(20px); opacity:0; transition:opacity .28s, transform .28s}
-  .modal.show{opacity:1; transform:translateY(0)}
-  .modal h3{margin:0 0 8px}
-  .modal .meta{color:var(--muted-dark); margin-bottom:12px}
-  .close-x{position:absolute; right:18px; top:18px; cursor:pointer; color:var(--muted-dark)}
-
-  /* Footer */
-  footer{margin-top:60px; color:rgba(230,238,248,0.7); text-align:center; font-size:14px}
-  body.light footer{color:rgba(11,18,32,0.6)}
-
-  /* Responsive */
-  @media (max-width:980px){
-    .hero{grid-template-columns:1fr; }
-    .grid{grid-template-columns:repeat(2,1fr)}
-  }
-  @media (max-width:640px){
-    .grid{grid-template-columns:1fr}
-    header{flex-direction:column; align-items:flex-start; gap:12px}
-    .profile-card{width:100%}
-  }
-
-  /* Entrance reveal defaults */
-  .reveal{opacity:0; transform:translateY(18px) scale(.995); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.9,.3,1)}
-  .muted{color:var(--muted-dark)}
-  .center{display:grid; place-items:center}
+:root{
+  --bg-dark-1:#0f1724;
+  --bg-dark-2:#071029;
+  --bg-light-1:#f6f8fb;
+  --bg-light-2:#e9eef6;
+  --accent:#ff6a88; /* sunset accent */
+  --accent-2:#ff9a8b;
+  --muted-dark:#9aa4b2;
+  --muted-light:#4b5563;
+  --text-dark:#e6eef8;
+  --text-light:#0b1220;
+  --transition:300ms cubic-bezier(.2,.9,.3,1);
+}
+body{
+  margin:0;
+  font-family:Inter,system-ui;
+  background:linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2));
+  color:var(--text-dark);
+  transition:background var(--transition),color var(--transition);
+}
+body.light{
+  background:linear-gradient(180deg,var(--bg-light-1),var(--bg-light-2));
+  color:var(--text-light);
+}
+.container{max-width:1100px;margin:0 auto;padding:40px 20px}
+header{display:flex;justify-content:space-between;align-items:center}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:white;font-family:JetBrains Mono}
+nav{display:flex;gap:12px}
+nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:inherit;font-weight:600;transition:background .2s}
+nav a:hover{background:rgba(255,255,255,0.08)}
+.theme-toggle{padding:8px 10px;border-radius:10px;cursor:pointer;border:1px solid rgba(255,255,255,0.1);background:transparent}
+.hero{display:grid;grid-template-columns:1fr 400px;gap:28px;margin-top:20px}
+.hero-left{padding:28px;border-radius:16px;background:rgba(255,255,255,0.02);box-shadow:0 6px 30px rgba(0,0,0,0.5)}
+.greeting{color:var(--accent-2);font-weight:700;margin-right:8px}
+.typed{color:var(--accent);font-weight:700}
+.btn{padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer;border:none}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021026}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.card{background:rgba(255,255,255,0.04);padding:18px;border-radius:14px;box-shadow:0 6px 30px rgba(0,0,0,0.5);transition:transform .3s}
+.card:hover{transform:translateY(-10px) scale(1.02)}
+.show-more{margin-top:10px;padding:8px 12px;border-radius:10px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:100}
+.modal{background:#fff;color:#000;padding:20px;border-radius:16px;max-width:600px;width:90%;transform:translateY(20px);opacity:0;transition:.3s}
+.modal.show{opacity:1;transform:translateY(0)}
+.close-x{position:absolute;top:10px;right:14px;cursor:pointer}
+footer{text-align:center;margin-top:40px;color:var(--muted-dark)}
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <div class="brand">
-      <div class="logo">G</div>
-      <div>
-        <div style="font-weight:800">Gulshan</div>
-        <div style="font-size:12px;color:rgba(230,238,248,0.7)">Frontend Developer • UI Enthusiast</div>
-      </div>
-    </div>
-
+    <div class="logo">G</div>
     <nav>
       <a href="#projects" data-scroll>Projects</a>
       <a href="#skills" data-scroll>Skills</a>
       <a href="#about" data-scroll>About</a>
-      <a href="#contact" id="contactScroll" data-scroll>Contact</a>
+      <a href="#contact" data-scroll>Contact</a>
     </nav>
-
-    <div class="controls">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
-      <button class="btn ghost" id="contactBtn">Contact</button>
-    </div>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-left reveal" id="heroLeft">
-        <div style="display:flex; align-items:center; gap:10px">
-          <span class="greeting">Hello 👋</span>
-          <h1 style="margin:0">I'm <span style="color:var(--accent)">Gulshan</span></h1>
-        </div>
-        <div style="margin-top:6px; font-weight:700" class="typed" id="typed">Frontend Developer</div>
-        <p class="lead">I build polished, accessible interfaces and delightful micro-interactions that make products feel premium. I focus on performance, design systems, and clean code.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#projects" data-scroll>View Projects</a>
-          <button class="btn" id="resumeBtn">Download Resume</button>
-        </div>
-        <div style="margin-top:14px; color:rgba(230,238,248,0.75); font-size:13px">Available for full-time and contract roles. Based in Phagwara, India.</div>
-      </div>
+  <section class="hero">
+    <div class="hero-left">
+      <h1><span class="greeting">Hello 👋</span> I'm Gulshan</h1>
+      <div class="typed" id="typed">Frontend Developer</div>
+      <p>I build polished, animated interfaces with premium design and smooth transitions.</p>
+      <button class="btn primary" data-scroll href="#projects">View Projects</button>
+    </div>
+    <div class="card">
+      <h3>Profile Card</h3>
+      <p>Frontend Engineer • React • CSS Animations</p>
+    </div>
+  </section>
 
-      <aside class="profile-card reveal">
-        <div class="avatar">G</div>
-        <div class="profile-info">
-          <h3>Gulshan</h3>
-          <p class="muted">Frontend Engineer • React • TypeScript • CSS Animations</p>
-          <div style="margin-top:10px; display:flex; gap:8px">
-            <div class="tag">React</div>
-            <div class="tag">TypeScript</div>
-            <div class="tag">Motion</div>
-          </div>
-        </div>
-      </aside>
-    </section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card">
+      <h3>Interactive Dashboard</h3>
+      <p>Real-time analytics with custom charts.</p>
+      <button class="show-more" data-open="p1">Show more</button>
+    </div>
+    <div class="card">
+      <h3>Ecommerce UI Kit</h3>
+      <p>Reusable design system library.</p>
+      <button class="show-more" data-open="p2">Show more</button>
+    </div>
+  </section>
 
-    <section id="projects">
-      <div class="section-title"><h2>Selected Projects</h2></div>
-      <div class="grid" id="projectsGrid">
-        <!-- Project 1 -->
-        <article class="card reveal" data-id="p1">
-          <div class="thumb">Interactive Dashboard</div>
-          <h3 style="margin-top:12px">Interactive Dashboard</h3>
-          <p class="muted">Real-time analytics with custom charts and accessible controls.</p>
-          <div class="meta">
-            <div class="tags"><span class="tag">React</span><span class="tag">D3</span></div>
-            <button class="show-more" data-open="p1">Show more</button>
-          </div>
-        </article>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="card">React • TypeScript • Next.js</div>
+    <div class="card">Figma • Motion • Prototyping</div>
+  </section>
 
-        <!-- Project 2 -->
-        <article class="card reveal" data-id="p2">
-          <div class="thumb">Ecommerce UI Kit</div>
-          <h3 style="margin-top:12px">Ecommerce UI Kit</h3>
-          <p class="muted">Design system and component library used across product teams.</p>
-          <div class="meta">
-            <div class="tags"><span class="tag">Design System</span><span class="tag">Storybook</span></div>
-            <button class="show-more" data-open="p2">Show more</button>
-          </div>
-        </article>
+  <section id="about">
+    <h2>About</h2>
+    <div class="card">I enjoy turning complex problems into simple, beautiful interfaces with delightful micro-interactions.</div>
+  </section>
 
-        <!-- Project 3 -->
-        <article class="card reveal" data-id="p3">
-          <div class="thumb">Landing Page</div>
-          <h3 style="margin-top:12px">Landing Page</h3>
-          <p class="muted">High-conversion landing with animated hero and A/B tested microcopy.</p>
-          <div class="meta">
-            <div class="tags"><span class="tag">A/B Testing</span><span class="tag">Performance</span></div>
-            <button class="show-more" data-open="p3">Show more</button>
-          </div>
-        </article>
-      </div>
-    </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Email: your.email@example.com</p>
+      <button class="btn ghost" id="contactBtn">Message Me</button>
+    </div>
+  </section>
 
-    <section id="skills">
-      <div class="section-title"><h2>Skills</h2></div>
-      <div style="display:flex; gap:12px; flex-wrap:wrap">
-        <div class="card reveal" style="width:220px">
-          <h4 style="margin:0">Frontend</h4>
-          <div class="muted" style="margin-top:8px">React • TypeScript • Next.js • Vite</div>
-        </div>
-        <div class="card reveal" style="width:220px">
-          <h4 style="margin:0">Design</h4>
-          <div class="muted" style="margin-top:8px">Figma • Prototyping • Motion</div>
-        </div>
-        <div class="card reveal" style="width:220px">
-          <h4 style="margin:0">Performance</h4>
-          <div class="muted" style="margin-top:8px">Lighthouse • Code Splitting • Lazy Loading</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="section-title"><h2>About</h2></div>
-      <div class="card reveal" style="padding:20px">
-        <p class="muted">I enjoy turning complex problems into simple, beautiful, and intuitive interfaces. I care about accessibility, maintainable code, and delightful micro-interactions. Outside work I sketch UI ideas and experiment with generative visuals.</p>
-      </div>
-    </section>
-
-    <section id="contact" style="margin-top:36px">
-      <div class="section-title"><h2>Contact</h2></div>
-      <div class="card reveal" style="padding:18px; display:flex; gap:12px; align-items:center; justify-content:space-between">
-        <div>
-          <div style="font-weight:800">Let's talk</div>
-          <div class="muted" style="margin-top:6px">Email: <strong>your.email@example.com</strong> — Open to opportunities</div>
-        </div>
-        <div>
-          <button class="btn primary" id="openContactModal">Message me</button>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>© <strong>Gulshan</strong> — Built with motion and care</div>
-    </footer>
-  </main>
+  <footer>© Gulshan — Built with animations</footer>
 </div>
 
-<!-- Project Detail Modal -->
-<div class="modal-backdrop" id="projectModal" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="projTitle">
-    <div style="position:relative">
-      <div class="close-x" id="closeProjectModal">✕</div>
-      <h3 id="projTitle">Project Title</h3>
-      <div class="meta" id="projMeta">Tags • Tech • Year</div>
-      <p id="projDesc" class="muted">Project description goes here. Add details about your role, challenges, solutions, and impact. Include links to live demo and repo.</p>
-      <div style="display:flex; gap:10px; margin-top:14px; justify-content:flex-end">
-        <a id="projDemo" class="btn ghost" target="_blank" rel="noopener">Live demo</a>
-        <a id="projRepo" class="btn primary" target="_blank" rel="noopener">View repo</a>
-      </div>
-    </div>
+<!-- Project Modal -->
+<div class="modal-backdrop" id="projectModal">
+  <div class="modal">
+    <div class="close-x" id="closeProjectModal">✕</div>
+    <h3 id="projTitle">Project Title</h3>
+    <p id="projDesc">Details here...</p>
   </div>
 </div>
 
 <!-- Contact Modal -->
-<div class="modal-backdrop" id="contactModal" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
-    <div style="position:relative">
-      <div class="close-x" id="closeContactModal">✕</div>
-      <h3 id="contactTitle">Get in touch</h3>
-      <p class="muted">Send a quick message and I will reply within 48 hours.</p>
-      <div style="margin-top:12px">
-        <input class="input" id="name" placeholder="Your name" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" />
-        <div style="height:12px"></div>
-        <input class="input" id="email" placeholder="Your email" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" />
-        <div style="height:12px">
+<div class="modal-backdrop" id="contactModal">
+  <div class="modal">
+    <div class="close-x" id="closeContactModal">✕</div>
+    <h3>Get in touch</h3>
+    <input placeholder="Your name" style="width:100%;padding:10px;margin:6px 0">
+    <input placeholder="Your email" style="width:100%;padding:10px;margin:6px 0">
+    <textarea placeholder="Message" style="width:100%;padding:10px;margin:6px 0"></textarea>
+    <button class="btn primary">Send</button>
+  </div>
+</div>
 
+<script>
+/* Typed headline */
+const typedEl=document.getElementById('typed');
+const words=['Frontend Developer','UI Animator','React Specialist','Performance Fanatic'];
+let i=0,j=0,fwd=true;
+function loop(){
+  const w=words[i];
+  if(fwd){j++;if(j>w.length){fwd=false;setTimeout(loop,1000);return}}
+  else{j--;if(j<0){fwd=true;i=(i+1)%words.length;setTimeout(loop,200);return}}
+  typedEl.textContent=w.slice(0,j);
+  setTimeout(loop,fwd?100:50);
+}
+loop();
+
+/* Smooth scroll */
+document.querySelectorAll('[data-scroll]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=a.getAttribute('href');
+    document.querySelector
