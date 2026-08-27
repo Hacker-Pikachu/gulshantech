@@ -1,19 +1,108 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  margin: 0;
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: navy;
+  padding: 10px 0;
+  z-index: 1000;
 }
-header {
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.navbar ul li {
+  margin: 0 15px;
+}
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+.navbar ul li a:hover {
+  color: yellow;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Existing styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding-top: 60px; /* space for fixed navbar */
+}
+.hero {
+  background: linear-gradient(to right, navy, purple);
+  color: white;
+  text-align: center;
+  padding: 60px;
+}
+.about, .cards, .timeline, #contact {
+  margin: 30px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+}
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  flex: 1 1 200px;
+  text-align: center;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+.popup {
+  position: relative;
+  display: inline-block;
+}
+.popup .popuptext {
+  visibility: hidden;
+  width: 200px;
   background-color: navy;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.popup:hover .popuptext {
+  visibility: visible;
+  opacity: 1;
+}
+.timeline {
+  border-left: 3px solid navy;
+}
+footer {
+  background: #222;
   color: white;
   text-align: center;
   padding: 20px;
 }
-section {
-  margin: 20px;
-}
-h2 {
-  color: #444;
-}
-
