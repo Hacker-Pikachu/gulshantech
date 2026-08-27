@@ -35,7 +35,7 @@ body {
 
 /* Sections */
 .section {
-  margin: 80px 20px;
+  margin: 100px 20px;
   padding: 40px;
   background: rgba(30,30,50,0.8);
   border-radius: 12px;
@@ -61,5 +61,3 @@ body {
 }
 .glow-card:hover { transform: scale(1.05); box-shadow: 0 0 20px #ff00ff; }
 
-/* Flip Cards */
-.flip-card { background: transparent; width: 200px; height: 150px; perspective
