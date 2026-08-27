@@ -1,184 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Gulshan — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg1:#0f1724;
-  --bg2:#071029;
-  --accent:#ff6a88;
-  --accent-2:#ff9a8b;
-  --text:#e6eef8;
-  --muted:#9aa4b2;
-}
-body{
-  margin:0;
-  font-family:Inter,system-ui;
-  background:linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--text);
-  overflow-x:hidden;
-}
-.container{max-width:1100px;margin:0 auto;padding:40px 20px}
-header{display:flex;justify-content:space-between;align-items:center}
-.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:white}
-nav{display:flex;gap:12px}
-nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:inherit;font-weight:600;transition:.3s}
-nav a:hover{background:rgba(255,255,255,0.08);transform:translateY(-2px)}
-.hero{margin-top:40px;text-align:center}
-.hero h1{font-size:40px;margin:0}
-.hero .typed{color:var(--accent);font-weight:700;font-size:22px}
-.hero p{color:var(--muted);max-width:600px;margin:12px auto}
-section{margin-top:60px}
-h2{text-align:center;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{
-  background:rgba(255,255,255,0.05);
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 6px 30px rgba(0,0,0,0.5);
-  transition:transform .4s, box-shadow .4s;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-}
-.card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,rgba(255,255,255,0.1),transparent);
-  opacity:0;
-  transition:.4s;
-}
-.card:hover::after{opacity:1}
-.card h3{margin:0 0 10px}
-.card p{color:var(--muted)}
-/* Animated popup */
-.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:100}
-.modal{background:#fff;color:#000;padding:20px;border-radius:16px;max-width:600px;width:90%;transform:translateY(20px);opacity:0;transition:.3s}
-.modal.show{opacity:1;transform:translateY(0)}
-.close-x{position:absolute;top:10px;right:14px;cursor:pointer}
-footer{text-align:center;margin-top:40px;color:var(--muted)}
-</style>
+  <meta charset="UTF-8">
+  <title>Gulshan's Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<div class="container">
-  <header>
-    <div class="logo">G</div>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#softskills">Soft Skills</a>
-      <a href="#goals">Future Goals</a>
-      <a href="#about">About</a>
-    </nav>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#softskills">Soft Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1 class="gradient-text">Hi, I’m Gulshan</h1>
+    <p>B.Tech CSE Student | Smart Agriculture Innovator</p>
   </header>
 
-  <section class="hero">
-    <h1>Hello 👋 I'm Gulshan</h1>
-    <div class="typed" id="typed">Frontend Developer</div>
-    <p>I craft premium, animated interfaces with smooth transitions and impactful design.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="card" data-open="p1">
-        <h3>Interactive Dashboard</h3>
-        <p>Real-time analytics with custom charts.</p>
-      </div>
-      <div class="card" data-open="p2">
-        <h3>Ecommerce UI Kit</h3>
-        <p>Reusable design system library.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <div class="grid">
-      <div class="card"><h3>Frontend</h3><p>React • TypeScript • Next.js</p></div>
-      <div class="card"><h3>Design</h3><p>Figma • Motion • Prototyping</p></div>
-      <div class="card"><h3>Performance</h3><p>Optimization • Lazy Loading</p></div>
-    </div>
-  </section>
-
-  <section id="softskills">
-    <h2>Soft Skills</h2>
-    <div class="grid">
-      <div class="card"><h3>Communication</h3><p>Clear, confident, and collaborative.</p></div>
-      <div class="card"><h3>Problem Solving</h3><p>Creative solutions under pressure.</p></div>
-      <div class="card"><h3>Leadership</h3><p>Guiding peers and motivating teams.</p></div>
-    </div>
-  </section>
-
-  <section id="goals">
-    <h2>Future Goals</h2>
-    <div class="grid">
-      <div class="card"><h3>Develop Own Software</h3><p>Innovative projects with real-world impact.</p></div>
-      <div class="card"><h3>Secure Placement</h3><p>Top tech companies with challenging roles.</p></div>
-      <div class="card"><h3>Contribute to Smart Agriculture</h3><p>Tech solutions for sustainable farming.</p></div>
-    </div>
-  </section>
-
-  <section id="about">
+  <!-- About Section -->
+  <section id="about" class="about">
     <h2>About Me</h2>
+    <p>
+      I am Gulshan, currently pursuing B.Tech in Computer Science at Lovely Professional University (LPU). 
+      I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with 73.4% marks. 
+      My interests include web development, mobile computing, anime culture, and innovative projects like Smart Agriculture. 
+      I am passionate about building solutions that combine technology with real-world impact, and I actively participate in college fests and events to enhance my exposure and creativity.
+    </p>
+  </section>
+
+  <!-- Technical Skills -->
+  <section id="skills" class="cards">
+    <h2>Technical Skills</h2>
+    <div class="card"><i class="fa-brands fa-java"></i> Java</div>
+    <div class="card"><i class="fa-brands fa-python"></i> Python</div>
+    <div class="card"><i class="fa-solid fa-code"></i> Web Development</div>
+    <div class="card"><i class="fa-solid fa-mobile"></i> Android Studio</div>
+  </section>
+
+  <!-- Soft Skills -->
+  <section id="softskills" class="cards">
+    <h2>Soft Skills</h2>
+    <div class="card">Communication</div>
+    <div class="card">Team Collaboration</div>
+    <div class="card">Problem Solving</div>
+    <div class="card">Time Management</div>
+    <div class="card">Adaptability</div>
+    <div class="card">Leadership</div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="cards">
+    <h2>Projects</h2>
     <div class="card">
-      <p>I enjoy turning complex problems into simple, beautiful interfaces with delightful micro-interactions. Outside work I explore anime culture and experiment with creative tech ideas.</p>
+      <h3>Smart Agriculture</h3>
+      <p>IoT-based farming solution for efficiency.</p>
     </div>
   </section>
 
-  <footer>© Gulshan — Built with animations & effects</footer>
-</div>
+  <!-- Certificates -->
+  <section id="certificates" class="cards">
+    <h2>Certificates</h2>
+    <div class="card popup">
+      <img src="images/diploma.jpg" alt="Diploma Certificate">
+      <span class="popuptext">Diploma – Govt Polytechnic Gaya</span>
+    </div>
+    <div class="card popup">
+      <img src="images/kyp.jpg" alt="KYP Certificate">
+      <span class="popuptext">KYP Certificate</span>
+    </div>
+    <div class="card popup">
+      <img src="images/cisco.jpg" alt="Cisco Python Certificate">
+      <span class="popuptext">Cisco Python (coming soon)</span>
+    </div>
+  </section>
 
-<!-- Modal -->
-<div class="modal-backdrop" id="projectModal">
-  <div class="modal">
-    <div class="close-x" id="closeProjectModal">✕</div>
-    <h3 id="projTitle">Project Title</h3>
-    <p id="projDesc">Details here...</p>
-  </div>
-</div>
+  <!-- Achievements -->
+  <section id="achievements" class="timeline">
+    <h2>Achievements</h2>
+    <p>Diploma 73.4% | LPU Fest Participation</p>
+  </section>
 
-<script>
-/* Typed headline */
-const typedEl=document.getElementById('typed');
-const words=['Frontend Developer','UI Animator','React Specialist','Creative Problem Solver'];
-let i=0,j=0,fwd=true;
-function loop(){
-  const w=words[i];
-  if(fwd){j++;if(j>w.length){fwd=false;setTimeout(loop,1000);return}}
-  else{j--;if(j<0){fwd=true;i=(i+1)%words.length;setTimeout(loop,200);return}}
-  typedEl.textContent=w.slice(0,j);
-  setTimeout(loop,fwd?100:50);
-}
-loop();
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: gulshan@example.com | LinkedIn | GitHub</p>
+  </section>
 
-/* Project popup */
-const projects={
-  p1:{title:'Interactive Dashboard',desc:'Built a real-time analytics dashboard with custom charts and accessibility.'},
-  p2:{title:'Ecommerce UI Kit',desc:'Reusable design system library with responsive components.'}
-};
-const projectModal=document.getElementById('projectModal');
-const projTitle=document.getElementById('projTitle');
-const projDesc=document.getElementById('projDesc');
-document.querySelectorAll('[data-open]').forEach(card=>{
-  card.addEventListener('click',()=>{
-    const id=card.getAttribute('data-open');
-    projTitle.textContent=projects[id].title;
-    projDesc.textContent=projects[id].desc;
-    projectModal.style.display='flex';
-    setTimeout(()=>projectModal.querySelector('.modal').classList.add('show'),20);
-  });
-});
-document.getElementById('closeProjectModal').addEventListener('click',()=>{
-  projectModal.querySelector('.modal').classList.remove('show');
-  setTimeout(()=>projectModal.style.display='none',300);
-});
-</script>
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Gulshan Portfolio</p>
+  </footer>
 </body>
 </html>
 
