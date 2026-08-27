@@ -4,58 +4,74 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Gulshan — Portfolio</title>
-<meta name="description" content="Gulshan's portfolio — UI/UX, Frontend, Projects, Contact" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<meta name="description" content="Gulshan's portfolio — Frontend, UI, Projects, Contact" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg1:#0f1724;
-    --bg2:#071029;
+    --bg-dark-1:#071029;
+    --bg-dark-2:#0f1724;
+    --bg-light-1:#f6f8fb;
+    --bg-light-2:#e9eef6;
     --accent:#7c5cff;
     --accent-2:#00d4ff;
     --glass: rgba(255,255,255,0.06);
-    --glass-2: rgba(255,255,255,0.03);
-    --muted: #9aa4b2;
-    --card-radius: 14px;
+    --muted-dark:#9aa4b2;
+    --muted-light:#4b5563;
+    --card-radius:14px;
+    --text-dark:#e6eef8;
+    --text-light:#0b1220;
+    --transition: 300ms cubic-bezier(.2,.9,.3,1);
   }
-  *{box-sizing:border-box}
   html,body{height:100%}
+  *{box-sizing:border-box}
   body{
     margin:0;
     font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
     background: radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,0.12), transparent),
                 radial-gradient(900px 400px at 90% 90%, rgba(0,212,255,0.06), transparent),
-                linear-gradient(180deg,var(--bg1),var(--bg2));
-    color:#e6eef8;
+                linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2));
+    color:var(--text-dark);
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     overflow-x:hidden;
+    transition: background var(--transition), color var(--transition);
   }
 
-  /* Particle canvas sits behind content */
-  #particles { position:fixed; inset:0; z-index:0; pointer-events:none; }
+  /* Light theme */
+  body.light{
+    background: linear-gradient(180deg,var(--bg-light-1),var(--bg-light-2));
+    color:var(--text-light);
+  }
 
-  /* Layout */
-  .container{position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:48px 24px 120px;}
+  /* Container */
+  .container{max-width:1100px; margin:0 auto; padding:40px 20px 120px; position:relative; z-index:2}
+
+  /* Header */
   header{display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px}
   .brand{display:flex; align-items:center; gap:12px}
   .logo{
-    width:52px; height:52px; border-radius:12px;
+    width:56px; height:56px; border-radius:12px;
     background:linear-gradient(135deg,var(--accent),var(--accent-2));
     display:grid; place-items:center; font-weight:800; color:white; font-family:JetBrains Mono;
-    box-shadow:0 6px 30px rgba(0,0,0,0.5), 0 2px 8px rgba(124,92,255,0.12);
+    box-shadow:0 8px 30px rgba(2,6,23,0.5);
   }
-  nav{display:flex; gap:18px; align-items:center}
-  nav a{color:var(--muted); text-decoration:none; font-weight:600; transition:color .25s}
-  nav a:hover{color:var(--accent)}
+  nav{display:flex; gap:12px; align-items:center}
+  nav a{color:inherit; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:10px; transition:background .18s, transform .18s}
+  nav a:hover{background:rgba(255,255,255,0.03); transform:translateY(-2px)}
+  .controls{display:flex; gap:8px; align-items:center}
 
-  /* Hero */
-  .hero{display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center; margin-top:18px}
-  .hero-left{padding:28px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:16px; box-shadow:0 6px 30px rgba(2,6,23,0.6); backdrop-filter: blur(8px)}
+  /* Theme toggle */
+  .theme-toggle{padding:8px 10px; border-radius:10px; cursor:pointer; border:1px solid rgba(255,255,255,0.04); background:transparent; font-weight:700}
+
+  /* Greeting + hero */
+  .hero{display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center; margin-top:6px}
+  .hero-left{padding:28px; border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); box-shadow:0 6px 30px rgba(2,6,23,0.6); backdrop-filter: blur(8px)}
   .eyebrow{display:inline-block; padding:6px 10px; border-radius:999px; background:linear-gradient(90deg, rgba(124,92,255,0.14), rgba(0,212,255,0.06)); color:var(--accent); font-weight:700; font-size:13px}
   h1{font-size:36px; margin:12px 0 6px; line-height:1.02}
+  .greeting{display:inline-block; font-weight:700; color:var(--accent-2); margin-right:8px}
   .typed{color:var(--accent-2); font-weight:700}
-  p.lead{color:var(--muted); margin:12px 0 18px; max-width:60%}
+  p.lead{color:rgba(230,238,248,0.85); margin:12px 0 18px; max-width:60%}
+  body.light p.lead{color:rgba(11,18,32,0.75)}
 
   .cta-row{display:flex; gap:12px; align-items:center}
   .btn{
@@ -64,19 +80,18 @@
     transition:transform .18s ease, box-shadow .18s;
   }
   .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#021026; box-shadow:0 10px 30px rgba(124,92,255,0.18)}
-  .btn:active{transform:translateY(2px)}
   .btn.ghost{color:var(--accent); border:1px solid rgba(124,92,255,0.12); background:transparent}
 
-  /* Right card */
+  /* Profile card */
   .profile-card{
     padding:18px; border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    box-shadow:0 8px 40px rgba(2,6,23,0.6); display:flex; gap:14px; align-items:center; transform:translateY(0);
+    box-shadow:0 8px 40px rgba(2,6,23,0.6); display:flex; gap:14px; align-items:center; position:relative;
     transition:transform .35s cubic-bezier(.2,.9,.3,1);
   }
-  .profile-card:hover{transform:translateY(-8px)}
   .avatar{width:84px; height:84px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:grid; place-items:center; font-weight:800; font-family:JetBrains Mono; color:white; font-size:28px}
   .profile-info h3{margin:0 0 6px}
-  .profile-info p{margin:0; color:var(--muted); font-size:14px}
+  .profile-info p{margin:0; color:rgba(230,238,248,0.8); font-size:14px}
+  body.light .profile-info p{color:var(--muted-light)}
 
   /* Sections */
   section{margin-top:48px}
@@ -86,28 +101,28 @@
 
   /* Project card */
   .card{
-    background:linear-gradient(180deg,var(--glass),var(--glass-2)); padding:18px; border-radius:var(--card-radius);
-    box-shadow:0 6px 30px rgba(2,6,23,0.5); transition:transform .28s ease, box-shadow .28s;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:var(--card-radius);
+    box-shadow:0 6px 30px rgba(2,6,23,0.5); transition:transform .28s ease, box-shadow .28s, background .28s;
     transform-style:preserve-3d; perspective:1000px; overflow:hidden; position:relative;
   }
   .card:hover{transform:translateY(-12px) rotateX(4deg); box-shadow:0 18px 60px rgba(2,6,23,0.6)}
-  .card .tags{display:flex; gap:8px; margin-top:12px; flex-wrap:wrap}
-  .tag{font-size:12px; color:var(--muted); padding:6px 8px; border-radius:8px; background:rgba(255,255,255,0.02)}
+  .card .thumb{height:140px; border-radius:12px; overflow:hidden; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); display:grid; place-items:center; color:var(--muted-dark); font-weight:700}
+  .card .meta{display:flex; justify-content:space-between; align-items:center; margin-top:12px}
 
-  /* Hover image shimmer */
-  .card .thumb{height:140px; border-radius:12px; overflow:hidden; background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); display:grid; place-items:center; color:var(--muted); font-weight:700}
-  .card .thumb::after{content:""; position:absolute; inset:0; background:linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0)); mix-blend-mode:overlay; pointer-events:none}
+  /* Show more button */
+  .show-more{padding:8px 10px; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.04); cursor:pointer; font-weight:700}
 
-  /* Contact modal */
-  .modal-backdrop{position:fixed; inset:0; background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.8)); display:none; align-items:center; justify-content:center; z-index:40}
-  .modal{width:min(720px,92%); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:16px; padding:22px; box-shadow:0 30px 80px rgba(2,6,23,0.8)}
+  /* Modal for project details */
+  .modal-backdrop{position:fixed; inset:0; background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.8)); display:none; align-items:center; justify-content:center; z-index:60}
+  .modal{width:min(820px,94%); background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:16px; padding:22px; box-shadow:0 30px 80px rgba(2,6,23,0.8); transform:translateY(20px); opacity:0; transition:opacity .28s, transform .28s}
+  .modal.show{opacity:1; transform:translateY(0)}
   .modal h3{margin:0 0 8px}
-  .form-row{display:flex; gap:12px; margin-top:12px}
-  .input, textarea{width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit; resize:none}
-  .close-x{position:absolute; right:18px; top:18px; cursor:pointer; color:var(--muted)}
+  .modal .meta{color:var(--muted-dark); margin-bottom:12px}
+  .close-x{position:absolute; right:18px; top:18px; cursor:pointer; color:var(--muted-dark)}
 
   /* Footer */
-  footer{margin-top:60px; color:var(--muted); text-align:center; font-size:14px}
+  footer{margin-top:60px; color:rgba(230,238,248,0.7); text-align:center; font-size:14px}
+  body.light footer{color:rgba(11,18,32,0.6)}
 
   /* Responsive */
   @media (max-width:980px){
@@ -116,58 +131,57 @@
   }
   @media (max-width:640px){
     .grid{grid-template-columns:1fr}
-    .hero-left p.lead{max-width:100%}
     header{flex-direction:column; align-items:flex-start; gap:12px}
+    .profile-card{width:100%}
   }
 
-  /* small animated accent */
-  .sparkle{
-    position:absolute; right:-40px; top:-40px; width:220px; height:220px; filter:blur(28px); opacity:.6;
-    background: conic-gradient(from 120deg, rgba(124,92,255,0.18), rgba(0,212,255,0.12), rgba(124,92,255,0.18));
-    transform:rotate(0deg); border-radius:50%;
-    animation:spin 12s linear infinite;
-  }
-  @keyframes spin{to{transform:rotate(360deg)}}
-
-  /* small utilities */
-  .muted{color:var(--muted)}
+  /* Entrance reveal defaults */
+  .reveal{opacity:0; transform:translateY(18px) scale(.995); transition:opacity .8s ease, transform .8s cubic-bezier(.2,.9,.3,1)}
+  .muted{color:var(--muted-dark)}
   .center{display:grid; place-items:center}
 </style>
 </head>
 <body>
-<canvas id="particles"></canvas>
-
 <div class="container">
   <header>
     <div class="brand">
       <div class="logo">G</div>
       <div>
         <div style="font-weight:800">Gulshan</div>
-        <div style="font-size:12px;color:var(--muted)">Frontend Developer • UI Enthusiast</div>
+        <div style="font-size:12px;color:rgba(230,238,248,0.7)">Frontend Developer • UI Enthusiast</div>
       </div>
     </div>
+
     <nav>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#about">About</a>
-      <a class="btn ghost" id="contactBtn">Contact</a>
+      <a href="#projects" data-scroll>Projects</a>
+      <a href="#skills" data-scroll>Skills</a>
+      <a href="#about" data-scroll>About</a>
+      <a href="#contact" id="contactScroll" data-scroll>Contact</a>
     </nav>
+
+    <div class="controls">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+      <button class="btn ghost" id="contactBtn">Contact</button>
+    </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="hero-left" id="heroLeft">
-        <span class="eyebrow">Open to work</span>
-        <h1>Hi, I'm <span style="color:var(--accent)">Gulshan</span> — <span class="typed" id="typed">Frontend Developer</span></h1>
+      <div class="hero-left reveal" id="heroLeft">
+        <div style="display:flex; align-items:center; gap:10px">
+          <span class="greeting">Hello 👋</span>
+          <h1 style="margin:0">I'm <span style="color:var(--accent)">Gulshan</span></h1>
+        </div>
+        <div style="margin-top:6px; font-weight:700" class="typed" id="typed">Frontend Developer</div>
         <p class="lead">I build polished, accessible interfaces and delightful micro-interactions that make products feel premium. I focus on performance, design systems, and clean code.</p>
         <div class="cta-row">
-          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn primary" href="#projects" data-scroll>View Projects</a>
           <button class="btn" id="resumeBtn">Download Resume</button>
         </div>
-        <div style="margin-top:18px; color:var(--muted); font-size:13px">Available for full-time and contract roles. Based in Phagwara, India.</div>
+        <div style="margin-top:14px; color:rgba(230,238,248,0.75); font-size:13px">Available for full-time and contract roles. Based in Phagwara, India.</div>
       </div>
 
-      <aside class="profile-card">
+      <aside class="profile-card reveal">
         <div class="avatar">G</div>
         <div class="profile-info">
           <h3>Gulshan</h3>
@@ -175,10 +189,9 @@
           <div style="margin-top:10px; display:flex; gap:8px">
             <div class="tag">React</div>
             <div class="tag">TypeScript</div>
-            <div class="tag">Tailwind</div>
+            <div class="tag">Motion</div>
           </div>
         </div>
-        <div class="sparkle" aria-hidden="true"></div>
       </aside>
     </section>
 
@@ -186,32 +199,35 @@
       <div class="section-title"><h2>Selected Projects</h2></div>
       <div class="grid" id="projectsGrid">
         <!-- Project 1 -->
-        <article class="card" data-tilt>
-          <div class="thumb">Project A</div>
+        <article class="card reveal" data-id="p1">
+          <div class="thumb">Interactive Dashboard</div>
           <h3 style="margin-top:12px">Interactive Dashboard</h3>
-          <p class="muted">A real-time analytics dashboard with custom charts and accessible controls.</p>
-          <div class="tags">
-            <span class="tag">React</span><span class="tag">D3</span><span class="tag">Accessibility</span>
+          <p class="muted">Real-time analytics with custom charts and accessible controls.</p>
+          <div class="meta">
+            <div class="tags"><span class="tag">React</span><span class="tag">D3</span></div>
+            <button class="show-more" data-open="p1">Show more</button>
           </div>
         </article>
 
         <!-- Project 2 -->
-        <article class="card" data-tilt>
-          <div class="thumb">Project B</div>
+        <article class="card reveal" data-id="p2">
+          <div class="thumb">Ecommerce UI Kit</div>
           <h3 style="margin-top:12px">Ecommerce UI Kit</h3>
-          <p class="muted">Design system and component library used across multiple product teams.</p>
-          <div class="tags">
-            <span class="tag">Design System</span><span class="tag">Storybook</span>
+          <p class="muted">Design system and component library used across product teams.</p>
+          <div class="meta">
+            <div class="tags"><span class="tag">Design System</span><span class="tag">Storybook</span></div>
+            <button class="show-more" data-open="p2">Show more</button>
           </div>
         </article>
 
         <!-- Project 3 -->
-        <article class="card" data-tilt>
-          <div class="thumb">Project C</div>
+        <article class="card reveal" data-id="p3">
+          <div class="thumb">Landing Page</div>
           <h3 style="margin-top:12px">Landing Page</h3>
           <p class="muted">High-conversion landing with animated hero and A/B tested microcopy.</p>
-          <div class="tags">
-            <span class="tag">A/B Testing</span><span class="tag">Performance</span>
+          <div class="meta">
+            <div class="tags"><span class="tag">A/B Testing</span><span class="tag">Performance</span></div>
+            <button class="show-more" data-open="p3">Show more</button>
           </div>
         </article>
       </div>
@@ -220,15 +236,15 @@
     <section id="skills">
       <div class="section-title"><h2>Skills</h2></div>
       <div style="display:flex; gap:12px; flex-wrap:wrap">
-        <div class="card" style="width:220px">
+        <div class="card reveal" style="width:220px">
           <h4 style="margin:0">Frontend</h4>
           <div class="muted" style="margin-top:8px">React • TypeScript • Next.js • Vite</div>
         </div>
-        <div class="card" style="width:220px">
+        <div class="card reveal" style="width:220px">
           <h4 style="margin:0">Design</h4>
           <div class="muted" style="margin-top:8px">Figma • Prototyping • Motion</div>
         </div>
-        <div class="card" style="width:220px">
+        <div class="card reveal" style="width:220px">
           <h4 style="margin:0">Performance</h4>
           <div class="muted" style="margin-top:8px">Lighthouse • Code Splitting • Lazy Loading</div>
         </div>
@@ -237,156 +253,56 @@
 
     <section id="about">
       <div class="section-title"><h2>About</h2></div>
-      <div class="card" style="padding:20px">
+      <div class="card reveal" style="padding:20px">
         <p class="muted">I enjoy turning complex problems into simple, beautiful, and intuitive interfaces. I care about accessibility, maintainable code, and delightful micro-interactions. Outside work I sketch UI ideas and experiment with generative visuals.</p>
       </div>
     </section>
 
+    <section id="contact" style="margin-top:36px">
+      <div class="section-title"><h2>Contact</h2></div>
+      <div class="card reveal" style="padding:18px; display:flex; gap:12px; align-items:center; justify-content:space-between">
+        <div>
+          <div style="font-weight:800">Let's talk</div>
+          <div class="muted" style="margin-top:6px">Email: <strong>your.email@example.com</strong> — Open to opportunities</div>
+        </div>
+        <div>
+          <button class="btn primary" id="openContactModal">Message me</button>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      <div>© <strong>Gulshan</strong> — Built with care and motion</div>
+      <div>© <strong>Gulshan</strong> — Built with motion and care</div>
     </footer>
   </main>
 </div>
 
-<!-- Contact Modal -->
-<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+<!-- Project Detail Modal -->
+<div class="modal-backdrop" id="projectModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="projTitle">
     <div style="position:relative">
-      <div class="close-x" id="closeModal">✕</div>
-      <h3 id="contactTitle">Get in touch</h3>
-      <p class="muted">Send a quick message and I will reply within 48 hours.</p>
-      <div style="margin-top:12px">
-        <input class="input" id="name" placeholder="Your name" />
-        <div style="height:12px"></div>
-        <input class="input" id="email" placeholder="Your email" />
-        <div style="height:12px"></div>
-        <textarea class="input" id="message" rows="5" placeholder="Message"></textarea>
-        <div style="display:flex; gap:10px; margin-top:12px; justify-content:flex-end">
-          <button class="btn ghost" id="modalCancel">Cancel</button>
-          <button class="btn primary" id="modalSend">Send</button>
-        </div>
+      <div class="close-x" id="closeProjectModal">✕</div>
+      <h3 id="projTitle">Project Title</h3>
+      <div class="meta" id="projMeta">Tags • Tech • Year</div>
+      <p id="projDesc" class="muted">Project description goes here. Add details about your role, challenges, solutions, and impact. Include links to live demo and repo.</p>
+      <div style="display:flex; gap:10px; margin-top:14px; justify-content:flex-end">
+        <a id="projDemo" class="btn ghost" target="_blank" rel="noopener">Live demo</a>
+        <a id="projRepo" class="btn primary" target="_blank" rel="noopener">View repo</a>
       </div>
     </div>
   </div>
 </div>
 
-<script>
-/* ======= Particles Background ======= */
-const canvas = document.getElementById('particles');
-const ctx = canvas.getContext('2d');
-let w = canvas.width = innerWidth;
-let h = canvas.height = innerHeight;
-const particles = [];
-const count = Math.round((w*h)/70000);
-for(let i=0;i<count;i++){
-  particles.push({
-    x: Math.random()*w,
-    y: Math.random()*h,
-    r: Math.random()*1.8 + 0.6,
-    vx: (Math.random()-0.5)*0.2,
-    vy: (Math.random()-0.5)*0.2,
-    hue: Math.random()*360
-  });
-}
-function draw(){
-  ctx.clearRect(0,0,w,h);
-  for(const p of particles){
-    p.x += p.vx;
-    p.y += p.vy;
-    if(p.x<0) p.x = w;
-    if(p.x> w) p.x = 0;
-    if(p.y<0) p.y = h;
-    if(p.y> h) p.y = 0;
-    const g = ctx.createRadialGradient(p.x,p.y,p.r*0.1,p.x,p.y,p.r*6);
-    g.addColorStop(0, 'rgba(124,92,255,0.18)');
-    g.addColorStop(0.5, 'rgba(0,212,255,0.06)');
-    g.addColorStop(1, 'rgba(124,92,255,0.01)');
-    ctx.fillStyle = g;
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-  }
-  requestAnimationFrame(draw);
-}
-draw();
-addEventListener('resize', ()=>{ w = canvas.width = innerWidth; h = canvas.height = innerHeight; });
-
-/* ======= Typed Headline ======= */
-const typedEl = document.getElementById('typed');
-const words = ['Frontend Developer','UI Animator','React Specialist','Performance Fanatic'];
-let tIndex = 0, char = 0, forward = true;
-function typeLoop(){
-  const word = words[tIndex];
-  if(forward){
-    char++;
-    if(char > word.length){ forward=false; setTimeout(typeLoop,1200); return; }
-  } else {
-    char--;
-    if(char < 0){ forward=true; tIndex = (tIndex+1)%words.length; setTimeout(typeLoop,200); return; }
-  }
-  typedEl.textContent = word.slice(0,char);
-  setTimeout(typeLoop, forward ? 80 : 40);
-}
-typeLoop();
-
-/* ======= Simple Scroll Reveal ======= */
-const revealEls = document.querySelectorAll('.card, .hero-left, .profile-card');
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.style.transition = 'opacity .8s ease, transform .8s cubic-bezier(.2,.9,.3,1)';
-      e.target.style.opacity = 1;
-      e.target.style.transform = 'translateY(0) scale(1)';
-      obs.unobserve(e.target);
-    } else {
-      e.target.style.opacity = 0;
-      e.target.style.transform = 'translateY(18px) scale(.995)';
-    }
-  });
-},{threshold:0.12});
-revealEls.forEach(el=>obs.observe(el));
-
-/* ======= Tilt effect for cards ======= */
-document.querySelectorAll('[data-tilt]').forEach(card=>{
-  card.addEventListener('mousemove', e=>{
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    const rx = (y - 0.5) * 10;
-    const ry = (x - 0.5) * -12;
-    card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
-  });
-  card.addEventListener('mouseleave', ()=> card.style.transform = '');
-});
-
-/* ======= Modal logic ======= */
-const modal = document.getElementById('modalBackdrop');
-document.getElementById('contactBtn').addEventListener('click', ()=> modal.style.display = 'flex');
-document.getElementById('closeModal').addEventListener('click', ()=> modal.style.display = 'none');
-document.getElementById('modalCancel').addEventListener('click', ()=> modal.style.display = 'none');
-document.getElementById('modalSend').addEventListener('click', ()=>{
-  // Simulated send with micro-interaction
-  const btn = document.getElementById('modalSend');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-  setTimeout(()=>{ btn.textContent = 'Sent ✓'; btn.style.background = 'linear-gradient(90deg,#6ee7b7,#34d399)'; setTimeout(()=>modal.style.display='none',900); }, 900);
-});
-
-/* ======= Resume button microcopy ======= */
-document.getElementById('resumeBtn').addEventListener('click', ()=>{
-  const btn = document.getElementById('resumeBtn');
-  btn.textContent = 'Preparing...';
-  btn.disabled = true;
-  setTimeout(()=>{ btn.textContent = 'Download Resume'; btn.disabled = false; alert('Resume download placeholder. Add your resume file to the repo and link it here.'); }, 900);
-});
-
-/* ======= Small accessibility helpers ======= */
-document.querySelectorAll('a, button').forEach(el=>{
-  el.addEventListener('focus', ()=> el.style.outline = '2px solid rgba(124,92,255,0.18)');
-  el.addEventListener('blur', ()=> el.style.outline = 'none');
-});
-</script>
-</body>
-</html>
-
+<!-- Contact Modal -->
+<div class="modal-backdrop" id="contactModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+    <div style="position:relative">
+      <div class="close-x" id="closeContactModal">✕</div>
+      <h3 id="contactTitle">Get in touch</h3>
+      <p class="muted">Send a quick message and I will reply within 48 hours.</p>
+      <div style="margin-top:12px">
+        <input class="input" id="name" placeholder="Your name" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" />
+        <div style="height:12px"></div>
+        <input class="input" id="email" placeholder="Your email" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit" />
+        <div style="height:12px">
 
