@@ -38,10 +38,11 @@ body {
   color: #00ffff;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 .navbar ul li a:hover {
   color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff;
 }
 html {
   scroll-behavior: smooth;
@@ -50,31 +51,39 @@ html {
 /* Hero Section */
 .hero {
   text-align: center;
-  padding: 80px;
+  padding: 100px 20px;
 }
 .gradient-text {
   background: linear-gradient(to right, #00ffff, #ff00ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 3em;
+  animation: glowText 3s infinite alternate;
+}
+.subtitle {
+  font-size: 1.2em;
+  color: #ccc;
+}
+@keyframes glowText {
+  from { text-shadow: 0 0 10px #00ffff; }
+  to { text-shadow: 0 0 20px #ff00ff; }
 }
 
 /* Sections */
-.about, .cards, .timeline, #contact {
+.section, .cards, .timeline, #contact {
   margin: 30px;
   padding: 20px;
   background: rgba(30,30,50,0.8);
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0,255,255,0.3);
+  animation: fadeInUp 1s ease forwards;
+}
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
 }
 
 /* Cards */
 .cards {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
-}
-.card {
-  background: rgba(50,50,70,0.9);
-  padding: 20px;
-  border-radius:
