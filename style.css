@@ -1,1 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+}
+header {
+  background-color: navy;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+section {
+  margin: 20px;
+}
+h2 {
+  color: #444;
+}
 
