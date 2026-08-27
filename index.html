@@ -4,54 +4,64 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Gulshan — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg-dark-1:#0f1724;
-  --bg-dark-2:#071029;
-  --bg-light-1:#f6f8fb;
-  --bg-light-2:#e9eef6;
-  --accent:#ff6a88; /* sunset accent */
+  --bg1:#0f1724;
+  --bg2:#071029;
+  --accent:#ff6a88;
   --accent-2:#ff9a8b;
-  --muted-dark:#9aa4b2;
-  --muted-light:#4b5563;
-  --text-dark:#e6eef8;
-  --text-light:#0b1220;
-  --transition:300ms cubic-bezier(.2,.9,.3,1);
+  --text:#e6eef8;
+  --muted:#9aa4b2;
 }
 body{
   margin:0;
   font-family:Inter,system-ui;
-  background:linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2));
-  color:var(--text-dark);
-  transition:background var(--transition),color var(--transition);
-}
-body.light{
-  background:linear-gradient(180deg,var(--bg-light-1),var(--bg-light-2));
-  color:var(--text-light);
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  overflow-x:hidden;
 }
 .container{max-width:1100px;margin:0 auto;padding:40px 20px}
 header{display:flex;justify-content:space-between;align-items:center}
-.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:white;font-family:JetBrains Mono}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:800;color:white}
 nav{display:flex;gap:12px}
-nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:inherit;font-weight:600;transition:background .2s}
-nav a:hover{background:rgba(255,255,255,0.08)}
-.theme-toggle{padding:8px 10px;border-radius:10px;cursor:pointer;border:1px solid rgba(255,255,255,0.1);background:transparent}
-.hero{display:grid;grid-template-columns:1fr 400px;gap:28px;margin-top:20px}
-.hero-left{padding:28px;border-radius:16px;background:rgba(255,255,255,0.02);box-shadow:0 6px 30px rgba(0,0,0,0.5)}
-.greeting{color:var(--accent-2);font-weight:700;margin-right:8px}
-.typed{color:var(--accent);font-weight:700}
-.btn{padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer;border:none}
-.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021026}
-.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
-.card{background:rgba(255,255,255,0.04);padding:18px;border-radius:14px;box-shadow:0 6px 30px rgba(0,0,0,0.5);transition:transform .3s}
-.card:hover{transform:translateY(-10px) scale(1.02)}
-.show-more{margin-top:10px;padding:8px 12px;border-radius:10px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer}
+nav a{padding:8px 12px;border-radius:10px;text-decoration:none;color:inherit;font-weight:600;transition:.3s}
+nav a:hover{background:rgba(255,255,255,0.08);transform:translateY(-2px)}
+.hero{margin-top:40px;text-align:center}
+.hero h1{font-size:40px;margin:0}
+.hero .typed{color:var(--accent);font-weight:700;font-size:22px}
+.hero p{color:var(--muted);max-width:600px;margin:12px auto}
+section{margin-top:60px}
+h2{text-align:center;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 6px 30px rgba(0,0,0,0.5);
+  transition:transform .4s, box-shadow .4s;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+.card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(255,255,255,0.1),transparent);
+  opacity:0;
+  transition:.4s;
+}
+.card:hover::after{opacity:1}
+.card h3{margin:0 0 10px}
+.card p{color:var(--muted)}
+/* Animated popup */
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:100}
 .modal{background:#fff;color:#000;padding:20px;border-radius:16px;max-width:600px;width:90%;transform:translateY(20px);opacity:0;transition:.3s}
 .modal.show{opacity:1;transform:translateY(0)}
 .close-x{position:absolute;top:10px;right:14px;cursor:pointer}
-footer{text-align:center;margin-top:40px;color:var(--muted-dark)}
+footer{text-align:center;margin-top:40px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -59,64 +69,72 @@ footer{text-align:center;margin-top:40px;color:var(--muted-dark)}
   <header>
     <div class="logo">G</div>
     <nav>
-      <a href="#projects" data-scroll>Projects</a>
-      <a href="#skills" data-scroll>Skills</a>
-      <a href="#about" data-scroll>About</a>
-      <a href="#contact" data-scroll>Contact</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#softskills">Soft Skills</a>
+      <a href="#goals">Future Goals</a>
+      <a href="#about">About</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle">🌙</button>
   </header>
 
   <section class="hero">
-    <div class="hero-left">
-      <h1><span class="greeting">Hello 👋</span> I'm Gulshan</h1>
-      <div class="typed" id="typed">Frontend Developer</div>
-      <p>I build polished, animated interfaces with premium design and smooth transitions.</p>
-      <button class="btn primary" data-scroll href="#projects">View Projects</button>
-    </div>
-    <div class="card">
-      <h3>Profile Card</h3>
-      <p>Frontend Engineer • React • CSS Animations</p>
-    </div>
+    <h1>Hello 👋 I'm Gulshan</h1>
+    <div class="typed" id="typed">Frontend Developer</div>
+    <p>I craft premium, animated interfaces with smooth transitions and impactful design.</p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
-    <div class="card">
-      <h3>Interactive Dashboard</h3>
-      <p>Real-time analytics with custom charts.</p>
-      <button class="show-more" data-open="p1">Show more</button>
-    </div>
-    <div class="card">
-      <h3>Ecommerce UI Kit</h3>
-      <p>Reusable design system library.</p>
-      <button class="show-more" data-open="p2">Show more</button>
+    <div class="grid">
+      <div class="card" data-open="p1">
+        <h3>Interactive Dashboard</h3>
+        <p>Real-time analytics with custom charts.</p>
+      </div>
+      <div class="card" data-open="p2">
+        <h3>Ecommerce UI Kit</h3>
+        <p>Reusable design system library.</p>
+      </div>
     </div>
   </section>
 
   <section id="skills">
-    <h2>Skills</h2>
-    <div class="card">React • TypeScript • Next.js</div>
-    <div class="card">Figma • Motion • Prototyping</div>
-  </section>
-
-  <section id="about">
-    <h2>About</h2>
-    <div class="card">I enjoy turning complex problems into simple, beautiful interfaces with delightful micro-interactions.</div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email: your.email@example.com</p>
-      <button class="btn ghost" id="contactBtn">Message Me</button>
+    <h2>Technical Skills</h2>
+    <div class="grid">
+      <div class="card"><h3>Frontend</h3><p>React • TypeScript • Next.js</p></div>
+      <div class="card"><h3>Design</h3><p>Figma • Motion • Prototyping</p></div>
+      <div class="card"><h3>Performance</h3><p>Optimization • Lazy Loading</p></div>
     </div>
   </section>
 
-  <footer>© Gulshan — Built with animations</footer>
+  <section id="softskills">
+    <h2>Soft Skills</h2>
+    <div class="grid">
+      <div class="card"><h3>Communication</h3><p>Clear, confident, and collaborative.</p></div>
+      <div class="card"><h3>Problem Solving</h3><p>Creative solutions under pressure.</p></div>
+      <div class="card"><h3>Leadership</h3><p>Guiding peers and motivating teams.</p></div>
+    </div>
+  </section>
+
+  <section id="goals">
+    <h2>Future Goals</h2>
+    <div class="grid">
+      <div class="card"><h3>Develop Own Software</h3><p>Innovative projects with real-world impact.</p></div>
+      <div class="card"><h3>Secure Placement</h3><p>Top tech companies with challenging roles.</p></div>
+      <div class="card"><h3>Contribute to Smart Agriculture</h3><p>Tech solutions for sustainable farming.</p></div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>I enjoy turning complex problems into simple, beautiful interfaces with delightful micro-interactions. Outside work I explore anime culture and experiment with creative tech ideas.</p>
+    </div>
+  </section>
+
+  <footer>© Gulshan — Built with animations & effects</footer>
 </div>
 
-<!-- Project Modal -->
+<!-- Modal -->
 <div class="modal-backdrop" id="projectModal">
   <div class="modal">
     <div class="close-x" id="closeProjectModal">✕</div>
@@ -125,22 +143,10 @@ footer{text-align:center;margin-top:40px;color:var(--muted-dark)}
   </div>
 </div>
 
-<!-- Contact Modal -->
-<div class="modal-backdrop" id="contactModal">
-  <div class="modal">
-    <div class="close-x" id="closeContactModal">✕</div>
-    <h3>Get in touch</h3>
-    <input placeholder="Your name" style="width:100%;padding:10px;margin:6px 0">
-    <input placeholder="Your email" style="width:100%;padding:10px;margin:6px 0">
-    <textarea placeholder="Message" style="width:100%;padding:10px;margin:6px 0"></textarea>
-    <button class="btn primary">Send</button>
-  </div>
-</div>
-
 <script>
 /* Typed headline */
 const typedEl=document.getElementById('typed');
-const words=['Frontend Developer','UI Animator','React Specialist','Performance Fanatic'];
+const words=['Frontend Developer','UI Animator','React Specialist','Creative Problem Solver'];
 let i=0,j=0,fwd=true;
 function loop(){
   const w=words[i];
@@ -151,9 +157,28 @@ function loop(){
 }
 loop();
 
-/* Smooth scroll */
-document.querySelectorAll('[data-scroll]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    e.preventDefault();
-    const id=a.getAttribute('href');
-    document.querySelector
+/* Project popup */
+const projects={
+  p1:{title:'Interactive Dashboard',desc:'Built a real-time analytics dashboard with custom charts and accessibility.'},
+  p2:{title:'Ecommerce UI Kit',desc:'Reusable design system library with responsive components.'}
+};
+const projectModal=document.getElementById('projectModal');
+const projTitle=document.getElementById('projTitle');
+const projDesc=document.getElementById('projDesc');
+document.querySelectorAll('[data-open]').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const id=card.getAttribute('data-open');
+    projTitle.textContent=projects[id].title;
+    projDesc.textContent=projects[id].desc;
+    projectModal.style.display='flex';
+    setTimeout(()=>projectModal.querySelector('.modal').classList.add('show'),20);
+  });
+});
+document.getElementById('closeProjectModal').addEventListener('click',()=>{
+  projectModal.querySelector('.modal').classList.remove('show');
+  setTimeout(()=>projectModal.style.display='none',300);
+});
+</script>
+</body>
+</html>
+
