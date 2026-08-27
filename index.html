@@ -5,33 +5,73 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
     <h1>Hi, I’m Gulshan</h1>
-    <p>Computer Science Student | Tech Enthusiast | Anime Lover</p>
+    <p>B.Tech CSE Student | Smart Agriculture Innovator</p>
   </header>
 
-  <section>
+  <section id="about" class="about">
     <h2>About Me</h2>
-    <p>I am a B.Tech CSE student at LPU, passionate about coding, anime, and creative projects.</p>
+    <p>I am pursuing Computer Science at LPU, with a Diploma from Government Polytechnic Gaya, Bihar. Passionate about coding, anime, and smart technology solutions.</p>
   </section>
 
-  <section>
+  <section id="skills" class="cards">
     <h2>Skills</h2>
-    <ul>
-      <li>Java, Python, C</li>
-      <li>VS Code, Android Studio, Git</li>
-    </ul>
+    <div class="card">Java</div>
+    <div class="card">Python</div>
+    <div class="card">Web Development</div>
+    <div class="card">Android Studio</div>
   </section>
 
-  <section>
+  <section id="projects" class="cards">
     <h2>Projects</h2>
-    <p>Entrepreneurship PPT, Mobile App Development, GitHub repos.</p>
+    <div class="card">
+      <h3>Smart Agriculture</h3>
+      <p>IoT-based farming solution for efficiency.</p>
+    </div>
   </section>
 
-  <section>
+  <section id="certificates" class="cards">
+    <h2>Certificates</h2>
+    <div class="card popup">
+      <img src="images/diploma.jpg" alt="Diploma Certificate">
+      <span class="popuptext">Diploma – Govt Polytechnic Gaya</span>
+    </div>
+    <div class="card popup">
+      <img src="images/kyp.jpg" alt="KYP Certificate">
+      <span class="popuptext">KYP Certificate</span>
+    </div>
+    <div class="card popup">
+      <img src="images/cisco.jpg" alt="Cisco Python Certificate">
+      <span class="popuptext">Cisco Python (coming soon)</span>
+    </div>
+  </section>
+
+  <section id="achievements" class="timeline">
+    <h2>Achievements</h2>
+    <p>Diploma 73.4% | LPU Fest Participation</p>
+  </section>
+
+  <section id="contact">
     <h2>Contact</h2>
     <p>Email: gulshan@example.com | LinkedIn | GitHub</p>
   </section>
+
+  <footer>
+    <p>© 2026 Gulshan Portfolio</p>
+  </footer>
 </body>
 </html>
 
