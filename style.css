@@ -14,7 +14,9 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  animation: slideDown 1s ease;
 }
+@keyframes slideDown { from{transform:translateY(-100%);} to{transform:translateY(0);} }
 header h1 { margin: 0; font-size: 2rem; }
 nav a {
   margin: 0 15px;
@@ -27,10 +29,13 @@ nav a:hover { color: #ffcc00; }
 nav .btn { background:#111; padding:8px 15px; border-radius:6px; }
 
 /* Hero */
-.hero { text-align:center; padding:60px 20px; }
-.socials a { margin:0 10px; color:#00d4ff; text-decoration:none; }
+.hero { text-align:center; padding:60px 20px; animation: fadeIn 2s ease; }
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+.socials a { margin:0 10px; color:#00d4ff; text-decoration:none; transition:0.3s; }
+.socials a:hover { color:#ffcc00; }
 .stats { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; margin-top:20px; }
-.stat { background:#1a1a1a; padding:15px; border-radius:8px; }
+.stat { background:#1a1a1a; padding:15px; border-radius:8px; animation: glow 2s infinite alternate; }
+@keyframes glow { from{box-shadow:0 0 5px #6a00f4;} to{box-shadow:0 0 20px #00d4ff;} }
 
 /* Sections */
 section { padding:60px 20px; text-align:center; }
@@ -46,7 +51,7 @@ section { padding:60px 20px; text-align:center; }
   cursor:pointer;
   transition:0.3s;
 }
-.btn:hover { background:#00d4ff; transform:scale(1.05); }
+.btn:hover { background:#00d4ff; transform:scale(1.05) rotate(2deg); }
 
 /* Flip Cards */
 .card-container { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
@@ -58,11 +63,4 @@ section { padding:60px 20px; text-align:center; }
 .card-back { background:#6a00f4; transform:rotateY(180deg); }
 
 /* Popup Modal */
-.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; }
-.modal-content { background:#111; padding:30px; border-radius:10px; max-width:500px; text-align:center; animation:popUp 0.5s ease; }
-@keyframes popUp { from{transform:scale(0.5);opacity:0;} to{transform:scale(1);opacity:1;} }
-.close { cursor:pointer; color:#ffcc00; font-size:20px; }
-
-/* Collapsible List */
-details { background:#1a1a1a; margin:10px auto; padding:15px; border-radius:8px; max-width:600px; cursor:pointer; }
-details summary { font
+.modal
