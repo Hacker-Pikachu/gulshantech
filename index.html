@@ -4,6 +4,47 @@
   <meta charset="UTF-8">
   <title>Gulshan Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 50px;
+    }
+    .hero-text {
+      max-width: 60%;
+    }
+    .hero-text h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    .hero-text p {
+      margin: 8px 0;
+    }
+    .hero-buttons {
+      margin-top: 20px;
+    }
+    .hero-buttons .btn {
+      margin-right: 10px;
+    }
+    .hero img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 3px solid #00ffff;
+      box-shadow: 0 0 20px #00ffff;
+    }
+    .stats {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .stats .card {
+      flex: 1;
+      text-align: center;
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -24,24 +65,31 @@
 
   <!-- Hero Section -->
   <header class="hero pop">
-    <h1>Hi, I'm Gulshan Kr 👋</h1>
-    <p>Aspiring Software Developer | Web Developer | Problem Solver</p>
-    <p>I build responsive and user-friendly websites and web applications. Passionate about coding, learning new technologies, and turning ideas into real-world solutions.</p>
-    
-    <!-- Buttons -->
-    <button class="btn" onclick="location.href='projects.html'">View My Projects</button>
-    <button class="btn" onclick="location.href='contact.html'">Contact Me</button>
+    <div class="hero-text">
+      <h1>Hi, I'm Gulshan 👋</h1>
+      <p>Aspiring Software Developer | Web Developer | Problem Solver</p>
+      <p>I build responsive and user-friendly websites and web applications. Passionate about coding, learning new technologies, and turning ideas into real-world solutions.</p>
+      
+      <!-- Buttons -->
+      <div class="hero-buttons">
+        <button class="btn" onclick="location.href='projects.html'">View My Projects</button>
+        <button class="btn" onclick="location.href='contact.html'">Contact Me</button>
+      </div>
 
-    <!-- Social Links -->
-    <div style="margin-top:20px;">
-      <a href="https://github.com/" target="_blank" class="btn">GitHub</a>
-      <a href="https://linkedin.com/" target="_blank" class="btn">LinkedIn</a>
-      <a href="https://instagram.com/" target="_blank" class="btn">Instagram</a>
+      <!-- Social Links -->
+      <div style="margin-top:20px;">
+        <a href="https://github.com/" target="_blank" class="btn">GitHub</a>
+        <a href="https://linkedin.com/" target="_blank" class="btn">LinkedIn</a>
+        <a href="https://instagram.com/" target="_blank" class="btn">Instagram</a>
+      </div>
     </div>
+
+    <!-- Profile Photo -->
+    <img src="your-photo.jpg" alt="Gulshan Profile Photo">
   </header>
 
   <!-- Stats Section -->
-  <section class="pop" style="text-align:center; margin-top:40px;">
+  <section class="stats pop">
     <div class="card">10+ Projects Completed</div>
     <div class="card">5+ Certifications</div>
     <div class="card">3+ Years of Learning</div>
