@@ -1,202 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Gulshan Portfolio</title>
-
-style.css
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gulshan | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<nav>
+<header>
+  <h1>Hi, I'm Gulshan 👋</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-<div class="logo">
-Gulshan Tech
-</div>
-
-<ul>
-
-<li>#homeHome</a></li>
-
-<li>#aboutAbout</a></li>
-
-<li><button onclick="openSkills()">Skills</button></li>
-
-<li>#projectsProjects</a></li>
-
-<li><button onclick="openContact()">Contact</button></li>
-
-</ul>
-
-</nav>
-
-<section id="home" class="hero">
-
-<div class="hero-text">
-
-<h1>Hi, I'm Gulshan 👋</h1>
-
-<h2>Aspiring Software Developer</h2>
-
-<p>
-Passionate about Web Development, Java, Python and building
-real world solutions through technology.
-</p>
-
-#projects
-View Projects
-</a>
-
-</div>
-
-<div class="hero-image">
-
-profile.jpg
-
-</div>
-
+<section id="home">
+  <h2>Aspiring Software Developer | Web Developer | Problem Solver</h2>
+  <p>I build responsive and user-friendly websites and web applications.</p>
+  <button class="btn" onclick="openModal()">View My Projects</button>
+  <button class="btn">Contact Me</button>
 </section>
 
 <section id="about">
+  <h2>About Me</h2>
+  <p>I am a Computer Science student who loves to build web applications and solve real-world problems.</p>
+</section>
 
-<h2>About Me</h2>
-
-<p>
-I am a Computer Science student who enjoys coding,
-building websites and learning new technologies.
-
-I am constantly improving my technical skills and working on exciting projects.
-</p>
-
+<section id="skills">
+  <h2>Top Skills</h2>
+  <div class="card-container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front"><h3>HTML</h3></div>
+        <div class="card-back"><p>Building structured web pages</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front"><h3>CSS</h3></div>
+        <div class="card-back"><p>Styling with animations</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front"><h3>JavaScript</h3></div>
+        <div class="card-back"><p>Interactive features & logic</p></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="projects">
-
-<h2>Projects</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Portfolio Website</h3>
-
-<p>
-Modern personal portfolio using HTML CSS and JavaScript.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Student Management System</h3>
-
-<p>
-Java and MySQL based project that manages student records.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Weather App</h3>
-
-<p>
-Real time weather information displayed using API data.
-</p>
-
-</div>
-
-</div>
-
+  <h2>Featured Projects</h2>
+  <details>
+    <summary>Personal Portfolio Website</summary>
+    <p>A responsive portfolio built using HTML, CSS, and JavaScript.</p>
+  </details>
+  <details>
+    <summary>Web App</summary>
+    <p>Interactive app solving real-world problems.</p>
+  </details>
 </section>
 
-<div id="skillsModal" class="modal">
+<section id="contact">
+  <h2>Let's Connect</h2>
+  <p>Email: yourmail@gmail.com</p>
+  <p>Phone: +91 98765 43210</p>
+  <p>Location: India</p>
+</section>
 
-<div class="modal-content">
-
-<span class="close"
-onclick="closeSkills()">&times;</span>
-
-<h2>Technical Skills</h2>
-
-<ul>
-<li>HTML</li>
-<li>CSS</li>
-<li>JavaScript</li>
-<li>Python</li>
-<li>Java</li>
-<li>C++</li>
-<li>Git & GitHub</li>
-<li>MySQL</li>
-</ul>
-
-<h2>Soft Skills</h2>
-
-<ul>
-<li>Communication</li>
-<li>Teamwork</li>
-<li>Leadership</li>
-<li>Problem Solving</li>
-<li>Time Management</li>
-<li>Critical Thinking</li>
-</ul>
-
-</div>
-
-</div>
-
-<div id="contactModal" class="modal">
-
-<div class="modal-content">
-
-<span class="close"
-onclick="closeContact()">&times;</span>
-
-<h2>Contact Me</h2>
-
-<p>Email: yourmail@gmail.com</p>
-
-<p>
-GitHub:
-<br>
-https://github.com/Hacker-Pikachu
-</p>
-
-<p>
-LinkedIn:
-<br>
-https://linkedin.com
-</p>
-
-</div>
-
+<!-- Popup Modal -->
+<div class="modal" id="projectModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>My Projects</h2>
+    <p>Here you can showcase more projects with screenshots or links.</p>
+  </div>
 </div>
 
 <script>
-
-function openSkills(){
-document.getElementById("skillsModal").style.display="flex";
-}
-
-function closeSkills(){
-document.getElementById("skillsModal").style.display="none";
-}
-
-function openContact(){
-document.getElementById("contactModal").style.display="flex";
-}
-
-function closeContact(){
-document.getElementById("contactModal").style.display="none";
-}
-
+  function openModal() {
+    document.getElementById('projectModal').style.display = 'flex';
+  }
+  function closeModal() {
+    document.getElementById('projectModal').style.display = 'none';
+  }
 </script>
 
 </body>
-
 </html>
