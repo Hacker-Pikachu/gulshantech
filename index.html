@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gulshan | Portfolio</title>
+  <title>Gulshan | Futuristic Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,36 +25,36 @@
 
 <section id="home" class="hero">
   <h2>Aspiring Software Developer | Web Developer | Problem Solver</h2>
-  <p>I build responsive and user-friendly websites and web applications. Passionate about coding, learning new technologies and turning ideas into real-world solutions.</p>
+  <p>I build responsive and futuristic web applications. Passionate about coding, learning new technologies and turning ideas into real-world solutions.</p>
   <button class="btn" onclick="openModal()">View My Projects</button>
-  <button class="btn">Contact Me</button>
+  <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
   <div class="socials">
     <a href="#">GitHub</a>
     <a href="#">LinkedIn</a>
     <a href="#">Instagram</a>
+    <a href="mailto:yourmail@gmail.com">Email</a>
   </div>
   <div class="stats">
-    <div class="stat">10+ Projects Completed</div>
-    <div class="stat">5+ Certifications</div>
-    <div class="stat">3+ Years of Learning</div>
-    <div class="stat">100+ GitHub Contributions</div>
+    <div class="stat" data-target="10">0+ Projects Completed</div>
+    <div class="stat" data-target="5">0+ Certifications</div>
+    <div class="stat" data-target="3">0+ Years of Learning</div>
+    <div class="stat" data-target="100">0+ GitHub Contributions</div>
   </div>
 </section>
 
 <section id="about">
   <h2>About Me</h2>
-  <p>I am a Computer Science student who loves to build web applications and solve real-world problems. I enjoy learning new technologies and constantly improving my skills.</p>
+  <p>I am a Computer Science student who loves futuristic design and solving real-world problems.</p>
+  <button class="btn" onclick="alert('More details coming soon!')">Read More</button>
 </section>
 
 <section id="skills">
   <h2>Top Skills</h2>
   <div class="card-container">
     <div class="card"><div class="card-inner"><div class="card-front"><h3>HTML</h3></div><div class="card-back"><p>Structured web pages</p></div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front"><h3>CSS</h3></div><div class="card-back"><p>Styling & animations</p></div></div></div>
+    <div class="card"><div class="card-inner"><div class="card-front"><h3>CSS</h3></div><div class="card-back"><p>Animations & Styling</p></div></div></div>
     <div class="card"><div class="card-inner"><div class="card-front"><h3>JavaScript</h3></div><div class="card-back"><p>Interactive features</p></div></div></div>
     <div class="card"><div class="card-inner"><div class="card-front"><h3>Python</h3></div><div class="card-back"><p>Problem solving</p></div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front"><h3>C/C++</h3></div><div class="card-back"><p>Logic & efficiency</p></div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front"><h3>Java</h3></div><div class="card-back"><p>OOP concepts</p></div></div></div>
   </div>
 </section>
 
@@ -63,17 +63,19 @@
   <details>
     <summary>Personal Portfolio Website</summary>
     <p>A responsive portfolio built using HTML, CSS, and JavaScript.</p>
+    <a href="#" class="btn">View Project</a>
   </details>
   <details>
     <summary>Web App</summary>
     <p>Interactive app solving real-world problems.</p>
+    <a href="#" class="btn">View Project</a>
   </details>
 </section>
 
 <section id="education">
   <h2>Education</h2>
   <p>B.Tech CSE at LPU</p>
-  <p>Diploma in Computer Science (Completed)</p>
+  <p>Diploma in Computer Science</p>
 </section>
 
 <section id="certificates">
@@ -88,10 +90,10 @@
 <section id="photos">
   <h2>Photo Gallery</h2>
   <div class="gallery">
-    <img src="images/photo1.jpg" alt="Project Screenshot">
-    <img src="images/photo2.jpg" alt="Certificate">
-    <img src="images/photo3.jpg" alt="College Event">
-    <img src="images/photo4.jpg" alt="Coding Session">
+    <img src="images/photo1.jpg" alt="Project Screenshot" onclick="openLightbox(this)">
+    <img src="images/photo2.jpg" alt="Certificate" onclick="openLightbox(this)">
+    <img src="images/photo3.jpg" alt="College Event" onclick="openLightbox(this)">
+    <img src="images/photo4.jpg" alt="Coding Session" onclick="openLightbox(this)">
   </div>
 </section>
 
@@ -107,8 +109,14 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <h2>My Projects</h2>
-    <p>Here you can showcase more projects with screenshots or links.</p>
+    <p>Showcase more projects with screenshots or links here.</p>
   </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="Expanded view">
 </div>
 
 <script>
@@ -118,6 +126,27 @@
   function closeModal() {
     document.getElementById('projectModal').style.display = 'none';
   }
+
+  function openLightbox(img) {
+    document.getElementById('lightbox').style.display = 'flex';
+    document.getElementById('lightbox-img').src = img.src;
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+
+  // Animated counters
+  const counters = document.querySelectorAll('.stat');
+  counters.forEach(counter => {
+    let target = +counter.getAttribute('data-target');
+    let count = 0;
+    let update = setInterval(() => {
+      if(count < target) {
+        count++;
+        counter.innerText = count + "+ " + counter.innerText.split(" ")[1];
+      } else clearInterval(update);
+    }, 50);
+  });
 </script>
 
 </body>
