@@ -3,151 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gulshan | Futuristic Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Gulshan | Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-<body>
+<body class="bg-gray-900 text-white font-poppins">
 
-<header>
-  <h1>Hi, I'm Gulshan 👋</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#certificates">Certificates</a>
-    <a href="#photos">Photos</a>
-    <a href="#contact">Contact</a>
-    <a href="resume.pdf" class="btn">Download Resume</a>
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-gray-800 p-6 flex justify-between items-center shadow-lg z-50">
+    <h1 class="text-2xl font-bold text-cyan-400">Gulshan</h1>
+    <ul class="flex space-x-6">
+      <li><a href="#home" class="hover:text-purple-400">Home</a></li>
+      <li><a href="#about" class="hover:text-purple-400">About</a></li>
+      <li><a href="#skills" class="hover:text-purple-400">Skills</a></li>
+      <li><a href="#projects" class="hover:text-purple-400">Projects</a></li>
+      <li><a href="#contact" class="hover:text-purple-400">Contact</a></li>
+    </ul>
   </nav>
-</header>
 
-<section id="home" class="hero">
-  <h2>Aspiring Software Developer | Web Developer | Problem Solver</h2>
-  <p>I build responsive and futuristic web applications. Passionate about coding, learning new technologies and turning ideas into real-world solutions.</p>
-  <button class="btn" onclick="openModal()">View My Projects</button>
-  <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
-  <div class="socials">
-    <a href="#">GitHub</a>
-    <a href="#">LinkedIn</a>
-    <a href="#">Instagram</a>
-    <a href="mailto:yourmail@gmail.com">Email</a>
-  </div>
-  <div class="stats">
-    <div class="stat" data-target="10">0+ Projects Completed</div>
-    <div class="stat" data-target="5">0+ Certifications</div>
-    <div class="stat" data-target="3">0+ Years of Learning</div>
-    <div class="stat" data-target="100">0+ GitHub Contributions</div>
-  </div>
-</section>
+  <!-- Hero Section -->
+  <section id="home" class="h-screen flex flex-col justify-center items-center text-center">
+    <h2 class="text-5xl md:text-6xl font-bold mb-4">Hi, I'm Gulshan 👋</h2>
+    <p id="typing" class="text-xl text-gray-300"></p>
+    <div class="mt-6 space-x-4">
+      <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg hover:scale-105 transition">View My Projects</a>
+      <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg hover:scale-105 transition">Contact Me</a>
+    </div>
+  </section>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>I am a Computer Science student who loves futuristic design and solving real-world problems.</p>
-  <button class="btn" onclick="alert('More details coming soon!')">Read More</button>
-</section>
+  <!-- About Section -->
+  <section id="about" class="py-20 px-10 text-center">
+    <h3 class="text-3xl font-bold text-purple-400 mb-6">About Me</h3>
+    <p class="text-gray-300 max-w-2xl mx-auto">
+      I am a Computer Science student at LPU who loves building web applications and solving real-world problems.
+    </p>
+  </section>
 
-<section id="skills">
-  <h2>Top Skills</h2>
-  <div class="card-container">
-    <div class="card"><div class="card-inner"><div class="card-front"><h3>HTML</h3></div><div class="card-back"><p>Structured web pages</p></div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front"><h3>CSS</h3></div><div class="card-back"><p>Animations & Styling</p></div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front"><h3>JavaScript</h3></div><div class="card-back"><p>Interactive features</p></div></div></div>
-    <div class="card"><div class="card-inner"><div class="card-front"><h3>Python</h3></div><div class="card-back"><p>Problem solving</p></div></div></div>
-  </div>
-</section>
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 px-10 text-center">
+    <h3 class="text-3xl font-bold text-cyan-400 mb-6">Skills</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition">HTML</div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition">CSS</div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition">JavaScript</div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition">Python</div>
+    </div>
+  </section>
 
-<section id="projects">
-  <h2>Featured Projects</h2>
-  <details>
-    <summary>Personal Portfolio Website</summary>
-    <p>A responsive portfolio built using HTML, CSS, and JavaScript.</p>
-    <a href="#" class="btn">View Project</a>
-  </details>
-  <details>
-    <summary>Web App</summary>
-    <p>Interactive app solving real-world problems.</p>
-    <a href="#" class="btn">View Project</a>
-  </details>
-</section>
+  <!-- Stats Section -->
+  <section id="stats" class="py-20 text-center">
+    <h3 class="text-3xl font-bold text-purple-400 mb-6">My Achievements</h3>
+    <div class="flex justify-center space-x-10">
+      <div><span id="projectsCount" class="text-4xl font-bold">0</span><p>Projects</p></div>
+      <div><span id="certCount" class="text-4xl font-bold">0</span><p>Certifications</p></div>
+    </div>
+  </section>
 
-<section id="education">
-  <h2>Education</h2>
-  <p>B.Tech CSE at LPU</p>
-  <p>Diploma in Computer Science</p>
-</section>
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 px-10 text-center">
+    <h3 class="text-3xl font-bold text-purple-400 mb-6">Projects</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="p-6 bg-gray-800 rounded-lg hover:shadow-lg transition">
+        <h4 class="text-xl font-bold">Portfolio Website</h4>
+        <p class="text-gray-400">Responsive portfolio built with HTML, CSS, JS, Tailwind.</p>
+      </div>
+      <div class="p-6 bg-gray-800 rounded-lg hover:shadow-lg transition">
+        <h4 class="text-xl font-bold">College Project</h4>
+        <p class="text-gray-400">A web app solving real-world problems.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="certificates">
-  <h2>Certificates</h2>
-  <ul>
-    <li>Web Development Certificate</li>
-    <li>Python Programming Certificate</li>
-    <li>Java Basics Certificate</li>
-  </ul>
-</section>
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-10 text-center">
+    <h3 class="text-3xl font-bold text-cyan-400 mb-6">Contact Me</h3>
+    <p>Email: yourmail@gmail.com | Phone: +91 98765 43210</p>
+  </section>
 
-<section id="photos">
-  <h2>Photo Gallery</h2>
-  <div class="gallery">
-    <img src="images/photo1.jpg" alt="Project Screenshot" onclick="openLightbox(this)">
-    <img src="images/photo2.jpg" alt="Certificate" onclick="openLightbox(this)">
-    <img src="images/photo3.jpg" alt="College Event" onclick="openLightbox(this)">
-    <img src="images/photo4.jpg" alt="Coding Session" onclick="openLightbox(this)">
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Let's Connect</h2>
-  <p>Email: yourmail@gmail.com</p>
-  <p>Phone: +91 98765 43210</p>
-  <p>Location: India</p>
-</section>
-
-<!-- Popup Modal -->
-<div class="modal" id="projectModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>My Projects</h2>
-    <p>Showcase more projects with screenshots or links here.</p>
-  </div>
-</div>
-
-<!-- Lightbox -->
-<div id="lightbox" class="lightbox">
-  <span class="close" onclick="closeLightbox()">&times;</span>
-  <img id="lightbox-img" src="" alt="Expanded view">
-</div>
-
-<script>
-  function openModal() {
-    document.getElementById('projectModal').style.display = 'flex';
-  }
-  function closeModal() {
-    document.getElementById('projectModal').style.display = 'none';
-  }
-
-  function openLightbox(img) {
-    document.getElementById('lightbox').style.display = 'flex';
-    document.getElementById('lightbox-img').src = img.src;
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
-  }
-
-  // Animated counters
-  const counters = document.querySelectorAll('.stat');
-  counters.forEach(counter => {
-    let target = +counter.getAttribute('data-target');
-    let count = 0;
-    let update = setInterval(() => {
-      if(count < target) {
-        count++;
-        counter.innerText = count + "+ " + counter.innerText.split(" ")[1];
-      } else clearInterval(update);
-    }, 50);
-  });
-</script>
-
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>
