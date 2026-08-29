@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio - Home</title>
+  <title>Gulshan Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar">
     <ul>
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="education.html">Education</a></li>
       <li><a href="skills.html">Skills</a></li>
       <li><a href="projects.html">Projects</a></li>
+      <li><a href="education.html">Education</a></li>
       <li><a href="certificates.html">Certificates</a></li>
       <li><a href="cv.html">CV</a></li>
       <li><a href="achievements.html">Achievements</a></li>
@@ -20,10 +22,30 @@
     </ul>
   </nav>
 
+  <!-- Hero Section -->
   <header class="hero pop">
-    <h1>Welcome to Gulshan's Portfolio</h1>
-    <p>Explore my academic journey & career goals</p>
-    <button class="btn">Explore Now</button>
+    <h1>Hi, I'm Gulshan Kr 👋</h1>
+    <p>Aspiring Software Developer | Web Developer | Problem Solver</p>
+    <p>I build responsive and user-friendly websites and web applications. Passionate about coding, learning new technologies, and turning ideas into real-world solutions.</p>
+    
+    <!-- Buttons -->
+    <button class="btn" onclick="location.href='projects.html'">View My Projects</button>
+    <button class="btn" onclick="location.href='contact.html'">Contact Me</button>
+
+    <!-- Social Links -->
+    <div style="margin-top:20px;">
+      <a href="https://github.com/" target="_blank" class="btn">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" class="btn">LinkedIn</a>
+      <a href="https://instagram.com/" target="_blank" class="btn">Instagram</a>
+    </div>
   </header>
+
+  <!-- Stats Section -->
+  <section class="pop" style="text-align:center; margin-top:40px;">
+    <div class="card">10+ Projects Completed</div>
+    <div class="card">5+ Certifications</div>
+    <div class="card">3+ Years of Learning</div>
+    <div class="card">100+ GitHub Contributions</div>
+  </section>
 </body>
 </html>
