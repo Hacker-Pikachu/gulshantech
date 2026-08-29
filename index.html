@@ -20,50 +20,72 @@
 
   <!-- Navbar -->
   <nav class="fixed w-full bg-gray-800 p-6 flex justify-between items-center shadow-lg z-40">
-    <h1 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">🚀 Gulshan</h1>
+    <h1 class="text-2xl font-bold text-cyan-400">🚀 Gulshan</h1>
     <ul class="flex space-x-6">
-      <li><a href="#home" class="hover:text-purple-400"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="#about" class="hover:text-purple-400"><i class="fas fa-user"></i> About</a></li>
-      <li><a href="#skills" class="hover:text-purple-400"><i class="fas fa-code"></i> Skills</a></li>
-      <li><a href="#projects" class="hover:text-purple-400"><i class="fas fa-project-diagram"></i> Projects</a></li>
-      <li><a href="#certificates" class="hover:text-purple-400"><i class="fas fa-certificate"></i> Certificates</a></li>
-      <li><a href="#contact" class="hover:text-purple-400"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+      <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+      <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+      <li><a href="#certificates"><i class="fas fa-certificate"></i> Certificates</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
     </ul>
+    <a href="cv.pdf" download class="ml-6 px-4 py-2 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-lg"><i class="fas fa-download"></i> Resume</a>
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="h-screen flex flex-col justify-center items-center text-center">
-    <h2 class="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-yellow-500">Hi, I'm Gulshan 👋</h2>
-    <p id="typing" class="text-xl text-gray-300"></p>
-    <div class="mt-6 space-x-4">
-      <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg hover:scale-105 transition shadow-lg">View My Projects</a>
-      <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg hover:scale-105 transition shadow-lg">Contact Me</a>
-      <a href="cv.pdf" download class="px-6 py-3 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full hover:scale-110 transition shadow-lg"><i class="fas fa-download"></i> Download CV</a>
+  <section id="home" class="h-screen flex flex-col md:flex-row justify-center items-center text-center md:text-left px-10">
+    <div class="flex-1">
+      <h2 class="text-5xl md:text-6xl font-bold mb-4">Hi, I'm Gulshan 👋</h2>
+      <p id="typing" class="text-xl text-gray-300 mb-4"></p>
+      <p class="text-gray-400">I build responsive and user-friendly websites and web applications. Passionate about coding, learning new technologies and turning ideas into real-world solutions.</p>
+      <div class="mt-6 space-x-4">
+        <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg hover:scale-105 transition">View My Projects</a>
+        <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg hover:scale-105 transition">Contact Me</a>
+      </div>
+      <div class="mt-6 flex space-x-6">
+        <a href="https://github.com/yourgithub" target="_blank"><i class="fab fa-github text-3xl hover:text-purple-400"></i></a>
+        <a href="https://linkedin.com/in/yourlinkedin" target="_blank"><i class="fab fa-linkedin text-3xl hover:text-blue-400"></i></a>
+        <a href="https://instagram.com/yourinstagram" target="_blank"><i class="fab fa-instagram text-3xl hover:text-pink-400"></i></a>
+      </div>
     </div>
-    <!-- Social Icons -->
-    <div class="mt-6 flex space-x-6">
-      <a href="https://github.com/yourgithub" target="_blank"><i class="fab fa-github text-3xl hover:text-purple-400"></i></a>
-      <a href="https://linkedin.com/in/yourlinkedin" target="_blank"><i class="fab fa-linkedin text-3xl hover:text-blue-400"></i></a>
-      <a href="https://instagram.com/yourinstagram" target="_blank"><i class="fab fa-instagram text-3xl hover:text-pink-400"></i></a>
+    <div class="flex-1 mt-10 md:mt-0">
+      <img src="profile.jpg" alt="Profile" class="rounded-full w-64 mx-auto shadow-lg border-4 border-purple-500">
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- Stats -->
+  <section id="stats" class="py-20 text-center">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div><span id="projectsCount" class="text-4xl font-bold">0</span><p>Projects Completed</p></div>
+      <div><span id="certCount" class="text-4xl font-bold">0</span><p>Certifications</p></div>
+      <div><span id="yearsCount" class="text-4xl font-bold">0</span><p>Years of Learning</p></div>
+      <div><span id="githubCount" class="text-4xl font-bold">0</span><p>GitHub Contributions</p></div>
+    </div>
+  </section>
+
+  <!-- About -->
   <section id="about" class="py-20 px-10 text-center">
     <h3 class="text-3xl font-bold text-purple-400 mb-6"><i class="fas fa-user"></i> About Me</h3>
-    <p class="text-gray-300 max-w-2xl mx-auto">
-      I am a Computer Science student at LPU who loves building web applications and solving real-world problems.
-    </p>
+    <p class="text-gray-300 max-w-2xl mx-auto">I am a Computer Science student who loves to build web applications and solve real-world problems. I enjoy learning new technologies and constantly improving my skills.</p>
     <p class="mt-4"><i class="fas fa-map-marker-alt"></i> Location: Phagwara, Punjab, India</p>
   </section>
 
-  <!-- Skills Section -->
+  <!-- Skills -->
   <section id="skills" class="py-20 px-10 text-center">
-    <h3 class="text-3xl font-bold text-cyan-400 mb-6"><i class="fas fa-code"></i> Skills</h3>
+    <h3 class="text-3xl font-bold text-cyan-400 mb-6"><i class="fas fa-code"></i> Top Skills</h3>
     <div id="skillsCards" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
   </section>
 
-  <!-- Certificates Section -->
+  <!-- Projects -->
+  <section id="projects" class="py-20 px-10 text-center">
+    <h3 class="text-3xl font-bold text-purple-400 mb-6"><i class="fas fa-project-diagram"></i> Featured Projects</h3>
+    <div class="p-6 bg-gray-800 rounded-lg hover:scale-105 transition">
+      <h4 class="text-xl font-bold">Personal Portfolio Website</h4>
+      <p class="text-gray-400">A responsive personal portfolio website built using HTML, CSS and JavaScript.</p>
+    </div>
+  </section>
+
+  <!-- Certificates -->
   <section id="certificates" class="py-20 px-10 text-center">
     <h3 class="text-3xl font-bold text-purple-400 mb-6"><i class="fas fa-certificate"></i> Certificates</h3>
     <div class="swiper mySwiper max-w-3xl mx-auto">
@@ -83,7 +105,7 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="py-20 px-10 text-center">
     <h3 class="text-3xl font-bold text-cyan-400 mb-6"><i class="fas fa-envelope"></i> Contact Me</h3>
     <p><i class="fas fa-envelope"></i> Email: yourmail@gmail.com</p>
@@ -91,14 +113,4 @@
   </section>
 
   <!-- Popup -->
-  <div id="popup" class="fixed bottom-5 right-5 bg-gradient-to-r from-purple-600 to-cyan-600 text-white px-6 py-3 rounded-lg shadow-lg hidden">
-    🎉 Random Skill Added!
-  </div>
-
-  <!-- Back to Top -->
-  <button id="backToTop" class="fixed bottom-5 left-5 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">⬆ Top</button>
-
-  <!-- Scripts -->
-  <script src="script.js"></script>
-</body>
-</html>
+  <div id="popup" class="fixed bottom-5 right-5 bg-gradient-to-r from-purple-600 to-cyan-600 text-white px-6 py-3 rounded-lg shadow-lg hidden
