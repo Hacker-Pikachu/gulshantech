@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Gulshan Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     .hero {
       display: flex;
@@ -34,6 +36,18 @@
       border: 3px solid #00ffff;
       box-shadow: 0 0 20px #00ffff;
     }
+    .social-icons {
+      margin-top: 20px;
+    }
+    .social-icons a {
+      color: #00ffff;
+      font-size: 24px;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #ff00ff;
+    }
     .stats {
       display: flex;
       justify-content: center;
@@ -60,13 +74,14 @@
       <li><a href="achievements.html">Achievements</a></li>
       <li><a href="future.html">Future Goals</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="cv.html" class="btn">Download Resume</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero pop">
     <div class="hero-text">
-      <h1>Hi, I'm Gulshan 👋</h1>
+      <h1>Greetings, I'm Gulshan Kr 👋</h1>
       <p>Aspiring Software Developer | Web Developer | Problem Solver</p>
       <p>I build responsive and user-friendly websites and web applications. Passionate about coding, learning new technologies, and turning ideas into real-world solutions.</p>
       
@@ -76,11 +91,11 @@
         <button class="btn" onclick="location.href='contact.html'">Contact Me</button>
       </div>
 
-      <!-- Social Links -->
-      <div style="margin-top:20px;">
-        <a href="https://github.com/" target="_blank" class="btn">GitHub</a>
-        <a href="https://linkedin.com/" target="_blank" class="btn">LinkedIn</a>
-        <a href="https://instagram.com/" target="_blank" class="btn">Instagram</a>
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
 
