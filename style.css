@@ -1,6 +1,6 @@
-/* Futuristic Background */
+/* Dark Neon Background */
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(-45deg, #0a0a0f, #1a0033, #00334d, #330033);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
@@ -15,9 +15,10 @@ body {
 
 /* Navbar */
 .navbar {
-  background: rgba(20,20,40,0.9);
+  background: rgba(20,20,40,0.95);
   padding: 15px;
   text-align: center;
+  box-shadow: 0 2px 10px rgba(0,255,255,0.3);
 }
 .navbar ul { list-style: none; margin: 0; padding: 0; }
 .navbar ul li { display: inline-block; margin: 0 15px; }
@@ -32,7 +33,71 @@ body {
   text-shadow: 0 0 10px #ff00ff;
 }
 
-/* Premium Cards */
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+}
+.hero-text h1 {
+  font-size: 2.8em;
+  color: #00ffff;
+  margin-bottom: 10px;
+  animation: fadeInDown 2s ease;
+}
+.hero-text p {
+  margin: 8px 0;
+  color: #ccc;
+  animation: fadeInUp 2s ease;
+}
+@keyframes fadeInDown {
+  from {opacity:0; transform: translateY(-20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+@keyframes fadeInUp {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+.hero img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 20px #00ffff;
+  transition: transform 0.5s;
+}
+.hero img:hover { transform: rotate(5deg) scale(1.05); }
+
+/* Buttons */
+.btn {
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  border: none;
+  padding: 12px 20px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #ff00ff;
+}
+
+/* Social Icons */
+.social-icons a {
+  color: #00ffff;
+  font-size: 24px;
+  margin-right: 15px;
+  transition: color 0.3s, transform 0.3s;
+}
+.social-icons a:hover {
+  color: #ff00ff;
+  transform: scale(1.2);
+}
+
+/* Cards */
 .card {
   background: rgba(255,255,255,0.05);
   border: 1px solid #00ffff;
@@ -46,22 +111,13 @@ body {
   box-shadow: 0 0 20px #00ffff;
 }
 
-/* Buttons */
-.btn {
-  background: linear-gradient(45deg, #00ffff, #ff00ff);
-  border: none;
-  padding: 12px 20px;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s;
+/* Stats Section */
+.stats {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
-.btn:hover { transform: scale(1.1); }
-
-/* Animations */
-.pop { animation: popIn 1s ease forwards; }
-@keyframes popIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+.stats .card {
+  flex: 1;
+  text-align: center;
 }
