@@ -2,136 +2,230 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gulshan's Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Portfolio</title>
+  <style>
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0d0d0d, #1a1a1a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #0ff;
+      text-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+      animation: glowText 2s ease-in-out infinite alternate;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 15px;
+      color: #ccc;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #0ff; }
+      to { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 20px;
+      right: 40px;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #0ff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    /* Section Styling */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #0ff;
+      text-shadow: 0 0 15px #0ff;
+    }
+
+    /* Cards */
+    .card {
+      background: #111;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      box-shadow: 0 0 20px #0ff;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 40px #0ff;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #0ff;
+      color: #000;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 20px #0ff;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px #0ff;
+    }
+
+    /* Particle Background */
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#softskills">Soft Skills</a></li>
-      <li><a href="#interests">Interests</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#futuregoals">Future Goals</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Particle Background -->
+  <canvas id="particles"></canvas>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <h1 class="gradient-text">Hi, I’m Gulshan</h1>
-    <p>B.Tech CSE Student | Smart Agriculture Innovator</p>
-  </header>
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Gulshan's Futuristic Portfolio</h1>
+    <p>Aspiring Software Developer | Web Enthusiast | Problem Solver</p>
+    <a href="#projects" class="btn">Explore Projects</a>
+  </div>
 
   <!-- About Section -->
-  <section id="about" class="about">
+  <section id="about">
     <h2>About Me</h2>
-    <p>
-      I am Gulshan, currently pursuing B.Tech in Computer Science at Lovely Professional University (LPU). 
-      I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with 73.4% marks. 
-      My interests include web development, mobile computing, anime culture, and innovative projects like Smart Agriculture. 
-      I am passionate about building solutions that combine technology with real-world impact, and I actively participate in college fests and events to enhance my exposure and creativity.
-    </p>
+    <div class="card">
+      <p>Write about yourself here. Add your education, skills, and interests.</p>
+    </div>
   </section>
 
-  <!-- Education -->
-  <section id="education" class="cards">
-    <h2>Education</h2>
-    <div class="card">Diploma in Computer Science — Govt Polytechnic Gaya, Bihar (73.4%)</div>
-    <div class="card">B.Tech CSE Core — Lovely Professional University (LPU), Punjab</div>
-  </section>
-
-  <!-- Technical Skills -->
-  <section id="skills" class="cards">
-    <h2>Technical Skills</h2>
-    <div class="card"><i class="fa-brands fa-java"></i> Java</div>
-    <div class="card"><i class="fa-brands fa-python"></i> Python</div>
-    <div class="card"><i class="fa-solid fa-code"></i> Web Development</div>
-    <div class="card"><i class="fa-solid fa-mobile"></i> Android Studio</div>
-  </section>
-
-  <!-- Soft Skills -->
-  <section id="softskills" class="cards">
-    <h2>Soft Skills</h2>
-    <div class="card">Communication</div>
-    <div class="card">Team Collaboration</div>
-    <div class="card">Problem Solving</div>
-    <div class="card">Time Management</div>
-    <div class="card">Adaptability</div>
-    <div class="card">Leadership</div>
-  </section>
-
-  <!-- Interests -->
-  <section id="interests" class="cards">
-    <h2>Interests</h2>
-    <div class="card">Anime (Rimuru Tempest & others)</div>
-    <div class="card">Men’s Fashion Accessories (chains, caps, bracelets)</div>
-    <div class="card">Interest in new technology and gadgets</div>
-    <div class="card">Tech Comparisons (Samsung smartphones, MacBook shortcuts)</div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="cards">
+  <!-- Projects Section -->
+  <section id="projects">
     <h2>Projects</h2>
     <div class="card">
-      <h3>Smart Agriculture</h3>
-      <p>IoT-based farming solution for efficiency.</p>
+      <h3>Project Title</h3>
+      <p>Brief description of your project. Add links or screenshots.</p>
+    </div>
+    <div class="card">
+      <h3>Another Project</h3>
+      <p>Details about another project with animations and effects.</p>
     </div>
   </section>
 
-  <!-- Certificates -->
-  <section id="certificates" class="cards">
-    <h2>Certificates</h2>
-    <div class="card popup">
-      <img src="images/diploma.jpg" alt="Diploma Certificate">
-      <span class="popuptext">Diploma – Govt Polytechnic Gaya</span>
-    </div>
-    <div class="card popup">
-      <img src="images/kyp.jpg" alt="KYP Certificate">
-      <span class="popuptext">KYP Certificate</span>
-    </div>
-    <div class="card popup">
-      <img src="images/cisco.jpg" alt="Cisco Python Certificate">
-      <span class="popuptext">Cisco Python (coming soon)</span>
-    </div>
-  </section>
-
-  <!-- Achievements -->
-  <section id="achievements" class="timeline">
-    <h2>Achievements</h2>
-    <p>Diploma completed with 73.4% marks</p>
-    <p>Participation in LPU college fests</p>
-    <p>Created Smart Agriculture project (IoT-based farming)</p>
-    <p>Developed digital portfolio using GitHub, WordPress, Wix</p>
-  </section>
-
-  <!-- Future Goals -->
-  <section id="futuregoals" class="cards">
-    <h2>Future Goals</h2>
-    <div class="card">Secure a rewarding placement in leading technology companies</div>
-    <div class="card">Design and develop innovative software solutions</div>
-    <div class="card">Contribute to impactful projects such as Smart Agriculture</div>
-    <div class="card">Establish a strong digital portfolio and professional brand</div>
-    <div class="card">Continue exploring anime culture and creative hobbies for inspiration</div>
-    <div class="card">Stay updated with emerging technologies and modern gadgets</div>
-  </section>
-
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: gulshan@example.com | LinkedIn | GitHub</p>
+    <div class="card">
+      <p>Email: yourname@example.com</p>
+      <p>Phone: +91-XXXXXXXXXX</p>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Gulshan Portfolio</p>
-  </footer>
+  <!-- Particle Animation Script -->
+  <script>
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particlesArray = [];
+    const colors = ["#0ff", "#fff", "#0f0"];
+
+    class Particle {
+      constructor(x, y, size, color, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.color = color;
+        this.speedX = speedX;
+        this.speedY = speedY;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.02;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      particlesArray = [];
+      for (let i = 0; i < 100; i++) {
+        let size = Math.random() * 5 + 1;
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let color = colors[Math.floor(Math.random() * colors.length)];
+        let speedX = Math.random() * 2 - 1;
+        let speedY = Math.random() * 2 - 1;
+        particlesArray.push(new Particle(x, y, size, color, speedX, speedY));
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+      }
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+  </script>
 </body>
 </html>
