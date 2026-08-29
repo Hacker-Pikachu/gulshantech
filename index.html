@@ -16,8 +16,11 @@
 </head>
 <body class="bg-gray-900 text-white font-poppins">
 
+  <!-- Scroll Progress Bar -->
+  <div id="progressBar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-purple-500 to-cyan-500 z-50"></div>
+
   <!-- Navbar -->
-  <nav class="fixed w-full bg-gray-800 p-6 flex justify-between items-center shadow-lg z-50">
+  <nav class="fixed w-full bg-gray-800 p-6 flex justify-between items-center shadow-lg z-40">
     <h1 class="text-2xl font-bold text-cyan-400">Gulshan</h1>
     <ul class="flex space-x-6">
       <li><a href="#home" class="hover:text-purple-400">Home</a></li>
@@ -27,6 +30,8 @@
       <li><a href="#certificates" class="hover:text-purple-400">Certificates</a></li>
       <li><a href="#contact" class="hover:text-purple-400">Contact</a></li>
     </ul>
+    <!-- Dark Mode Toggle -->
+    <button id="toggleMode" class="ml-6 px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg">Toggle Mode</button>
   </nav>
 
   <!-- Hero Section -->
@@ -34,8 +39,9 @@
     <h2 class="text-5xl md:text-6xl font-bold mb-4">Hi, I'm Gulshan 👋</h2>
     <p id="typing" class="text-xl text-gray-300"></p>
     <div class="mt-6 space-x-4">
-      <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg hover:scale-105 transition">View My Projects</a>
-      <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg hover:scale-105 transition">Contact Me</a>
+      <a href="#projects" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-lg hover:scale-105 transition shadow-lg">View My Projects</a>
+      <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg hover:scale-105 transition shadow-lg">Contact Me</a>
+      <a href="cv.pdf" download class="px-6 py-3 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full hover:scale-110 transition shadow-lg">Download CV</a>
     </div>
   </section>
 
@@ -51,10 +57,10 @@
   <section id="skills" class="py-20 px-10 text-center">
     <h3 class="text-3xl font-bold text-cyan-400 mb-6">Skills</h3>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition">HTML</div>
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition">CSS</div>
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition">JavaScript</div>
-      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition">Python</div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition shadow-lg">HTML</div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition shadow-lg">CSS</div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition shadow-lg">JavaScript</div>
+      <div class="p-4 bg-gray-800 rounded-lg hover:scale-105 transition shadow-lg">Python</div>
     </div>
   </section>
 
@@ -112,6 +118,14 @@
     <p>Email: yourmail@gmail.com | Phone: +91 98765 43210</p>
   </section>
 
+  <!-- Futuristic Popup -->
+  <div id="popup" class="fixed bottom-5 right-5 bg-gradient-to-r from-purple-600 to-cyan-600 text-white px-6 py-3 rounded-lg shadow-lg hidden">
+    🚀 Welcome to my futuristic portfolio!
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="fixed bottom-5 left-5 bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-4 py-2 rounded-lg shadow-lg hidden">⬆ Top</button>
+
   <!-- Scripts -->
   <script src="script.js"></script>
   <script>
@@ -132,5 +146,3 @@
       },
     });
   </script>
-</body>
-</html>
