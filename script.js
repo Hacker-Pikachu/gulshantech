@@ -1,7 +1,6 @@
 // Typing Effect
 const text = "Aspiring Software Developer | Web Developer | Problem Solver";
 let i = 0;
-
 function typingEffect() {
   if (i < text.length) {
     document.getElementById("typing").innerHTML += text.charAt(i);
@@ -13,46 +12,13 @@ typingEffect();
 
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
-
-// Hero animation
 gsap.from("h2", {duration: 1, y: -50, opacity: 0});
 gsap.from("#typing", {duration: 1, delay: 0.5, y: 50, opacity: 0});
 gsap.from("nav", {duration: 1, y: -100, opacity: 0});
 
 // Scroll animations
-gsap.from("#about", {
-  scrollTrigger: "#about",
-  duration: 1,
-  opacity: 0,
-  y: 50
-});
-
-gsap.from("#skills div", {
-  scrollTrigger: "#skills",
-  duration: 1,
-  opacity: 0,
-  scale: 0.5,
-  stagger: 0.2
-});
+gsap.from("#about", {scrollTrigger: "#about", duration: 1, opacity: 0, y: 50});
+gsap.from("#skills div", {scrollTrigger: "#skills", duration: 1, opacity: 0, scale: 0.5, stagger: 0.2});
 
 // Animated Counters
-function counter(id, target) {
-  let count = 0;
-  const interval = setInterval(() => {
-    if (count < target) {
-      count++;
-      document.getElementById(id).innerText = count;
-    } else {
-      clearInterval(interval);
-    }
-  }, 50);
-}
-
-ScrollTrigger.create({
-  trigger: "#stats",
-  start: "top center",
-  onEnter: () => {
-    counter("projectsCount", 10);
-    counter("certCount", 5);
-  }
-});
+function counter(id
