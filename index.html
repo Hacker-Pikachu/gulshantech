@@ -5,12 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gulshan | Portfolio</title>
   <!-- Tailwind CSS -->
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body class="bg-gray-900 text-white font-poppins">
+<!-- Certificates Section -->
+<section id="certificates" class="py-20 px-10 text-center">
+  <h3 class="text-3xl font-bold text-purple-400 mb-6">Certificates</h3>
+  
+  <!-- Swiper Container -->
+  <div class="swiper mySwiper max-w-3xl mx-auto">
+    <div class="swiper-wrapper">
+      <!-- Certificate 1 -->
+      <div class="swiper-slide p-6 bg-gray-800 rounded-lg">
+        <img src="certificate1.jpg" alt="Certificate 1" class="mx-auto rounded-lg shadow-lg">
+        <p class="mt-4 text-gray-300">Web Development Certificate</p>
+      </div>
+      <!-- Certificate 2 -->
+      <div class="swiper-slide p-6 bg-gray-800 rounded-lg">
+        <img src="certificate2.jpg" alt="Certificate 2" class="mx-auto rounded-lg shadow-lg">
+        <p class="mt-4 text-gray-300">Python Programming Certificate</p>
+      </div>
+      <!-- Certificate 3 -->
+      <div class="swiper-slide p-6 bg-gray-800 rounded-lg">
+        <img src="certificate3.jpg" alt="Certificate 3" class="mx-auto rounded-lg shadow-lg">
+        <p class="mt-4 text-gray-300">JavaScript Certificate</p>
+      </div>
+    </div>
+    <!-- Swiper Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Swiper Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
 
   <!-- Navbar -->
   <nav class="fixed w-full bg-gray-800 p-6 flex justify-between items-center shadow-lg z-50">
@@ -85,5 +120,22 @@
 
   <!-- Scripts -->
   <script src="script.js"></script>
+  <script>
+  var swiper = new Swiper(".mySwiper", {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
 </body>
 </html>
