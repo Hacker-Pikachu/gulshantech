@@ -3,92 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gulshan | Portfolio</title>
+  <title>Futuristic Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <!-- Navigation -->
-  <header>
-    <nav>
-      <h2 class="logo">Gulshan</h2>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#certificates">Certificates</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a href="resume.pdf" class="btn">Download Resume</a>
-    </nav>
-  </header>
+  <nav class="navbar">
+    <h1 class="logo">Gulshan</h1>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="resume-btn">Download Resume</button></li>
+    </ul>
+  </nav>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="hero-text">
-      <h1>Hi, I’m Gulshan 👋</h1>
-      <h3>Aspiring Software Developer | Web Developer | Problem Solver</h3>
-      <p>I build responsive and user-friendly websites and web applications. Passionate about coding, learning new technologies and turning ideas into real-world solutions.</p>
-      <div class="hero-buttons">
-        <a href="#projects" class="btn">View My Projects</a>
-        <a href="#contact" class="btn btn-outline">Contact Me</a>
-      </div>
-      <div class="social-icons">
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Instagram</a>
-        <a href="mailto:yourmail@gmail.com">Email</a>
-      </div>
+    <h2 class="intro">Hi, I’m Gulshan 👋</h2>
+    <p class="tagline">Aspiring Software Developer | Web Developer | Problem Solver</p>
+    <div class="hero-buttons">
+      <button class="btn">View My Projects</button>
+      <button class="btn">Contact Me</button>
     </div>
-    <div class="hero-img">
-      <img src="profile.jpg" alt="Gulshan">
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
     </div>
   </section>
 
   <!-- Stats -->
   <section class="stats">
-    <div>10+ Projects Completed</div>
-    <div>5+ Certifications</div>
-    <div>3+ Years of Learning</div>
-    <div>100+ GitHub Contributions</div>
+    <div class="card flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">10+ Projects</div>
+        <div class="flip-card-back">Completed successfully</div>
+      </div>
+    </div>
+    <div class="card flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">5+ Certifications</div>
+        <div class="flip-card-back">Verified achievements</div>
+      </div>
+    </div>
+    <div class="card flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">3+ Years</div>
+        <div class="flip-card-back">Learning & growing</div>
+      </div>
+    </div>
+    <div class="card flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">100+ Contributions</div>
+        <div class="flip-card-back">On GitHub</div>
+      </div>
+    </div>
   </section>
 
   <!-- About -->
-  <section id="about">
+  <section id="about" class="about">
     <h2>About Me</h2>
     <p>I am a Computer Science student who loves to build web applications and solve real-world problems. I enjoy learning new technologies and constantly improving my skills.</p>
   </section>
 
   <!-- Skills -->
-  <section id="skills">
+  <section id="skills" class="skills">
     <h2>Top Skills</h2>
     <ul>
       <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li>
-      <li>C/C++</li><li>Java</li><li>Git & GitHub</li>
-      <li>VS Code</li><li>MySQL</li><li>Responsive Design</li>
+      <li>C/C++</li><li>Java</li><li>Git & GitHub</li><li>MySQL</li>
     </ul>
   </section>
 
   <!-- Projects -->
-  <section id="projects">
+  <section id="projects" class="projects">
     <h2>Featured Projects</h2>
-    <div class="project-card">
+    <div class="project-card popup">
       <h3>Personal Portfolio Website</h3>
-      <p>A responsive personal portfolio website built using HTML, CSS and JavaScript.</p>
+      <p>A responsive portfolio built with HTML, CSS, and JS.</p>
+      <button class="btn popup-btn">View Details</button>
     </div>
   </section>
 
+  <!-- Certificates -->
+  <section id="certificates" class="certificates">
+    <h2>Certificates</h2>
+    <div class="certificate-card">Certificate #1</div>
+    <div class="certificate-card">Certificate #2</div>
+  </section>
+
   <!-- Contact -->
-  <section id="contact">
-    <h2>Let’s Connect</h2>
-    <p>Email: yourmail@gmail.com</p>
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <p>Email: randommail@example.com</p>
     <p>Phone: +91 98765 43210</p>
     <p>Location: India</p>
   </section>
 
-  <footer>
-    <p>© 2026 Gulshan. All Rights Reserved.</p>
-  </footer>
+  <!-- Popup Modal -->
+  <div id="popupModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Project Details</h2>
+      <p>This is a futuristic animated popup with placeholder text. Replace with your project details.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
