@@ -18,6 +18,12 @@
 </head>
 <body>
 
+<!-- Animated particle network background -->
+<canvas id="particles" aria-hidden="true"></canvas>
+
+<!-- Cursor glow effect -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
 <!-- Growth progress bar (fills as you scroll) -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -61,13 +67,28 @@
     </svg>
   </div>
 
-  <p class="eyebrow"><i class="fa-solid fa-seedling"></i> B.Tech CSE · Smart Agriculture</p>
-  <h1 class="gradient-text">Hi, I'm Gulshan</h1>
-  <p class="hero-sub">I grow ideas the way I grow crops — one careful iteration at a time.</p>
+  <!-- Floating ambient orbs -->
+  <div class="orb orb-cyan" aria-hidden="true"></div>
+  <div class="orb orb-magenta" aria-hidden="true"></div>
 
-  <div class="hero-actions">
-    <a href="#projects" class="btn btn-primary">See my work</a>
-    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  <div class="hero-content">
+    <div class="hero-photo">
+      <div class="hero-photo-ring"></div>
+      <img src="images/profile.jpg" alt="Photo of Gulshan Kumar">
+    </div>
+
+    <div class="hero-text">
+      <p class="eyebrow"><i class="fa-solid fa-seedling"></i> B.Tech CSE · Smart Agriculture</p>
+      <h1 class="gradient-text">Hi, I'm Gulshan</h1>
+      <p class="hero-sub">
+        <span id="typewriter"></span><span class="typewriter-cursor">|</span>
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">See my work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
   </div>
 
   <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
@@ -149,7 +170,7 @@
     <p class="eyebrow">04 · Selected work</p>
     <h2>Projects</h2>
     <div class="cards project-cards">
-      <div class="card project-card">
+      <div class="card project-card tilt">
         <div class="project-icon"><i class="fa-solid fa-seedling"></i></div>
         <h3>Smart Agriculture</h3>
         <p>IoT-based farming solution that monitors soil and climate conditions to improve yield efficiency.</p>
