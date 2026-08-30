@@ -821,6 +821,7 @@ body.hovering .cursor-outline { width: 48px; height: 48px; border-color: var(--m
   border-radius: 4px;
   color: var(--cyan);
 }
+.hint-text i { color: var(--cyan); margin-right: 4px; }
 
 /* reveal-on-scroll */
 .reveal {
@@ -1062,19 +1063,88 @@ body.hovering .cursor-outline { width: 48px; height: 48px; border-color: var(--m
 }
 
 /* ===========================================================
-   Soft Skills
+   Soft Skills — flip cards
    =========================================================== */
-.soft-skill-cards { gap: 16px; }
-.soft-card {
-  flex-direction: row;
-  justify-content: center;
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.flip-card {
+  background: none;
+  border: none;
+  padding: 0;
+  height: 190px;
+  cursor: pointer;
+  perspective: 1200px;
+  font-family: inherit;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 18px 24px;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+.flip-card-front {
+  background: var(--surface);
   font-weight: 600;
   font-size: 0.95rem;
+  color: var(--text);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.soft-card i { font-size: 1.4rem; }
+.flip-card:hover .flip-card-front,
+.flip-card:focus-visible .flip-card-front {
+  border-color: var(--cyan);
+  box-shadow: 0 8px 25px var(--shadow);
+}
+.flip-card-front i { font-size: 1.8rem; color: var(--cyan); }
+
+.flip-hint {
+  position: absolute;
+  bottom: 12px;
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.6;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, var(--glow-cyan), var(--glow-magenta));
+  transform: rotateY(180deg);
+}
+.flip-card-back i { font-size: 1.3rem; color: var(--magenta); }
+.flip-card-back p {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.top-hint {
+  margin-top: -8px;
+  margin-bottom: 28px;
+}
 
 /* ===========================================================
    Project Filter
@@ -1107,7 +1177,11 @@ body.hovering .cursor-outline { width: 48px; height: 48px; border-color: var(--m
 /* ===========================================================
    Project Cards
    =========================================================== */
-.project-cards { gap: 24px; }
+.project-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
 
 .project-card {
   flex: 1 1 300px;
@@ -1116,6 +1190,7 @@ body.hovering .cursor-outline { width: 48px; height: 48px; border-color: var(--m
   overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
+  cursor: pointer;
 }
 
 .project-image {
@@ -1195,6 +1270,28 @@ body.hovering .cursor-outline { width: 48px; height: 48px; border-color: var(--m
 .project-content h3 { font-size: 1.15rem; margin-bottom: 8px; }
 .project-content p { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; line-height: 1.6; }
 
+.project-view-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  background: none;
+  border: none;
+  color: var(--cyan);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.project-view-more i { font-size: 0.75rem; transition: transform 0.25s ease; }
+.project-card:hover .project-view-more i,
+.project-view-more:hover i,
+.project-view-more:focus-visible i {
+  transform: translateX(4px);
+}
+.project-view-more:hover, .project-view-more:focus-visible { color: var(--magenta); }
+
 .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .tag {
   font-family: var(--font-mono);
@@ -1218,6 +1315,15 @@ body.hovering .cursor-outline { width: 48px; height: 48px; border-color: var(--m
   box-shadow: none;
   color: var(--muted);
   padding: 40px 24px;
+  cursor: default;
+}
+.placeholder-card p code {
+  font-family: var(--font-mono);
+  color: var(--cyan);
+  background: var(--bg-1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.78rem;
 }
 .placeholder-card .project-icon {
   background: transparent;
@@ -1809,6 +1915,44 @@ footer {
   opacity: 0.7;
 }
 .modal-actions { margin-top: 24px; }
+
+/* ===========================================================
+   Project Details Modal
+   =========================================================== */
+.project-modal-content {
+  max-width: 560px;
+  text-align: left;
+}
+.project-modal-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--glow-cyan), var(--glow-magenta));
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+}
+#projectModalTitle {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+#projectModalDesc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+#projectModalTags { margin-bottom: 26px; }
+.project-modal-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.project-modal-actions .btn { font-size: 0.85rem; padding: 10px 20px; }
 
 /* ===========================================================
    Responsive
