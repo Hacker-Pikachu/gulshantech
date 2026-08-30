@@ -1028,6 +1028,12 @@ body.hovering .cursor-outline { width: 48px; height: 48px; border-color: var(--m
   100% { transform: translateX(100%); }
 }
 
+/* Used by the project-filter JS when a card reappears after filtering */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .skill-fill {
   height: 100%;
   width: 0%;
