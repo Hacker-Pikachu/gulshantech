@@ -1,144 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Gulshan's Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gulshan Kumar — Portfolio</title>
+<meta name="description" content="Gulshan Kumar — B.Tech CSE student at LPU, Smart Agriculture innovator and web developer.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Scroll Progress Bar -->
-  <div id="progressBar"></div>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#softskills">Soft Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#contact">Contact</a></li>
+<!-- Growth progress bar (fills as you scroll) -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- Navigation Bar -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">Gulshan<span>.</span></a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#softskills" class="nav-link">Soft Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#certificates" class="nav-link">Certificates</a></li>
+      <li><a href="#achievements" class="nav-link">Achievements</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
-  </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <img src="images/gulshan.jpg" alt="Gulshan Photo" class="profile-pic">
-    <h1 class="gradient-text">Hi, I’m Gulshan</h1>
-    <p>B.Tech CSE Student | Smart Agriculture Innovator</p>
-    <a href="cv.pdf" class="btn">Download CV</a>
-  </header>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme">
+      <i class="fa-solid fa-seedling"></i>
+    </button>
+  </div>
+</nav>
 
+<!-- Hero Section -->
+<header class="hero" id="hero">
+  <div class="hero-vine" aria-hidden="true">
+    <svg viewBox="0 0 1200 300" preserveAspectRatio="none">
+      <path id="heroVinePath" d="M0,220 C 200,120 300,280 500,180 S 800,60 1000,150 S 1150,220 1200,140"
+            fill="none" stroke="url(#vineGradient)" stroke-width="3" stroke-linecap="round"/>
+      <defs>
+        <linearGradient id="vineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="var(--cyan)"/>
+          <stop offset="100%" stop-color="var(--magenta)"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <p class="eyebrow"><i class="fa-solid fa-seedling"></i> B.Tech CSE · Smart Agriculture</p>
+  <h1 class="gradient-text">Hi, I'm Gulshan</h1>
+  <p class="hero-sub">I grow ideas the way I grow crops — one careful iteration at a time.</p>
+
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-primary">See my work</a>
+    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  </div>
+
+  <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+    <i class="fa-solid fa-chevron-down"></i>
+  </a>
+</header>
+
+<main>
   <!-- About Section -->
-  <section id="about" class="about">
+  <section id="about" class="section reveal">
+    <p class="eyebrow">01 · Who I am</p>
     <h2>About Me</h2>
-    <div class="about-container">
-      <img src="images/gulshan.jpg" alt="Gulshan Photo" class="profile-pic">
-      <p>
-        I am Gulshan, currently pursuing B.Tech in Computer Science at Lovely Professional University (LPU). 
-        I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with 73.4% marks. 
-        My interests include web development, mobile computing, anime culture, and innovative projects like Smart Agriculture. 
-        I am passionate about building solutions that combine technology with real-world impact, and I actively participate in college fests and events to enhance my exposure and creativity.
-      </p>
+    <p class="section-text">
+      I am Gulshan, currently pursuing a B.Tech in Computer Science at Lovely Professional University (LPU).
+      I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with 73.4% marks.
+      My interests include web development, mobile computing, anime culture, and innovative projects like
+      Smart Agriculture. I am passionate about building solutions that combine technology with real-world
+      impact, and I actively participate in college fests and events to sharpen my exposure and creativity.
+    </p>
+
+    <div class="about-stats">
+      <div class="stat">
+        <span class="stat-num" data-count="73.4">0</span>
+        <span class="stat-label">% Diploma Score</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="3">0</span>
+        <span class="stat-label">Certificates Earned</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" data-count="1">0</span>
+        <span class="stat-label">Flagship Project</span>
+      </div>
     </div>
   </section>
 
   <!-- Technical Skills -->
-  <section id="skills" class="cards">
+  <section id="skills" class="section reveal">
+    <p class="eyebrow">02 · Toolkit</p>
     <h2>Technical Skills</h2>
-    <div class="card"><i class="fa-brands fa-java"></i> Java</div>
-    <div class="card"><i class="fa-brands fa-python"></i> Python</div>
-    <div class="card"><i class="fa-solid fa-code"></i> Web Development</div>
-    <div class="card"><i class="fa-solid fa-mobile"></i> Android Studio</div>
+
+    <div class="skill-bars">
+      <div class="skill-bar">
+        <div class="skill-head"><i class="fa-brands fa-java"></i> Java <span>80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="80"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-head"><i class="fa-brands fa-python"></i> Python <span>75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="75"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-head"><i class="fa-solid fa-code"></i> Web Development <span>85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="85"></div></div>
+      </div>
+      <div class="skill-bar">
+        <div class="skill-head"><i class="fa-solid fa-mobile"></i> Android Studio <span>60%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="60"></div></div>
+      </div>
+    </div>
+    <p class="hint-text">* Edit the <code>data-level</code> values in index.html to match your real skill levels.</p>
   </section>
 
   <!-- Soft Skills -->
-  <section id="softskills" class="cards">
+  <section id="softskills" class="section reveal">
+    <p class="eyebrow">03 · Beyond code</p>
     <h2>Soft Skills</h2>
-    <div class="card">Communication</div>
-    <div class="card">Team Collaboration</div>
-    <div class="card">Problem Solving</div>
-    <div class="card">Time Management</div>
-    <div class="card">Adaptability</div>
-    <div class="card">Leadership</div>
+    <div class="cards">
+      <div class="card"><i class="fa-solid fa-comments"></i><span>Communication</span></div>
+      <div class="card"><i class="fa-solid fa-people-group"></i><span>Team Collaboration</span></div>
+      <div class="card"><i class="fa-solid fa-puzzle-piece"></i><span>Problem Solving</span></div>
+      <div class="card"><i class="fa-solid fa-clock"></i><span>Time Management</span></div>
+      <div class="card"><i class="fa-solid fa-arrows-spin"></i><span>Adaptability</span></div>
+      <div class="card"><i class="fa-solid fa-flag"></i><span>Leadership</span></div>
+    </div>
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="cards">
+  <section id="projects" class="section reveal">
+    <p class="eyebrow">04 · Selected work</p>
     <h2>Projects</h2>
-    <div class="card">
-      <h3>Smart Agriculture</h3>
-      <p>IoT-based farming solution for efficiency.</p>
+    <div class="cards project-cards">
+      <div class="card project-card">
+        <div class="project-icon"><i class="fa-solid fa-seedling"></i></div>
+        <h3>Smart Agriculture</h3>
+        <p>IoT-based farming solution that monitors soil and climate conditions to improve yield efficiency.</p>
+        <div class="tag-row">
+          <span class="tag">IoT</span>
+          <span class="tag">Sensors</span>
+          <span class="tag">Automation</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="link-btn"><i class="fa-brands fa-github"></i> Code</a>
+          <a href="#" class="link-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live demo</a>
+        </div>
+      </div>
+
+      <!-- Duplicate this block for each additional project -->
+      <div class="card project-card placeholder-card">
+        <div class="project-icon"><i class="fa-solid fa-plus"></i></div>
+        <h3>Add your next project</h3>
+        <p>Duplicate this card in index.html and fill in the details of your next build.</p>
+      </div>
     </div>
   </section>
 
   <!-- Certificates -->
-  <section id="certificates" class="cards">
+  <section id="certificates" class="section reveal">
+    <p class="eyebrow">05 · Proof of work</p>
     <h2>Certificates</h2>
-    <div class="card popup">
-      <img src="images/diploma.jpg" alt="Diploma Certificate">
-      <span class="popuptext">Diploma – Govt Polytechnic Gaya</span>
+    <div class="cards cert-cards">
+      <button class="card cert-card" data-full="images/diploma.jpg" data-caption="Diploma – Govt Polytechnic Gaya">
+        <img src="images/diploma.jpg" alt="Diploma Certificate" loading="lazy">
+        <span class="cert-caption">Diploma – Govt Polytechnic Gaya</span>
+      </button>
+      <button class="card cert-card" data-full="images/kyp.jpg" data-caption="KYP Certificate">
+        <img src="images/kyp.jpg" alt="KYP Certificate" loading="lazy">
+        <span class="cert-caption">KYP Certificate</span>
+      </button>
+      <button class="card cert-card" data-full="images/cisco.jpg" data-caption="Cisco Python (coming soon)">
+        <img src="images/cisco.jpg" alt="Cisco Python Certificate" loading="lazy">
+        <span class="cert-caption">Cisco Python (coming soon)</span>
+      </button>
     </div>
-    <div class="card popup">
-      <img src="images/kyp.jpg" alt="KYP Certificate">
-      <span class="popuptext">KYP Certificate</span>
-    </div>
-    <div class="card popup">
-      <img src="images/cisco.jpg" alt="Cisco Python Certificate">
-      <span class="popuptext">Cisco Python (coming soon)</span>
-    </div>
+    <p class="hint-text">* Click any certificate to view it full-size.</p>
   </section>
 
   <!-- Achievements -->
-  <section id="achievements" class="timeline">
+  <section id="achievements" class="section reveal">
+    <p class="eyebrow">06 · Milestones</p>
     <h2>Achievements</h2>
-    <p>Diploma 73.4% | LPU Fest Participation</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Diploma — 73.4%</h3>
+          <p>Government Polytechnic Gaya, Bihar</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>LPU Fest Participation</h3>
+          <p>Represented my department in college-wide fests and events</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact">
+  <section id="contact" class="section reveal">
+    <p class="eyebrow">07 · Let's talk</p>
     <h2>Contact</h2>
-    <p>Email: gulshan@example.com | LinkedIn | GitHub</p>
+    <p class="section-text">Have a project in mind or just want to say hi? Send a message below.</p>
+
+    <form class="contact-form" id="contactForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+          <span class="error-msg" data-for="name"></span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+          <span class="error-msg" data-for="email"></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell me a bit about it..." required></textarea>
+        <span class="error-msg" data-for="message"></span>
+      </div>
+      <button type="submit" class="btn btn-primary">Send message</button>
+      <p class="form-status" id="formStatus" role="status"></p>
+    </form>
+
+    <div class="contact-links">
+      <a href="mailto:gulshan@example.com" class="icon-link"><i class="fa-solid fa-envelope"></i> gulshan@example.com</a>
+      <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener" class="icon-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/your-username" target="_blank" rel="noopener" class="icon-link"><i class="fa-brands fa-github"></i> GitHub</a>
+    </div>
   </section>
+</main>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Gulshan Portfolio</p>
-  </footer>
+<!-- Footer -->
+<footer>
+  <p>© <span id="year"></span> Gulshan Kumar. Built with curiosity and a little bit of code.</p>
+</footer>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop">↑</button>
+<!-- Back to top -->
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
 
-  <!-- Scripts -->
-  <script>
-    // Back to Top Button + Progress Bar
-    const backToTop = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+<!-- Lightbox for certificates -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="">
+  <p id="lightboxCaption"></p>
+</div>
 
-      const progressBar = document.getElementById("progressBar");
-      const scrollTop = window.scrollY;
-      const docHeight = document.body.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      progressBar.style.width = scrollPercent + "%";
-    });
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    // Section Scroll Animation
-    const sections = document.querySelectorAll("section");
-    window.addEventListener("scroll", () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add("visible");
-        }
-      });
-    });
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
