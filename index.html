@@ -3,117 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Futuristic Portfolio</title>
+  <title>Gulshan Portfolio</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <h1 class="logo">Gulshan</h1>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><button class="resume-btn">Download Resume</button></li>
-    </ul>
-  </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <h2 class="intro">Hi, I’m Gulshan 👋</h2>
-    <p class="tagline">Aspiring Software Developer | Web Developer | Problem Solver</p>
-    <div class="hero-buttons">
-      <button class="btn">View My Projects</button>
-      <button class="btn">Contact Me</button>
-    </div>
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-    </div>
+  <!-- Portfolio Header -->
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Hi, I’m Gulshan — a CSE student at LPU. Explore my projects, skills, and contact options below.</p>
+  </header>
+
+  <!-- Example Content -->
+  <section>
+    <h2>Projects</h2>
+    <p>Here you can showcase your GitHub projects, certificates, and skills.</p>
   </section>
 
-  <!-- Stats -->
-  <section class="stats">
-    <div class="card flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">10+ Projects</div>
-        <div class="flip-card-back">Completed successfully</div>
-      </div>
-    </div>
-    <div class="card flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">5+ Certifications</div>
-        <div class="flip-card-back">Verified achievements</div>
-      </div>
-    </div>
-    <div class="card flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">3+ Years</div>
-        <div class="flip-card-back">Learning & growing</div>
-      </div>
-    </div>
-    <div class="card flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">100+ Contributions</div>
-        <div class="flip-card-back">On GitHub</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="about">
+  <section>
     <h2>About Me</h2>
-    <p>I am a Computer Science student who loves to build web applications and solve real-world problems. I enjoy learning new technologies and constantly improving my skills.</p>
+    <p>I love anime, tech comparisons, and building futuristic web designs.</p>
   </section>
 
-  <!-- Skills -->
-  <section id="skills" class="skills">
-    <h2>Top Skills</h2>
-    <ul>
-      <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li>
-      <li>C/C++</li><li>Java</li><li>Git & GitHub</li><li>MySQL</li>
-    </ul>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="projects">
-    <h2>Featured Projects</h2>
-    <div class="project-card popup">
-      <h3>Personal Portfolio Website</h3>
-      <p>A responsive portfolio built with HTML, CSS, and JS.</p>
-      <button class="btn popup-btn">View Details</button>
-    </div>
-  </section>
-
-  <!-- Certificates -->
-  <section id="certificates" class="certificates">
-    <h2>Certificates</h2>
-    <div class="certificate-card">Certificate #1</div>
-    <div class="certificate-card">Certificate #2</div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <p>Email: randommail@example.com</p>
-    <p>Phone: +91 98765 43210</p>
-    <p>Location: India</p>
-  </section>
-
-  <!-- Popup Modal -->
-  <div id="popupModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Project Details</h2>
-      <p>This is a futuristic animated popup with placeholder text. Replace with your project details.</p>
+  <!-- Contact Menu -->
+  <div class="contact-menu">
+    <button id="contactToggle">📞</button>
+    <div class="contact-options">
+      <a href="https://wa.me/91XXXXXXXXXX" target="_blank" title="WhatsApp">💬</a>
+      <a href="mailto:yourname@example.com" title="Email">📧</a>
+      <a href="https://t.me/yourusername" target="_blank" title="Telegram">📱</a>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- Back to Top Button -->
+  <button id="backToTop">⬆</button>
+
+  <!-- Ping Sound -->
+  <audio id="pingSound" src="ping.mp3" preload="auto"></audio>
+
+  <!-- Scripts -->
+  <script>
+    const contactToggle = document.getElementById("contactToggle");
+    const contactOptions = document.querySelector(".contact-options");
+    const pingSound = document.getElementById("pingSound");
+    const backToTop = document.getElementById("backToTop");
+
+    // Toggle Contact Menu
+    contactToggle.addEventListener("click", () => {
+      contactOptions.classList.toggle("show");
+
+      // Play sound when expanding
+      if (contactOptions.classList.contains("show")) {
+        pingSound.currentTime = 0;
+        pingSound.play();
+      }
+    });
+
+    // Show Back to Top button on scroll
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    });
+
+    // Back to Top click with glowing trail
+    backToTop.addEventListener("click", () => {
+      backToTop.classList.add("clicked");
+      setTimeout(() => backToTop.classList.remove("clicked"), 600);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
 </body>
 </html>
