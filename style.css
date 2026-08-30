@@ -76,26 +76,12 @@ html {
   to { text-shadow: 0 0 25px #ff00ff; }
 }
 
-/* Sections */
-.about, .cards, .timeline, #contact {
-  margin: 30px;
-  padding: 20px;
-  background: rgba(30,30,50,0.8);
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0,255,255,0.3);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease, transform 1s ease;
-}
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Cards */
-.cards {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-.card {
+/* Profile Image */
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 25px rgba(0,255,255,0.6);
+  margin-bottom: 20px;
+  transition: transform 0.3s,
