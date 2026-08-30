@@ -3,75 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gulshan Portfolio</title>
+  <title>Gulshan's Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Scroll Progress Bar -->
+  <div id="progressBar"></div>
 
-  <!-- Portfolio Header -->
-  <header>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Hi, I’m Gulshan — a CSE student at LPU. Explore my projects, skills, and contact options below.</p>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <header id="home">
+    <div class="home-content fade-in">
+      <img src="your-photo.jpg" alt="Your Photo" class="profile-pic"> <!-- Upload later -->
+      <h1 class="glow-text">Hi, I’m Gulshan</h1>
+      <p>B.Tech CSE Student | Tech Enthusiast | Anime Lover</p>
+      <a href="cv.pdf" class="btn neon-btn" download>Download CV</a> <!-- Upload later -->
+    </div>
   </header>
 
-  <!-- Example Content -->
-  <section>
-    <h2>Projects</h2>
-    <p>Here you can showcase your GitHub projects, certificates, and skills.</p>
-  </section>
-
-  <section>
+  <!-- About Section -->
+  <section id="about" class="slide-in">
     <h2>About Me</h2>
-    <p>I love anime, tech comparisons, and building futuristic web designs.</p>
+    <p>I am Gulshan, currently pursuing B.Tech in Computer Science at LPU. I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar. Passionate about web development, mobile computing, anime culture, and innovative projects like Smart Agriculture.</p>
   </section>
 
-  <!-- Contact Menu -->
-  <div class="contact-menu">
-    <button id="contactToggle">📞</button>
-    <div class="contact-options">
-      <a href="https://wa.me/91XXXXXXXXXX" target="_blank" title="WhatsApp">💬</a>
-      <a href="mailto:yourname@example.com" title="Email">📧</a>
-      <a href="https://t.me/yourusername" target="_blank" title="Telegram">📱</a>
+  <!-- Skills Section -->
+  <section id="skills" class="zoom-in">
+    <h2>Skills</h2>
+    <div class="card-container">
+      <div class="card flip-card"><div class="flip-card-inner"><div class="flip-card-front">Java</div><div class="flip-card-back">OOP, DSA</div></div></div>
+      <div class="card flip-card"><div class="flip-card-inner"><div class="flip-card-front">Python</div><div class="flip-card-back">AI, ML</div></div></div>
+      <div class="card flip-card"><div class="flip-card-inner"><div class="flip-card-front">C</div><div class="flip-card-back">System Programming</div></div></div>
+      <div class="card flip-card"><div class="flip-card-inner"><div class="flip-card-front">HTML, CSS, JS</div><div class="flip-card-back">Web Development</div></div></div>
+      <div class="card flip-card"><div class="flip-card-inner"><div class="flip-card-front">Android Studio</div><div class="flip-card-back">Mobile Apps</div></div></div>
+      <div class="card flip-card"><div class="flip-card-inner"><div class="flip-card-front">GitHub</div><div class="flip-card-back">Version Control</div></div></div>
     </div>
-  </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="slide-in">
+    <h2>Projects</h2>
+    <div class="card-container">
+      <div class="card glow-card">
+        <h3>Smart Agriculture</h3>
+        <p>IoT-based solutions for efficient farming.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="zoom-in">
+    <h2>Education</h2>
+    <ul>
+      <li>B.Tech CSE — Lovely Professional University (Ongoing)</li>
+      <li>Diploma in Computer Science — Government Polytechnic Gaya, Bihar (73.4%)</li>
+    </ul>
+  </section>
+
+  <!-- Certificates Section -->
+  <section id="certificates" class="slide-in">
+    <h2>Certificates</h2>
+    <p>Certificates will be uploaded here later.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="zoom-in">
+    <h2>Contact</h2>
+    <form action="https://formspree.io/f/yourFormID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn neon-btn">Send Message</button>
+    </form>
+    <p>Email: gulshan@example.com | LinkedIn | GitHub</p>
+  </section>
 
   <!-- Back to Top Button -->
-  <button id="backToTop">⬆</button>
+  <button id="backToTop">↑ Top</button>
 
-  <!-- Ping Sound -->
-  <audio id="pingSound" src="ping.mp3" preload="auto"></audio>
-
-  <!-- Scripts -->
+  <!-- Script -->
   <script>
-    const contactToggle = document.getElementById("contactToggle");
-    const contactOptions = document.querySelector(".contact-options");
-    const pingSound = document.getElementById("pingSound");
+    // Back to Top Button
     const backToTop = document.getElementById("backToTop");
-
-    // Toggle Contact Menu
-    contactToggle.addEventListener("click", () => {
-      contactOptions.classList.toggle("show");
-
-      // Play sound when expanding
-      if (contactOptions.classList.contains("show")) {
-        pingSound.currentTime = 0;
-        pingSound.play();
-      }
-    });
-
-    // Show Back to Top button on scroll
     window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
-        backToTop.classList.add("show");
+        backToTop.style.display = "block";
       } else {
-        backToTop.classList.remove("show");
+        backToTop.style.display = "none";
       }
+
+      // Scroll Progress Bar
+      const progressBar = document.getElementById("progressBar");
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      progressBar.style.width = scrollPercent + "%";
     });
 
-    // Back to Top click with glowing trail
     backToTop.addEventListener("click", () => {
-      backToTop.classList.add("clicked");
-      setTimeout(() => backToTop.classList.remove("clicked"), 600);
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
