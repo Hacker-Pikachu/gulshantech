@@ -15,60 +15,43 @@
 <meta name="theme-color" content="#0a0a0f">
 <meta name="color-scheme" content="dark light">
 
-<!-- Favicon (inline SVG — no extra file needed) -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300ffff'/%3E%3Cstop offset='100%25' stop-color='%23ff00ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%230a0a0f'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial, sans-serif' font-weight='700' text-anchor='middle' fill='url(%23g)'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="icon" id="dynamicFavicon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300ffff'/%3E%3Cstop offset='100%25' stop-color='%23ff00ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='%230a0a0f'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial, sans-serif' font-weight='700' text-anchor='middle' fill='url(%23g)'%3EG%3C/text%3E%3C/svg%3E">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <link rel="stylesheet" href="style.css">
+<base target="_blank">
 </head>
 <body>
-
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- Preloader -->
 <div class="preloader" id="preloader">
   <div class="preloader-content">
-    <div class="preloader-logo">G<span>.</span></div>
-    <div class="preloader-bar">
-      <div class="preloader-fill" id="preloaderFill"></div>
-    </div>
+    <div class="preloader-logo">G<span style="color:var(--magenta)">.</span></div>
+    <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
     <div class="preloader-text" id="preloaderText">Initializing...</div>
   </div>
 </div>
 
-<!-- Noise texture overlay -->
 <div class="noise-overlay" aria-hidden="true"></div>
-
-<!-- Animated particle network background -->
 <canvas id="particles" aria-hidden="true"></canvas>
 
-<!-- Custom cursor -->
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 <div class="cursor-outline" id="cursorOutline" aria-hidden="true"></div>
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-<!-- Scroll progress bar -->
 <div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- Toast notification container -->
 <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
 
-<!-- Navigation Bar -->
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <a href="#" class="logo magnetic" data-scramble>Gulshan<span>.</span></a>
-
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
-
     <ul class="nav-links" id="navLinks">
       <li><a href="#about" class="nav-link magnetic" data-scramble>About</a></li>
       <li><a href="#skills" class="nav-link magnetic" data-scramble>Skills</a></li>
@@ -78,60 +61,39 @@
       <li><a href="#achievements" class="nav-link magnetic" data-scramble>Achievements</a></li>
       <li><a href="#contact" class="nav-link magnetic" data-scramble>Contact</a></li>
     </ul>
-
     <div class="nav-actions">
-      <a href="assets/cv.pdf" class="btn btn-cv magnetic" id="cvDownload" download aria-label="Download CV">
-        <i class="fa-solid fa-file-arrow-down"></i> CV
-      </a>
-      <button class="theme-toggle magnetic" id="themeToggle" aria-label="Toggle light and dark theme">
-        <i class="fa-solid fa-seedling"></i>
-      </button>
+      <a href="assets/cv.pdf" class="btn btn-cv magnetic" id="cvDownload" download aria-label="Download CV"><i class="fa-solid fa-file-arrow-down"></i> CV</a>
+      <button class="theme-toggle magnetic" id="themeToggle" aria-label="Toggle light and dark theme"><i class="fa-solid fa-seedling"></i></button>
     </div>
   </div>
 </nav>
 
-<!-- Hero Section -->
 <header class="hero" id="hero">
   <div class="hero-vine" aria-hidden="true">
     <svg viewBox="0 0 1200 300" preserveAspectRatio="none">
-      <path id="heroVinePath" d="M0,220 C 200,120 300,280 500,180 S 800,60 1000,150 S 1150,220 1200,140"
-            fill="none" stroke="url(#vineGradient)" stroke-width="3" stroke-linecap="round"/>
-      <defs>
-        <linearGradient id="vineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="var(--cyan)"/>
-          <stop offset="100%" stop-color="var(--magenta)"/>
-        </linearGradient>
-      </defs>
+      <path id="heroVinePath" d="M0,220 C 200,120 300,280 500,180 S 800,60 1000,150 S 1150,220 1200,140" fill="none" stroke="url(#vineGradient)" stroke-width="3" stroke-linecap="round"/>
+      <defs><linearGradient id="vineGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--cyan)"/><stop offset="100%" stop-color="var(--magenta)"/></linearGradient></defs>
     </svg>
   </div>
-
-  <!-- Floating ambient orbs -->
   <div class="orb orb-cyan" aria-hidden="true"></div>
   <div class="orb orb-magenta" aria-hidden="true"></div>
   <div class="orb orb-gold" aria-hidden="true"></div>
-
   <div class="hero-content">
     <div class="hero-photo parallax" data-speed="0.05">
       <div class="hero-photo-ring"></div>
       <div class="hero-photo-ring-secondary"></div>
-      <img src="images/profile.jpg" alt="Photo of Gulshan Kumar">
+      <div class="hero-photo-ring-tertiary"></div>
+      <img src="images/profile.jpg" alt="Photo of Gulshan Kumar" loading="eager">
     </div>
-
     <div class="hero-text">
       <p class="eyebrow" data-scramble><i class="fa-solid fa-seedling"></i> B.Tech CSE · Smart Agriculture</p>
       <h1 class="gradient-text glitch-text" data-text="Hi, I'm Gulshan">Hi, I'm Gulshan</h1>
-      <p class="hero-sub">
-        <span id="typewriter"></span><span class="typewriter-cursor">|</span>
-      </p>
-
+      <p class="hero-sub"><span id="typewriter"></span><span class="typewriter-cursor">|</span></p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary magnetic">See my work</a>
         <a href="#contact" class="btn btn-ghost magnetic">Get in touch</a>
-        <a href="assets/cv.pdf" class="btn btn-cv-large magnetic" id="cvDownloadHero" download>
-          <i class="fa-solid fa-download"></i> Download CV
-        </a>
+        <a href="assets/cv.pdf" class="btn btn-cv-large magnetic" id="cvDownloadHero" download><i class="fa-solid fa-download"></i> Download CV</a>
       </div>
-      
       <div class="hero-socials">
         <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
         <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -140,150 +102,63 @@
       </div>
     </div>
   </div>
-
   <a href="#about" class="scroll-cue magnetic" aria-label="Scroll to About section">
-    <div class="scroll-mouse">
-      <div class="scroll-wheel"></div>
-    </div>
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
     <span class="scroll-text">Scroll</span>
   </a>
 </header>
 
 <main id="main">
-  <!-- About Section -->
   <section id="about" class="section reveal">
     <p class="eyebrow" data-scramble>01 · Who I am</p>
     <h2 data-scramble>About Me</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p class="section-text">
-          I am Gulshan, currently pursuing a B.Tech in Computer Science at Lovely Professional University (LPU).
-          I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with <strong>73.4%</strong> marks.
-        </p>
-        <p class="section-text">
-          My interests include web development, mobile computing, anime culture, and innovative projects like
-          Smart Agriculture. I am passionate about building solutions that combine technology with real-world
-          impact, and I actively participate in college fests and events to sharpen my exposure and creativity.
-        </p>
+        <p class="section-text">I am Gulshan, currently pursuing a B.Tech in Computer Science at Lovely Professional University (LPU). I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with <strong>73.4%</strong> marks.</p>
+        <p class="section-text">My interests include web development, mobile computing, anime culture, and innovative projects like Smart Agriculture. I am passionate about building solutions that combine technology with real-world impact, and I actively participate in college fests and events to sharpen my exposure and creativity.</p>
         <div class="about-actions">
-          <a href="assets/cv.pdf" class="btn btn-primary magnetic" download id="cvDownloadAbout">
-            <i class="fa-solid fa-file-arrow-down"></i> Download My CV
-          </a>
+          <a href="assets/cv.pdf" class="btn btn-primary magnetic" download id="cvDownloadAbout"><i class="fa-solid fa-file-arrow-down"></i> Download My CV</a>
         </div>
       </div>
       <div class="about-visual">
         <div class="about-stats">
-          <div class="stat-card reveal">
-            <span class="stat-num" data-count="73.4">0</span>
-            <span class="stat-suffix">%</span>
-            <span class="stat-label">Diploma Score</span>
-          </div>
-          <div class="stat-card reveal">
-            <span class="stat-num" data-count="5">0</span>
-            <span class="stat-suffix">+</span>
-            <span class="stat-label">Certificates Earned</span>
-          </div>
-          <div class="stat-card reveal">
-            <span class="stat-num" data-count="3">0</span>
-            <span class="stat-suffix">+</span>
-            <span class="stat-label">Projects Built</span>
-          </div>
-          <div class="stat-card reveal">
-            <span class="stat-num" data-count="2">0</span>
-            <span class="stat-suffix">+</span>
-            <span class="stat-label">Years Experience</span>
-          </div>
+          <div class="stat-card reveal"><span class="stat-num" data-count="73.4">0</span><span class="stat-suffix">%</span><span class="stat-label">Diploma Score</span></div>
+          <div class="stat-card reveal"><span class="stat-num" data-count="5">0</span><span class="stat-suffix">+</span><span class="stat-label">Certificates Earned</span></div>
+          <div class="stat-card reveal"><span class="stat-num" data-count="3">0</span><span class="stat-suffix">+</span><span class="stat-label">Projects Built</span></div>
+          <div class="stat-card reveal"><span class="stat-num" data-count="2">0</span><span class="stat-suffix">+</span><span class="stat-label">Years Experience</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What I Do Section -->
   <section id="services" class="section reveal">
     <p class="eyebrow" data-scramble>02 · What I do</p>
     <h2 data-scramble>Services</h2>
     <div class="service-grid">
-      <div class="service-card tilt reveal">
-        <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
-        <h3>Web Development</h3>
-        <p>Building responsive, performant websites with modern technologies and clean code architecture.</p>
-        <div class="service-tags">
-          <span class="tag">HTML5</span>
-          <span class="tag">CSS3</span>
-          <span class="tag">JavaScript</span>
-        </div>
-      </div>
-      <div class="service-card tilt reveal">
-        <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-        <h3>Mobile Apps</h3>
-        <p>Creating Android applications using Android Studio with intuitive UI/UX design principles.</p>
-        <div class="service-tags">
-          <span class="tag">Android</span>
-          <span class="tag">Java</span>
-          <span class="tag">XML</span>
-        </div>
-      </div>
-      <div class="service-card tilt reveal">
-        <div class="service-icon"><i class="fa-solid fa-seedling"></i></div>
-        <h3>IoT Solutions</h3>
-        <p>Designing smart agriculture systems with sensor integration and automation for better yield.</p>
-        <div class="service-tags">
-          <span class="tag">IoT</span>
-          <span class="tag">Sensors</span>
-          <span class="tag">Automation</span>
-        </div>
-      </div>
-      <div class="service-card tilt reveal">
-        <div class="service-icon"><i class="fa-solid fa-bug"></i></div>
-        <h3>Problem Solving</h3>
-        <p>Analytical approach to debugging and optimizing code for better performance and reliability.</p>
-        <div class="service-tags">
-          <span class="tag">Algorithms</span>
-          <span class="tag">Debugging</span>
-          <span class="tag">Optimization</span>
-        </div>
-      </div>
+      <div class="service-card tilt reveal"><div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div><h3>Web Development</h3><p>Building responsive, performant websites with modern technologies and clean code architecture.</p><div class="service-tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div></div>
+      <div class="service-card tilt reveal"><div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div><h3>Mobile Apps</h3><p>Creating Android applications using Android Studio with intuitive UI/UX design principles.</p><div class="service-tags"><span class="tag">Android</span><span class="tag">Java</span><span class="tag">XML</span></div></div>
+      <div class="service-card tilt reveal"><div class="service-icon"><i class="fa-solid fa-seedling"></i></div><h3>IoT Solutions</h3><p>Designing smart agriculture systems with sensor integration and automation for better yield.</p><div class="service-tags"><span class="tag">IoT</span><span class="tag">Sensors</span><span class="tag">Automation</span></div></div>
+      <div class="service-card tilt reveal"><div class="service-icon"><i class="fa-solid fa-bug"></i></div><h3>Problem Solving</h3><p>Analytical approach to debugging and optimizing code for better performance and reliability.</p><div class="service-tags"><span class="tag">Algorithms</span><span class="tag">Debugging</span><span class="tag">Optimization</span></div></div>
     </div>
   </section>
 
-  <!-- Technical Skills -->
   <section id="skills" class="section reveal">
     <p class="eyebrow" data-scramble>03 · Toolkit</p>
     <h2 data-scramble>Technical Skills</h2>
-    
     <div class="skills-layout">
       <div class="skill-bars">
-        <div class="skill-bar reveal">
-          <div class="skill-head"><i class="fa-brands fa-java"></i> Java <span>80%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-level="80"></div></div>
-        </div>
-        <div class="skill-bar reveal">
-          <div class="skill-head"><i class="fa-brands fa-python"></i> Python <span>75%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-level="75"></div></div>
-        </div>
-        <div class="skill-bar reveal">
-          <div class="skill-head"><i class="fa-solid fa-code"></i> Web Development <span>85%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-level="85"></div></div>
-        </div>
-        <div class="skill-bar reveal">
-          <div class="skill-head"><i class="fa-solid fa-mobile"></i> Android Studio <span>60%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-level="60"></div></div>
-        </div>
-        <div class="skill-bar reveal">
-          <div class="skill-head"><i class="fa-solid fa-database"></i> SQL & Databases <span>70%</span></div>
-          <div class="skill-track"><div class="skill-fill" data-level="70"></div></div>
-        </div>
+        <div class="skill-bar reveal"><div class="skill-head"><i class="fa-brands fa-java"></i> Java <span>80%</span></div><div class="skill-track"><div class="skill-fill" data-level="80"></div></div></div>
+        <div class="skill-bar reveal"><div class="skill-head"><i class="fa-brands fa-python"></i> Python <span>75%</span></div><div class="skill-track"><div class="skill-fill" data-level="75"></div></div></div>
+        <div class="skill-bar reveal"><div class="skill-head"><i class="fa-solid fa-code"></i> Web Development <span>85%</span></div><div class="skill-track"><div class="skill-fill" data-level="85"></div></div></div>
+        <div class="skill-bar reveal"><div class="skill-head"><i class="fa-solid fa-mobile"></i> Android Studio <span>60%</span></div><div class="skill-track"><div class="skill-fill" data-level="60"></div></div></div>
+        <div class="skill-bar reveal"><div class="skill-head"><i class="fa-solid fa-database"></i> SQL & Databases <span>70%</span></div><div class="skill-track"><div class="skill-fill" data-level="70"></div></div></div>
       </div>
-      
       <div class="skill-radar reveal">
-        <div class="radar-container">
-          <canvas id="radarChart" width="300" height="300"></canvas>
-        </div>
+        <div class="radar-container"><canvas id="radarChart" width="300" height="300"></canvas></div>
       </div>
     </div>
   </section>
 
-  <!-- Soft Skills -->
   <section id="softskills" class="section reveal">
     <p class="eyebrow" data-scramble>04 · Beyond code</p>
     <h2 data-scramble>Soft Skills</h2>
@@ -291,110 +166,57 @@
     <div class="skills-grid soft-skill-cards">
       <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <i class="fa-solid fa-comments"></i>
-            <span>Communication</span>
-            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
-          </div>
-          <div class="flip-card-back">
-            <i class="fa-solid fa-comments"></i>
-            <p>Explaining technical ideas clearly to both technical and non-technical audiences, in writing and in person.</p>
-          </div>
+          <div class="flip-card-front"><i class="fa-solid fa-comments"></i><span>Communication</span><span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span></div>
+          <div class="flip-card-back"><i class="fa-solid fa-comments"></i><p>Explaining technical ideas clearly to both technical and non-technical audiences, in writing and in person.</p></div>
         </div>
       </button>
-
       <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <i class="fa-solid fa-people-group"></i>
-            <span>Team Collaboration</span>
-            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
-          </div>
-          <div class="flip-card-back">
-            <i class="fa-solid fa-people-group"></i>
-            <p>Working effectively within cross-functional teams to plan, build, and ship shared goals.</p>
-          </div>
+          <div class="flip-card-front"><i class="fa-solid fa-people-group"></i><span>Team Collaboration</span><span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span></div>
+          <div class="flip-card-back"><i class="fa-solid fa-people-group"></i><p>Working effectively within cross-functional teams to plan, build, and ship shared goals.</p></div>
         </div>
       </button>
-
       <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <i class="fa-solid fa-puzzle-piece"></i>
-            <span>Problem Solving</span>
-            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
-          </div>
-          <div class="flip-card-back">
-            <i class="fa-solid fa-puzzle-piece"></i>
-            <p>Breaking complex, ambiguous challenges into structured, testable, and actionable steps.</p>
-          </div>
+          <div class="flip-card-front"><i class="fa-solid fa-puzzle-piece"></i><span>Problem Solving</span><span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span></div>
+          <div class="flip-card-back"><i class="fa-solid fa-puzzle-piece"></i><p>Breaking complex, ambiguous challenges into structured, testable, and actionable steps.</p></div>
         </div>
       </button>
-
       <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <i class="fa-solid fa-clock"></i>
-            <span>Time Management</span>
-            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
-          </div>
-          <div class="flip-card-back">
-            <i class="fa-solid fa-clock"></i>
-            <p>Prioritizing coursework, projects, and events to consistently meet deadlines without cutting corners.</p>
-          </div>
+          <div class="flip-card-front"><i class="fa-solid fa-clock"></i><span>Time Management</span><span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span></div>
+          <div class="flip-card-back"><i class="fa-solid fa-clock"></i><p>Prioritizing coursework, projects, and events to consistently meet deadlines without cutting corners.</p></div>
         </div>
       </button>
-
       <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <i class="fa-solid fa-arrows-spin"></i>
-            <span>Adaptability</span>
-            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
-          </div>
-          <div class="flip-card-back">
-            <i class="fa-solid fa-arrows-spin"></i>
-            <p>Picking up new tools, stacks, and requirements quickly when a project's direction shifts.</p>
-          </div>
+          <div class="flip-card-front"><i class="fa-solid fa-arrows-spin"></i><span>Adaptability</span><span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span></div>
+          <div class="flip-card-back"><i class="fa-solid fa-arrows-spin"></i><p>Picking up new tools, stacks, and requirements quickly when a project's direction shifts.</p></div>
         </div>
       </button>
-
       <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <i class="fa-solid fa-flag"></i>
-            <span>Leadership</span>
-            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
-          </div>
-          <div class="flip-card-back">
-            <i class="fa-solid fa-flag"></i>
-            <p>Guiding and motivating peers during collaborative academic projects and college fests.</p>
-          </div>
+          <div class="flip-card-front"><i class="fa-solid fa-flag"></i><span>Leadership</span><span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span></div>
+          <div class="flip-card-back"><i class="fa-solid fa-flag"></i><p>Guiding and motivating peers during collaborative academic projects and college fests.</p></div>
         </div>
       </button>
     </div>
   </section>
 
-  <!-- Projects -->
   <section id="projects" class="section reveal">
     <p class="eyebrow" data-scramble>05 · Selected work</p>
     <h2 data-scramble>Projects</h2>
     <p class="hint-text top-hint"><i class="fa-solid fa-hand-pointer"></i> Click a project card for full details.</p>
-
     <div class="project-filter" id="projectFilter">
       <button class="filter-btn active magnetic" data-filter="all">All</button>
       <button class="filter-btn magnetic" data-filter="web">Web</button>
       <button class="filter-btn magnetic" data-filter="iot">IoT</button>
       <button class="filter-btn magnetic" data-filter="mobile">Mobile</button>
     </div>
-    
     <div class="project-cards" id="projectGrid">
-      <div class="card project-card tilt reveal" data-category="iot"
-           data-details="An IoT-based farming solution that continuously monitors soil moisture, temperature, and other climate conditions using connected sensors. Live sensor readings feed into automation logic so irrigation and alerts can respond in real time, aiming to improve yield efficiency and reduce manual monitoring.">
+      <div class="card project-card tilt reveal" data-category="iot" data-details="An IoT-based farming solution that continuously monitors soil moisture, temperature, and other climate conditions using connected sensors. Live sensor readings feed into automation logic so irrigation and alerts can respond in real time, aiming to improve yield efficiency and reduce manual monitoring.">
         <div class="project-image">
-          <div class="project-image-placeholder">
-            <i class="fa-solid fa-seedling"></i>
-          </div>
+          <div class="project-image-placeholder"><i class="fa-solid fa-seedling"></i></div>
           <div class="project-overlay">
             <div class="project-links">
               <a href="#" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
@@ -406,21 +228,13 @@
           <div class="project-icon"><i class="fa-solid fa-seedling"></i></div>
           <h3>Smart Agriculture</h3>
           <p>IoT-based farming solution that monitors soil and climate conditions to improve yield efficiency using real-time sensor data.</p>
-          <div class="tag-row">
-            <span class="tag">IoT</span>
-            <span class="tag">Sensors</span>
-            <span class="tag">Automation</span>
-          </div>
+          <div class="tag-row"><span class="tag">IoT</span><span class="tag">Sensors</span><span class="tag">Automation</span></div>
           <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
-
-      <div class="card project-card tilt reveal" data-category="web"
-           data-details="A fully responsive personal portfolio built from scratch with cyberpunk aesthetics — an animated particle network, custom cursor, glitch and scramble text effects, and smooth scroll-triggered reveal animations throughout. Built with plain HTML, CSS, and JavaScript, with no external framework dependency.">
+      <div class="card project-card tilt reveal" data-category="web" data-details="A fully responsive personal portfolio built from scratch with cyberpunk aesthetics — an animated particle network, custom cursor, glitch and scramble text effects, and smooth scroll-triggered reveal animations throughout. Built with plain HTML, CSS, and JavaScript, with no external framework dependency.">
         <div class="project-image">
-          <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));">
-            <i class="fa-solid fa-globe"></i>
-          </div>
+          <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));"><i class="fa-solid fa-globe"></i></div>
           <div class="project-overlay">
             <div class="project-links">
               <a href="#" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
@@ -432,21 +246,13 @@
           <div class="project-icon"><i class="fa-solid fa-globe"></i></div>
           <h3>Portfolio Website</h3>
           <p>A fully responsive personal portfolio with cyberpunk aesthetics, particle effects, and smooth scroll animations.</p>
-          <div class="tag-row">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-          </div>
+          <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
           <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
-
-      <div class="card project-card tilt reveal" data-category="mobile"
-           data-details="A multi-purpose Android application built with Android Studio, focused on a clean, intuitive UI and a set of practical daily utilities packed into a single lightweight app.">
+      <div class="card project-card tilt reveal" data-category="mobile" data-details="A multi-purpose Android application built with Android Studio, focused on a clean, intuitive UI and a set of practical daily utilities packed into a single lightweight app.">
         <div class="project-image">
-          <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1));">
-            <i class="fa-solid fa-mobile-screen"></i>
-          </div>
+          <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1));"><i class="fa-solid fa-mobile-screen"></i></div>
           <div class="project-overlay">
             <div class="project-links">
               <a href="#" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
@@ -458,15 +264,10 @@
           <div class="project-icon"><i class="fa-solid fa-mobile-screen"></i></div>
           <h3>Android Utility App</h3>
           <p>A multi-purpose Android application built with Android Studio featuring clean UI and practical daily utilities.</p>
-          <div class="tag-row">
-            <span class="tag">Android</span>
-            <span class="tag">Java</span>
-            <span class="tag">XML</span>
-          </div>
+          <div class="tag-row"><span class="tag">Android</span><span class="tag">Java</span><span class="tag">XML</span></div>
           <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
-
       <div class="card project-card placeholder-card reveal">
         <div class="project-icon"><i class="fa-solid fa-plus"></i></div>
         <h3>Add your next project</h3>
@@ -475,43 +276,31 @@
     </div>
   </section>
 
-  <!-- Certificates -->
   <section id="certificates" class="section reveal">
     <p class="eyebrow" data-scramble>06 · Proof of work</p>
     <h2 data-scramble>Certificates</h2>
-    
     <div class="cert-slider-wrapper">
       <button class="cert-nav cert-prev magnetic" id="certPrev" aria-label="Previous certificate"><i class="fa-solid fa-chevron-left"></i></button>
-      
       <div class="cert-slider" id="certSlider">
         <button class="card cert-card" data-full="images/diploma.jpg" data-caption="Diploma – Govt Polytechnic Gaya">
-          <div class="cert-image-wrapper">
-            <img src="images/diploma.jpg" alt="Diploma Certificate" loading="lazy">
-          </div>
+          <div class="cert-image-wrapper"><img src="images/diploma.jpg" alt="Diploma Certificate" loading="lazy"></div>
           <span class="cert-caption">Diploma – Govt Polytechnic Gaya</span>
         </button>
         <button class="card cert-card" data-full="images/kyp.jpg" data-caption="KYP Certificate">
-          <div class="cert-image-wrapper">
-            <img src="images/kyp.jpg" alt="KYP Certificate" loading="lazy">
-          </div>
+          <div class="cert-image-wrapper"><img src="images/kyp.jpg" alt="KYP Certificate" loading="lazy"></div>
           <span class="cert-caption">KYP Certificate</span>
         </button>
         <button class="card cert-card" data-full="images/cisco.jpg" data-caption="Cisco Python">
-          <div class="cert-image-wrapper">
-            <img src="images/cisco.jpg" alt="Cisco Python Certificate" loading="lazy">
-          </div>
+          <div class="cert-image-wrapper"><img src="images/cisco.jpg" alt="Cisco Python Certificate" loading="lazy"></div>
           <span class="cert-caption">Cisco Python</span>
         </button>
       </div>
-      
       <button class="cert-nav cert-next magnetic" id="certNext" aria-label="Next certificate"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
-    
     <div class="cert-dots" id="certDots"></div>
     <p class="hint-text">* Click any certificate to view it full-size. Use arrows to navigate.</p>
   </section>
 
-  <!-- Achievements -->
   <section id="achievements" class="section reveal">
     <p class="eyebrow" data-scramble>07 · Milestones</p>
     <h2 data-scramble>Achievements</h2>
@@ -551,12 +340,10 @@
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact" class="section reveal">
     <p class="eyebrow" data-scramble>08 · Let's talk</p>
     <h2 data-scramble>Contact</h2>
     <p class="section-text">Have a project in mind or just want to say hi? Send a message below or reach out directly.</p>
-
     <div class="contact-layout">
       <form class="contact-form" id="contactForm" novalidate>
         <div class="form-row">
@@ -585,16 +372,13 @@
           <span class="btn-loader"><i class="fa-solid fa-circle-notch fa-spin"></i></span>
         </button>
       </form>
-
       <div class="contact-info">
         <div class="info-card reveal">
           <i class="fa-solid fa-envelope"></i>
           <h4>Email</h4>
           <div class="info-card-row">
             <a href="mailto:gulshan@example.com">gulshan@example.com</a>
-            <button type="button" class="copy-btn magnetic" id="copyEmailBtn" data-copy="gulshan@example.com" aria-label="Copy email address">
-              <i class="fa-regular fa-copy"></i>
-            </button>
+            <button type="button" class="copy-btn magnetic" id="copyEmailBtn" data-copy="gulshan@example.com" aria-label="Copy email address"><i class="fa-regular fa-copy"></i></button>
           </div>
         </div>
         <div class="info-card reveal">
@@ -617,7 +401,6 @@
   </section>
 </main>
 
-<!-- Footer -->
 <footer>
   <div class="footer-content">
     <div class="footer-brand">
@@ -637,16 +420,12 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© <span id="year"></span> Gulshan Kumar. Crafted with <i class="fa-solid fa-heart"></i> and a lot of <i class="fa-solid fa-mug-hot"></i>.</p>
+    <p>&copy; <span id="year"></span> Gulshan Kumar. Crafted with <i class="fa-solid fa-heart"></i> and a lot of <i class="fa-solid fa-mug-hot"></i>.</p>
   </div>
 </footer>
 
-<!-- Back to top -->
-<button id="backToTop" class="back-to-top magnetic" aria-label="Back to top">
-  <i class="fa-solid fa-arrow-up"></i>
-</button>
+<button id="backToTop" class="back-to-top magnetic" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-<!-- Lightbox for certificates -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close magnetic" id="lightboxClose" aria-label="Close">&times;</button>
   <div class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></div>
@@ -655,7 +434,6 @@
   <div class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></div>
 </div>
 
-<!-- Project Details Modal -->
 <div class="modal" id="projectModal">
   <div class="modal-backdrop" id="projectModalBackdrop"></div>
   <div class="modal-content project-modal-content">
@@ -668,7 +446,6 @@
   </div>
 </div>
 
-<!-- CV Modal -->
 <div class="modal" id="cvModal">
   <div class="modal-backdrop" id="cvModalBackdrop"></div>
   <div class="modal-content">
