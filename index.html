@@ -3,229 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Futuristic Portfolio</title>
-  <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #0d0d0d, #1a1a1a);
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-      position: relative;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      color: #0ff;
-      text-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
-      animation: glowText 2s ease-in-out infinite alternate;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-top: 15px;
-      color: #ccc;
-      animation: fadeIn 3s ease-in-out;
-    }
-
-    @keyframes glowText {
-      from { text-shadow: 0 0 10px #0ff; }
-      to { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff; }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 20px;
-      right: 40px;
-    }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #0ff;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #fff;
-      text-shadow: 0 0 10px #0ff;
-    }
-
-    /* Section Styling */
-    section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #0ff;
-      text-shadow: 0 0 15px #0ff;
-    }
-
-    /* Cards */
-    .card {
-      background: #111;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      box-shadow: 0 0 20px #0ff;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 0 40px #0ff;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #0ff;
-      color: #000;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: 0.3s;
-      box-shadow: 0 0 20px #0ff;
-    }
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px #0ff;
-    }
-
-    /* Particle Background */
-    canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-    }
-  </style>
+  <title>Gulshan | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Particle Background -->
-  <canvas id="particles"></canvas>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <!-- Hero -->
-  <div class="hero">
-    <h1>Gulshan's Futuristic Portfolio</h1>
-    <p>Aspiring Software Developer | Web Enthusiast | Problem Solver</p>
-    <a href="#projects" class="btn">Explore Projects</a>
-  </div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Hi, I'm <span class="highlight">Gulshan</span></h1>
+    <h2>CSE Student at LPU</h2>
+    <a href="#projects" class="btn">Explore My Work</a>
+  </section>
 
   <!-- About Section -->
   <section id="about">
     <h2>About Me</h2>
-    <div class="card">
-      <p>Write about yourself here. Add your education, skills, and interests.</p>
-    </div>
+    <p>Computer Science student at LPU, passionate about web development, mobile computing, and anime-inspired design.</p>
   </section>
 
-  <!-- Projects Section -->
+  <!-- Education & Skills -->
+  <section id="skills">
+    <h2>Education & Skills</h2>
+    <ul>
+      <li>🎓 Diploma (73.4%)</li>
+      <li>📚 B.Tech CSE Core at LPU</li>
+      <li>💻 Skills: Java, Python, HTML, CSS, Android Studio, Git</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
   <section id="projects">
     <h2>Projects</h2>
     <div class="card">
-      <h3>Project Title</h3>
-      <p>Brief description of your project. Add links or screenshots.</p>
+      <h3>GitHub Portfolio</h3>
+      <p>Responsive portfolio showcasing my skills and certificates.</p>
+      <a href="https://github.com/yourusername" target="_blank">View Project</a>
     </div>
     <div class="card">
-      <h3>Another Project</h3>
-      <p>Details about another project with animations and effects.</p>
+      <h3>Mobile App Development</h3>
+      <p>Android app built for coursework with modern UI.</p>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Certificates -->
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <p>Click to view my achievements and certifications.</p>
+  </section>
+
+  <!-- Contact -->
   <section id="contact">
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email: yourname@example.com</p>
-      <p>Phone: +91-XXXXXXXXXX</p>
-    </div>
+    <h2>Contact Me</h2>
+    <p>Email: gulshan@example.com</p>
+    <p>GitHub: <a href="https://github.com/yourusername">yourusername</a></p>
+    <p>LinkedIn: <a href="#">linkedin.com/in/gulshan</a></p>
   </section>
-
-  <!-- Particle Animation Script -->
-  <script>
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particlesArray = [];
-    const colors = ["#0ff", "#fff", "#0f0"];
-
-    class Particle {
-      constructor(x, y, size, color, speedX, speedY) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.color = color;
-        this.speedX = speedX;
-        this.speedY = speedY;
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.size > 0.2) this.size -= 0.02;
-      }
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    function init() {
-      particlesArray = [];
-      for (let i = 0; i < 100; i++) {
-        let size = Math.random() * 5 + 1;
-        let x = Math.random() * canvas.width;
-        let y = Math.random() * canvas.height;
-        let color = colors[Math.floor(Math.random() * colors.length)];
-        let speedX = Math.random() * 2 - 1;
-        let speedY = Math.random() * 2 - 1;
-        particlesArray.push(new Particle(x, y, size, color, speedX, speedY));
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
-      }
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-  </script>
 </body>
 </html>
