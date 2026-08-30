@@ -287,13 +287,91 @@
   <section id="softskills" class="section reveal">
     <p class="eyebrow" data-scramble>04 · Beyond code</p>
     <h2 data-scramble>Soft Skills</h2>
-    <div class="cards soft-skill-cards">
-      <div class="card soft-card reveal"><i class="fa-solid fa-comments"></i><span>Communication</span></div>
-      <div class="card soft-card reveal"><i class="fa-solid fa-people-group"></i><span>Team Collaboration</span></div>
-      <div class="card soft-card reveal"><i class="fa-solid fa-puzzle-piece"></i><span>Problem Solving</span></div>
-      <div class="card soft-card reveal"><i class="fa-solid fa-clock"></i><span>Time Management</span></div>
-      <div class="card soft-card reveal"><i class="fa-solid fa-arrows-spin"></i><span>Adaptability</span></div>
-      <div class="card soft-card reveal"><i class="fa-solid fa-flag"></i><span>Leadership</span></div>
+    <p class="hint-text top-hint"><i class="fa-solid fa-hand-pointer"></i> Click any card to flip it and read more.</p>
+    <div class="skills-grid soft-skill-cards">
+      <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-comments"></i>
+            <span>Communication</span>
+            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
+          </div>
+          <div class="flip-card-back">
+            <i class="fa-solid fa-comments"></i>
+            <p>Explaining technical ideas clearly to both technical and non-technical audiences, in writing and in person.</p>
+          </div>
+        </div>
+      </button>
+
+      <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-people-group"></i>
+            <span>Team Collaboration</span>
+            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
+          </div>
+          <div class="flip-card-back">
+            <i class="fa-solid fa-people-group"></i>
+            <p>Working effectively within cross-functional teams to plan, build, and ship shared goals.</p>
+          </div>
+        </div>
+      </button>
+
+      <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-puzzle-piece"></i>
+            <span>Problem Solving</span>
+            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
+          </div>
+          <div class="flip-card-back">
+            <i class="fa-solid fa-puzzle-piece"></i>
+            <p>Breaking complex, ambiguous challenges into structured, testable, and actionable steps.</p>
+          </div>
+        </div>
+      </button>
+
+      <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-clock"></i>
+            <span>Time Management</span>
+            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
+          </div>
+          <div class="flip-card-back">
+            <i class="fa-solid fa-clock"></i>
+            <p>Prioritizing coursework, projects, and events to consistently meet deadlines without cutting corners.</p>
+          </div>
+        </div>
+      </button>
+
+      <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-arrows-spin"></i>
+            <span>Adaptability</span>
+            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
+          </div>
+          <div class="flip-card-back">
+            <i class="fa-solid fa-arrows-spin"></i>
+            <p>Picking up new tools, stacks, and requirements quickly when a project's direction shifts.</p>
+          </div>
+        </div>
+      </button>
+
+      <button type="button" class="flip-card soft-card reveal" aria-pressed="false">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <i class="fa-solid fa-flag"></i>
+            <span>Leadership</span>
+            <span class="flip-hint"><i class="fa-solid fa-rotate"></i> Flip</span>
+          </div>
+          <div class="flip-card-back">
+            <i class="fa-solid fa-flag"></i>
+            <p>Guiding and motivating peers during collaborative academic projects and college fests.</p>
+          </div>
+        </div>
+      </button>
     </div>
   </section>
 
@@ -301,7 +379,8 @@
   <section id="projects" class="section reveal">
     <p class="eyebrow" data-scramble>05 · Selected work</p>
     <h2 data-scramble>Projects</h2>
-    
+    <p class="hint-text top-hint"><i class="fa-solid fa-hand-pointer"></i> Click a project card for full details.</p>
+
     <div class="project-filter" id="projectFilter">
       <button class="filter-btn active magnetic" data-filter="all">All</button>
       <button class="filter-btn magnetic" data-filter="web">Web</button>
@@ -309,8 +388,9 @@
       <button class="filter-btn magnetic" data-filter="mobile">Mobile</button>
     </div>
     
-    <div class="cards project-cards" id="projectGrid">
-      <div class="card project-card tilt reveal" data-category="iot">
+    <div class="project-cards" id="projectGrid">
+      <div class="card project-card tilt reveal" data-category="iot"
+           data-details="An IoT-based farming solution that continuously monitors soil moisture, temperature, and other climate conditions using connected sensors. Live sensor readings feed into automation logic so irrigation and alerts can respond in real time, aiming to improve yield efficiency and reduce manual monitoring.">
         <div class="project-image">
           <div class="project-image-placeholder">
             <i class="fa-solid fa-seedling"></i>
@@ -331,10 +411,12 @@
             <span class="tag">Sensors</span>
             <span class="tag">Automation</span>
           </div>
+          <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
 
-      <div class="card project-card tilt reveal" data-category="web">
+      <div class="card project-card tilt reveal" data-category="web"
+           data-details="A fully responsive personal portfolio built from scratch with cyberpunk aesthetics — an animated particle network, custom cursor, glitch and scramble text effects, and smooth scroll-triggered reveal animations throughout. Built with plain HTML, CSS, and JavaScript, with no external framework dependency.">
         <div class="project-image">
           <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));">
             <i class="fa-solid fa-globe"></i>
@@ -355,10 +437,12 @@
             <span class="tag">CSS</span>
             <span class="tag">JavaScript</span>
           </div>
+          <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
 
-      <div class="card project-card tilt reveal" data-category="mobile">
+      <div class="card project-card tilt reveal" data-category="mobile"
+           data-details="A multi-purpose Android application built with Android Studio, focused on a clean, intuitive UI and a set of practical daily utilities packed into a single lightweight app.">
         <div class="project-image">
           <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1));">
             <i class="fa-solid fa-mobile-screen"></i>
@@ -379,13 +463,14 @@
             <span class="tag">Java</span>
             <span class="tag">XML</span>
           </div>
+          <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
 
       <div class="card project-card placeholder-card reveal">
         <div class="project-icon"><i class="fa-solid fa-plus"></i></div>
         <h3>Add your next project</h3>
-        <p>Duplicate any project card in index.html and fill in the details of your next build.</p>
+        <p>Duplicate any project card above. Add a longer write-up in its <code>data-details="..."</code> attribute — it automatically shows in the details popup.</p>
       </div>
     </div>
   </section>
@@ -568,6 +653,19 @@
   <img id="lightboxImg" src="" alt="">
   <p id="lightboxCaption"></p>
   <div class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></div>
+</div>
+
+<!-- Project Details Modal -->
+<div class="modal" id="projectModal">
+  <div class="modal-backdrop" id="projectModalBackdrop"></div>
+  <div class="modal-content project-modal-content">
+    <button class="modal-close" id="projectModalClose" aria-label="Close project details">&times;</button>
+    <div class="project-modal-icon" id="projectModalIcon"><i class="fa-solid fa-diagram-project"></i></div>
+    <h3 id="projectModalTitle">Project title</h3>
+    <p id="projectModalDesc"></p>
+    <div class="tag-row" id="projectModalTags"></div>
+    <div class="project-modal-actions" id="projectModalLinks"></div>
+  </div>
 </div>
 
 <!-- CV Modal -->
