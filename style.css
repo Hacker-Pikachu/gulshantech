@@ -82,6 +82,40 @@ html { scroll-behavior: smooth; }
 ::selection { background: var(--glow-magenta); color: var(--text); }
 
 /* ===========================================================
+   Skip link (keyboard accessibility)
+   =========================================================== */
+.skip-link {
+  position: fixed;
+  top: -60px;
+  left: 16px;
+  z-index: 10001;
+  background: var(--cyan);
+  color: var(--bg-1);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  transition: top 0.25s ease;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ===========================================================
+   Keyboard focus states (mouse users unaffected)
+   =========================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ===========================================================
    Animated gradient background
    =========================================================== */
 body {
@@ -1457,6 +1491,38 @@ body.hovering .cursor-outline { width: 48px; height: 48px; border-color: var(--m
   transition: color 0.2s;
 }
 .info-card a:hover { color: var(--magenta); }
+
+.info-card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.copy-btn {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface-alt);
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all 0.25s ease;
+}
+.copy-btn:hover, .copy-btn:focus-visible {
+  color: var(--bg-1);
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+.copy-btn.copied {
+  color: var(--bg-1);
+  background: var(--gold);
+  border-color: var(--gold);
+}
 
 @media (max-width: 900px) {
   .contact-layout { grid-template-columns: 1fr; }
