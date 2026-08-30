@@ -1,104 +1,141 @@
-/* General Styles */
+/* Animated Background */
 body {
   font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #0a0a0f, #1a0033, #00334d, #330033);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #e0e0e0;
   margin: 0;
-  padding: 0;
-  background: #0f0f1a;
-  color: #eee;
-  scroll-behavior: smooth;
+  padding-top: 70px;
+}
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
-/* Scroll Progress Bar */
-#progressBar {
+/* Navigation Bar */
+.navbar {
   position: fixed;
   top: 0;
-  left: 0;
-  height: 5px;
-  background: #ff6600;
-  width: 0%;
-  z-index: 2000;
-  transition: width 0.25s ease;
-}
-
-/* Navigation */
-nav {
-  position: fixed;
-  top: 5px;
   width: 100%;
-  background: rgba(20, 20, 40, 0.9);
-  padding: 10px;
+  background: rgba(20,20,40,0.9);
+  backdrop-filter: blur(10px);
+  padding: 10px 0;
   z-index: 1000;
 }
-
-nav ul {
+.navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
   margin: 0;
   padding: 0;
 }
-
-nav ul li {
+.navbar ul li {
   margin: 0 15px;
 }
-
-nav ul li a {
-  color: #eee;
+.navbar ul li a {
+  color: #00ffff;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
 }
-
-nav ul li a:hover {
-  color: #ff6600;
+.navbar ul li a:hover {
+  color: #ff00ff;
+}
+html {
+  scroll-behavior: smooth;
 }
 
-/* Home Section */
-header {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(270deg, #1a1a2e, #16213e, #0f0f1a);
-  background-size: 600% 600%;
-  animation: gradientMove 15s ease infinite;
+/* Hero Section */
+.hero {
   text-align: center;
+  padding: 80px;
 }
-
-@keyframes gradientMove {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  border: 3px solid #ff6600;
-}
-
-.glow-text {
-  color: #fff;
-  text-shadow: 0 0 10px #ff6600, 0 0 20px #ff4500;
-}
-
-.btn, .neon-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #ff6600;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 15px;
-  transition: background 0.3s, box-shadow 0.3s;
-}
-
-.neon-btn:hover {
-  background: #ff4500;
-  box-shadow: 0 0 20px #ff6600, 0 0 40px #ff4500;
+.gradient-text {
+  background: linear-gradient(to right, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3em;
 }
 
 /* Sections */
-section {
+.about, .cards, .timeline, #contact {
+  margin: 30px;
+  padding: 20px;
+  background: rgba(30,30,50,0.8);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,255,255,0.3);
+}
+
+/* Cards */
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.card {
+  background: rgba(50,50,70,0.9);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255,0,255,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  flex: 1 1 200px;
+  text-align: center;
+  color: #fff;
+}
+.card:hover {
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 0 25px rgba(0,255,255,0.8);
+}
+.card i {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+/* Certificates */
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.5s;
+}
+.card img:hover {
+  transform: scale(1.1) rotateY(10deg);
+}
+.popup {
+  position: relative;
+  display: inline-block;
+}
+.popup .popuptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: #111;
+  color: #00ffff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -110px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.popup:hover .popuptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Timeline */
+.timeline {
+  border-left: 3px solid #00ffff;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  color: #00ffff;
+  text-align: center;
+  padding: 20px;
+}
