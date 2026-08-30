@@ -84,4 +84,14 @@ html {
   border: 3px solid #00ffff;
   box-shadow: 0 0 25px rgba(0,255,255,0.6);
   margin-bottom: 20px;
-  transition: transform 0.3s,
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.profile-pic:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px #ff00ff;
+}
+
+/* About Section Layout */
+.about-container {
+  display: flex;
+  align-items: center
