@@ -1,4 +1,153 @@
 // ===========================================================
+// Particle network background
+// ===========================================================
+(function initParticles() {
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.documentElement.scrollHeight;
+  }
+
+  function createParticles() {
+    const count = Math.min(80, Math.floor((window.innerWidth * window.innerHeight) / 18000));
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+    }));
+  }
+
+  function step() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const viewTop = window.scrollY;
+    const viewBottom = viewTop + window.innerHeight;
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+      if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
+    });
+
+    for (let i = 0; i < particles.length; i++) {
+      const a = particles[i];
+      if (a.y < viewTop - 50 || a.y > viewBottom + 50) continue;
+
+      ctx.beginPath();
+      ctx.arc(a.x, a.y, 1.6, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 255, 255, 0.6)';
+      ctx.fill();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const b = particles[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = `rgba(255, 0, 255, ${0.15 * (1 - dist / 120)})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  resize();
+  createParticles();
+  window.addEventListener('resize', () => { resize(); createParticles(); });
+
+  if (!prefersReducedMotion) {
+    requestAnimationFrame(step);
+  }
+})();
+
+// ===========================================================
+// Cursor glow (desktop / hover-capable devices only)
+// ===========================================================
+if (window.matchMedia('(hover: hover)').matches) {
+  const cursorGlow = document.getElementById('cursorGlow');
+  window.addEventListener('mousemove', (e) => {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top = e.clientY + 'px';
+    cursorGlow.classList.add('active');
+  });
+  document.addEventListener('mouseleave', () => cursorGlow.classList.remove('active'));
+}
+
+// ===========================================================
+// Typewriter effect (hero tagline)
+// ===========================================================
+(function initTypewriter() {
+  const el = document.getElementById('typewriter');
+  if (!el) return;
+
+  const phrases = [
+    'I grow ideas the way I grow crops.',
+    'B.Tech CSE student at LPU.',
+    'Building Smart Agriculture solutions.',
+    'One careful iteration at a time.',
+  ];
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion) {
+    el.textContent = phrases[0];
+    return;
+  }
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function tick() {
+    const current = phrases[phraseIndex];
+    if (!deleting) {
+      charIndex++;
+      el.textContent = current.slice(0, charIndex);
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(tick, 1600);
+        return;
+      }
+    } else {
+      charIndex--;
+      el.textContent = current.slice(0, charIndex);
+      if (charIndex === 0) {
+        deleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+      }
+    }
+    setTimeout(tick, deleting ? 30 : 55);
+  }
+  tick();
+})();
+
+// ===========================================================
+// 3D tilt effect on project cards
+// ===========================================================
+document.querySelectorAll('.tilt').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.setProperty('--ry', `${x * 14}deg`);
+    card.style.setProperty('--rx', `${-y * 14}deg`);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--rx', '0deg');
+    card.style.setProperty('--ry', '0deg');
+  });
+});
+
+// ===========================================================
 // Footer year
 // ===========================================================
 document.getElementById('year').textContent = new Date().getFullYear();
