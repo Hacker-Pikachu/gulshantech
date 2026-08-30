@@ -2,149 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gulshan's Portfolio</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <!-- Scroll Progress Bar -->
-  <div id="progressBar"></div>
-
-  <!-- Navigation -->
-  <nav>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
     <ul>
-      <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#softskills">Soft Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#education">Education</a></li>
       <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Home Section -->
-  <header id="home">
-    <div class="home-content fade-in">
-      <img src="your-photo.jpg" alt="Your Photo" class="profile-pic"> <!-- Upload later -->
-      <h1 class="glow-text">Hi, I’m Gulshan</h1>
-      <p>B.Tech CSE Student | Tech Enthusiast | Anime Lover</p>
-      <a href="cv.pdf" class="btn neon-btn" download>Download CV</a> <!-- Upload later -->
-    </div>
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1 class="gradient-text">Hi, I’m Gulshan</h1>
+    <p>B.Tech CSE Student | Smart Agriculture Innovator</p>
   </header>
 
   <!-- About Section -->
-  <section id="about" class="slide-in">
+  <section id="about" class="about">
     <h2>About Me</h2>
-    <p>I am Gulshan, currently pursuing B.Tech in Computer Science at LPU. I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar. Passionate about web development, mobile computing, anime culture, and innovative projects like Smart Agriculture.</p>
+    <p>
+      I am Gulshan, currently pursuing B.Tech in Computer Science at Lovely Professional University (LPU). 
+      I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with 73.4% marks. 
+      My interests include web development, mobile computing, anime culture, and innovative projects like Smart Agriculture. 
+      I am passionate about building solutions that combine technology with real-world impact, and I actively participate in college fests and events to enhance my exposure and creativity.
+    </p>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="zoom-in">
-    <h2>Skills</h2>
-    <div class="card-container">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Java</div>
-          <div class="flip-card-back">OOP, DSA</div>
-        </div>
-      </div>
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Python</div>
-          <div class="flip-card-back">AI, ML</div>
-        </div>
-      </div>
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">C</div>
-          <div class="flip-card-back">System Programming</div>
-        </div>
-      </div>
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">HTML, CSS, JS</div>
-          <div class="flip-card-back">Web Development</div>
-        </div>
-      </div>
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">Android Studio</div>
-          <div class="flip-card-back">Mobile Apps</div>
-        </div>
-      </div>
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">GitHub</div>
-          <div class="flip-card-back">Version Control</div>
-        </div>
-      </div>
-    </div>
+  <!-- Technical Skills -->
+  <section id="skills" class="cards">
+    <h2>Technical Skills</h2>
+    <div class="card"><i class="fa-brands fa-java"></i> Java</div>
+    <div class="card"><i class="fa-brands fa-python"></i> Python</div>
+    <div class="card"><i class="fa-solid fa-code"></i> Web Development</div>
+    <div class="card"><i class="fa-solid fa-mobile"></i> Android Studio</div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="slide-in">
+  <!-- Soft Skills -->
+  <section id="softskills" class="cards">
+    <h2>Soft Skills</h2>
+    <div class="card">Communication</div>
+    <div class="card">Team Collaboration</div>
+    <div class="card">Problem Solving</div>
+    <div class="card">Time Management</div>
+    <div class="card">Adaptability</div>
+    <div class="card">Leadership</div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="cards">
     <h2>Projects</h2>
-    <div class="card-container">
-      <div class="glow-card">
-        <h3>Smart Agriculture</h3>
-        <p>IoT-based solutions for efficient farming.</p>
-      </div>
+    <div class="card">
+      <h3>Smart Agriculture</h3>
+      <p>IoT-based farming solution for efficiency.</p>
     </div>
   </section>
 
-  <!-- Education Section -->
-  <section id="education" class="zoom-in">
-    <h2>Education</h2>
-    <ul>
-      <li>B.Tech CSE — Lovely Professional University (Ongoing)</li>
-      <li>Diploma in Computer Science — Government Polytechnic Gaya, Bihar (73.4%)</li>
-    </ul>
-  </section>
-
-  <!-- Certificates Section -->
-  <section id="certificates" class="slide-in">
+  <!-- Certificates -->
+  <section id="certificates" class="cards">
     <h2>Certificates</h2>
-    <p>Certificates will be uploaded here later.</p>
+    <div class="card popup">
+      <img src="images/diploma.jpg" alt="Diploma Certificate">
+      <span class="popuptext">Diploma – Govt Polytechnic Gaya</span>
+    </div>
+    <div class="card popup">
+      <img src="images/kyp.jpg" alt="KYP Certificate">
+      <span class="popuptext">KYP Certificate</span>
+    </div>
+    <div class="card popup">
+      <img src="images/cisco.jpg" alt="Cisco Python Certificate">
+      <span class="popuptext">Cisco Python (coming soon)</span>
+    </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="zoom-in">
+  <!-- Achievements -->
+  <section id="achievements" class="timeline">
+    <h2>Achievements</h2>
+    <p>Diploma 73.4% | LPU Fest Participation</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
     <h2>Contact</h2>
-    <form action="https://formspree.io/f/yourFormID" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit" class="btn neon-btn">Send Message</button>
-    </form>
     <p>Email: gulshan@example.com | LinkedIn | GitHub</p>
   </section>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop">↑ Top</button>
-
-  <!-- Script -->
-  <script>
-    // Back to Top Button
-    const backToTop = document.getElementById("backToTop");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTop.style.display = "block";
-      } else {
-        backToTop.style.display = "none";
-      }
-
-      // Scroll Progress Bar
-      const progressBar = document.getElementById("progressBar");
-      const scrollTop = window.scrollY;
-      const docHeight = document.body.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      progressBar.style.width = scrollPercent + "%";
-    });
-
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  </script>
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Gulshan Portfolio</p>
+  </footer>
 </body>
 </html>
