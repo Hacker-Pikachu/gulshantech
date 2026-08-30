@@ -55,6 +55,10 @@
   });
   
   function animateCursor() {
+    if (document.hidden) {
+      requestAnimationFrame(animateCursor);
+      return;
+    }
     dotX += (mouseX - dotX) * 0.2;
     dotY += (mouseY - dotY) * 0.2;
     outlineX += (mouseX - outlineX) * 0.1;
@@ -235,6 +239,10 @@ class TextScramble {
   window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
 
   function step() {
+    if (document.hidden) {
+      requestAnimationFrame(step);
+      return;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const viewTop = window.scrollY;
     const viewBottom = viewTop + window.innerHeight;
@@ -827,17 +835,24 @@ function closeCvModal() {
   const btn = document.getElementById(id);
   if (btn) {
     btn.addEventListener('click', (e) => {
-      // Check if file exists by trying to fetch it
-      fetch(btn.href, { method: 'HEAD', mode: 'no-cors' })
-        .then(() => {
-          // File likely exists, let it download
-          Toast.show('CV download started!', 'success', 'Download');
+      // Stop the browser's default navigation until we know the file exists.
+      e.preventDefault();
+      fetch(btn.href, { method: 'HEAD' })
+        .then((res) => {
+          if (res.ok) {
+            Toast.show('CV download started!', 'success', 'Download');
+            // Trigger the actual download now that we've confirmed the file exists.
+            const link = document.createElement('a');
+            link.href = btn.href;
+            link.download = '';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+          } else {
+            openCvModal();
+          }
         })
-        .catch(() => {
-          // File doesn't exist
-          e.preventDefault();
-          openCvModal();
-        });
+        .catch(() => openCvModal());
     });
   }
 });
@@ -917,6 +932,38 @@ contactForm.querySelectorAll('input, textarea').forEach(input => {
     if (errorEl) errorEl.textContent = '';
   });
 });
+
+// ===========================================================
+// Copy email to clipboard
+// ===========================================================
+(function initCopyEmail() {
+  const btn = document.getElementById('copyEmailBtn');
+  if (!btn) return;
+
+  btn.addEventListener('click', async () => {
+    const email = btn.getAttribute('data-copy');
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch (err) {
+      // Fallback for browsers without Clipboard API access (e.g. insecure context)
+      const temp = document.createElement('textarea');
+      temp.value = email;
+      temp.style.position = 'fixed';
+      temp.style.opacity = '0';
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand('copy');
+      temp.remove();
+    }
+    btn.classList.add('copied');
+    btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+    Toast.show('Email address copied to clipboard.', 'success', 'Copied');
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+    }, 2000);
+  });
+})();
 
 // ===========================================================
 // Smooth scroll for anchor links
