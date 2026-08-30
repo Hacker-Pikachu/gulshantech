@@ -696,6 +696,87 @@ filterBtns.forEach(btn => {
 });
 
 // ===========================================================
+// Soft skill flip cards
+// ===========================================================
+(function initFlipCards() {
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const flipped = card.classList.toggle('flipped');
+      card.setAttribute('aria-pressed', String(flipped));
+    });
+  });
+})();
+
+// ===========================================================
+// Project details modal
+// ===========================================================
+(function initProjectModal() {
+  const modal = document.getElementById('projectModal');
+  if (!modal) return;
+
+  const backdrop = document.getElementById('projectModalBackdrop');
+  const closeBtn = document.getElementById('projectModalClose');
+  const titleEl = document.getElementById('projectModalTitle');
+  const descEl = document.getElementById('projectModalDesc');
+  const iconEl = document.getElementById('projectModalIcon');
+  const tagsEl = document.getElementById('projectModalTags');
+  const linksEl = document.getElementById('projectModalLinks');
+
+  function openProjectModal(card) {
+    const title = card.querySelector('h3')?.textContent.trim() || 'Project';
+    const shortDesc = card.querySelector('.project-content p')?.textContent.trim() || '';
+    const details = card.getAttribute('data-details') || shortDesc;
+    const iconClass = card.querySelector('.project-icon i')?.className || 'fa-solid fa-diagram-project';
+    const tags = Array.from(card.querySelectorAll('.tag-row .tag')).map(t => t.textContent.trim());
+    const links = Array.from(card.querySelectorAll('.project-link')).map(a => ({
+      href: a.getAttribute('href'),
+      label: a.getAttribute('aria-label') || 'View',
+      icon: a.querySelector('i')?.className || 'fa-solid fa-link',
+    }));
+
+    titleEl.textContent = title;
+    descEl.textContent = details;
+    iconEl.innerHTML = `<i class="${iconClass}"></i>`;
+    tagsEl.innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+    linksEl.innerHTML = links.map(l =>
+      `<a href="${l.href}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost magnetic"><i class="${l.icon}"></i> ${l.label}</a>`
+    ).join('');
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProjectModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.project-card:not(.placeholder-card)').forEach(card => {
+    // Clicking anywhere on the card opens the modal...
+    card.addEventListener('click', () => openProjectModal(card));
+
+    // ...except the GitHub / Live Demo icons, which should keep their own click behavior.
+    card.querySelectorAll('.project-link').forEach(link => {
+      link.addEventListener('click', (e) => e.stopPropagation());
+    });
+
+    // The visible "View details" button is the dedicated keyboard-accessible trigger.
+    const viewMoreBtn = card.querySelector('.project-view-more');
+    if (viewMoreBtn) {
+      viewMoreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openProjectModal(card);
+      });
+    }
+  });
+
+  [backdrop, closeBtn].forEach(el => el.addEventListener('click', closeProjectModal));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeProjectModal();
+  });
+})();
+
+// ===========================================================
 // Certificate Slider
 // ===========================================================
 const certSlider = document.getElementById('certSlider');
