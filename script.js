@@ -6,7 +6,7 @@
   const fill = document.getElementById('preloaderFill');
   const text = document.getElementById('preloaderText');
   const messages = ['Loading assets...', 'Initializing particles...', 'Preparing interface...', 'Almost ready...'];
-
+  
   let progress = 0;
   const interval = setInterval(() => {
     progress += Math.random() * 15 + 5;
@@ -24,7 +24,7 @@
       text.textContent = messages[Math.floor((progress / 100) * messages.length)] || 'Loading...';
     }
   }, 150);
-
+  
   document.body.style.overflow = 'hidden';
 })();
 
@@ -33,15 +33,15 @@
 // ===========================================================
 (function initCustomCursor() {
   if (!window.matchMedia('(hover: hover)').matches) return;
-
+  
   const dot = document.getElementById('cursorDot');
   const outline = document.getElementById('cursorOutline');
   const glow = document.getElementById('cursorGlow');
-
+  
   let mouseX = 0, mouseY = 0;
   let dotX = 0, dotY = 0;
   let outlineX = 0, outlineY = 0;
-
+  
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
@@ -49,26 +49,26 @@
     glow.style.top = mouseY + 'px';
     glow.classList.add('active');
   });
-
+  
   document.addEventListener('mouseleave', () => {
     glow.classList.remove('active');
   });
-
+  
   function animateCursor() {
     dotX += (mouseX - dotX) * 0.2;
     dotY += (mouseY - dotY) * 0.2;
     outlineX += (mouseX - outlineX) * 0.1;
     outlineY += (mouseY - outlineY) * 0.1;
-
+    
     dot.style.left = dotX + 'px';
     dot.style.top = dotY + 'px';
     outline.style.left = outlineX + 'px';
     outline.style.top = outlineY + 'px';
-
+    
     requestAnimationFrame(animateCursor);
   }
   animateCursor();
-
+  
   // Hover states
   document.querySelectorAll('a, button, .magnetic, input, textarea, .card, .project-link').forEach(el => {
     el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
@@ -81,14 +81,14 @@
 // ===========================================================
 const Toast = {
   container: document.getElementById('toastContainer'),
-
+  
   show(message, type = 'info', title = '') {
     const toast = document.createElement('div');
     toast.className = 'toast';
-
+    
     const icons = { success: 'fa-circle-check', error: 'fa-circle-xmark', info: 'fa-circle-info' };
     const titles = { success: 'Success', error: 'Error', info: 'Info' };
-
+    
     toast.innerHTML = `
       <i class="fa-solid ${icons[type]} toast-icon ${type}"></i>
       <div class="toast-content">
@@ -97,10 +97,10 @@ const Toast = {
       </div>
       <button class="toast-close" onclick="this.parentElement.remove()"><i class="fa-solid fa-xmark"></i></button>
     `;
-
+    
     this.container.appendChild(toast);
     requestAnimationFrame(() => toast.classList.add('show'));
-
+    
     setTimeout(() => {
       toast.classList.remove('show');
       setTimeout(() => toast.remove(), 400);
@@ -114,13 +114,13 @@ const Toast = {
 class TextScramble {
   constructor(el) {
     this.el = el;
-    this.chars = '!<>-_\/[]{}—=+*^?#________';
+    this.chars = '!<>-_\\/[]{}—=+*^?#________';
     this.originalText = el.textContent;
     this.frame = 0;
     this.queue = [];
     this.isAnimating = false;
   }
-
+  
   setText(text) {
     const length = Math.max(this.originalText.length, text.length);
     const promise = new Promise((resolve) => this.resolve = resolve);
@@ -139,7 +139,7 @@ class TextScramble {
     }
     return promise;
   }
-
+  
   update() {
     let output = '';
     let complete = 0;
@@ -168,7 +168,7 @@ class TextScramble {
       requestAnimationFrame(() => this.update());
     }
   }
-
+  
   randomChar() {
     return this.chars[Math.floor(Math.random() * this.chars.length)];
   }
@@ -188,7 +188,7 @@ class TextScramble {
 // ===========================================================
 (function initMagnetic() {
   if (!window.matchMedia('(hover: hover)').matches) return;
-
+  
   document.querySelectorAll('.magnetic').forEach(btn => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
@@ -251,14 +251,14 @@ class TextScramble {
           p.vy -= (dy / dist) * force * 0.5;
         }
       }
-
+      
       p.x += p.vx;
       p.y += p.vy;
-
+      
       // Damping
       p.vx *= 0.99;
       p.vy *= 0.99;
-
+      
       // Bounds
       if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
       if (p.y < 0 || p.y > window.innerHeight) p.vy *= -1;
@@ -307,7 +307,7 @@ class TextScramble {
 (function initParallax() {
   const parallaxElements = document.querySelectorAll('.parallax');
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
+  
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     parallaxElements.forEach(el => {
@@ -544,7 +544,7 @@ skillFills.forEach(fill => skillObserver.observe(fill));
   canvas.style.width = size + 'px';
   canvas.style.height = size + 'px';
   ctx.scale(dpr, dpr);
-
+  
   const skills = [
     { name: 'Java', value: 0.8 },
     { name: 'Python', value: 0.75 },
@@ -552,12 +552,12 @@ skillFills.forEach(fill => skillObserver.observe(fill));
     { name: 'Android', value: 0.6 },
     { name: 'SQL', value: 0.7 },
   ];
-
+  
   const centerX = size / 2;
   const centerY = size / 2;
   const radius = 100;
   const angleStep = (Math.PI * 2) / skills.length;
-
+  
   // Draw grid
   ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
   ctx.lineWidth = 1;
@@ -573,7 +573,7 @@ skillFills.forEach(fill => skillObserver.observe(fill));
     }
     ctx.stroke();
   }
-
+  
   // Draw axes
   for (let i = 0; i < skills.length; i++) {
     const angle = i * angleStep - Math.PI / 2;
@@ -583,7 +583,7 @@ skillFills.forEach(fill => skillObserver.observe(fill));
     ctx.moveTo(centerX, centerY);
     ctx.lineTo(x, y);
     ctx.stroke();
-
+    
     // Labels
     const labelX = centerX + Math.cos(angle) * (radius + 22);
     const labelY = centerY + Math.sin(angle) * (radius + 22);
@@ -593,7 +593,7 @@ skillFills.forEach(fill => skillObserver.observe(fill));
     ctx.textBaseline = 'middle';
     ctx.fillText(skills[i].name, labelX, labelY);
   }
-
+  
   // Draw data
   ctx.beginPath();
   for (let i = 0; i < skills.length; i++) {
@@ -610,7 +610,7 @@ skillFills.forEach(fill => skillObserver.observe(fill));
   ctx.strokeStyle = '#00ffff';
   ctx.lineWidth = 2;
   ctx.stroke();
-
+  
   // Draw points
   for (let i = 0; i < skills.length; i++) {
     const angle = i * angleStep - Math.PI / 2;
@@ -669,13 +669,13 @@ const projectCards = document.querySelectorAll('.project-card');
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const filter = btn.dataset.filter;
-
+    
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-
+    
     projectCards.forEach(card => {
       if (card.classList.contains('placeholder-card')) return;
-
+      
       const category = card.dataset.category;
       if (filter === 'all' || category === filter) {
         card.classList.remove('hidden');
@@ -698,7 +698,7 @@ const certDots = document.getElementById('certDots');
 if (certSlider && certPrev && certNext) {
   const certCards = certSlider.querySelectorAll('.cert-card');
   let currentCert = 0;
-
+  
   // Create dots
   certCards.forEach((_, i) => {
     const dot = document.createElement('button');
@@ -707,29 +707,29 @@ if (certSlider && certPrev && certNext) {
     dot.addEventListener('click', () => goToCert(i));
     certDots.appendChild(dot);
   });
-
+  
   function goToCert(index) {
     currentCert = index;
     const card = certCards[index];
     card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
     updateDots();
   }
-
+  
   function updateDots() {
     const dots = certDots.querySelectorAll('.cert-dot');
     dots.forEach((dot, i) => dot.classList.toggle('active', i === currentCert));
   }
-
+  
   certPrev.addEventListener('click', () => {
     currentCert = Math.max(0, currentCert - 1);
     goToCert(currentCert);
   });
-
+  
   certNext.addEventListener('click', () => {
     currentCert = Math.min(certCards.length - 1, currentCert + 1);
     goToCert(currentCert);
   });
-
+  
   // Update on scroll
   certSlider.addEventListener('scroll', () => {
     const scrollLeft = certSlider.scrollLeft;
@@ -757,7 +757,7 @@ document.querySelectorAll('.cert-card').forEach((card, index) => {
     src: card.getAttribute('data-full'),
     caption: card.getAttribute('data-caption') || ''
   });
-
+  
   card.addEventListener('click', () => {
     currentLightboxIndex = index;
     openLightbox();
@@ -885,7 +885,7 @@ function validateForm(data) {
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const submitBtn = contactForm.querySelector('.submit-btn');
-
+  
   const data = {
     name: contactForm.name.value,
     email: contactForm.email.value,
@@ -897,10 +897,10 @@ contactForm.addEventListener('submit', (e) => {
     Toast.show('Please fix the errors in the form.', 'error', 'Validation');
     return;
   }
-
+  
   // Show loading state
   submitBtn.classList.add('loading');
-
+  
   // Simulate sending (replace with actual form service)
   setTimeout(() => {
     submitBtn.classList.remove('loading');
@@ -928,7 +928,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
-      const offset = var(--nav-height) || 72;
+      const offset = 72;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
