@@ -1,44 +1,3 @@
-// ===== MATRIX RAIN BACKGROUND =====
-(function initMatrixRain() {
-  const canvas = document.getElementById('matrixRain');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let width, height;
-  const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-  const fontSize = 14;
-  let columns;
-  let drops = [];
-
-  function resize() {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
-    columns = Math.floor(width / fontSize);
-    drops = Array(columns).fill(1);
-  }
-
-  function draw() {
-    if (document.hidden) { requestAnimationFrame(draw); return; }
-    ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
-    ctx.fillRect(0, 0, width, height);
-    ctx.fillStyle = 'rgba(0, 255, 255, 0.15)';
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-      const text = chars[Math.floor(Math.random() * chars.length)];
-      const x = i * fontSize;
-      const y = drops[i] * fontSize;
-      ctx.fillText(text, x, y);
-      if (y > height && Math.random() > 0.975) drops[i] = 0;
-      drops[i]++;
-    }
-    requestAnimationFrame(draw);
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) draw();
-})();
-
 // Preloader
 (function initPreloader() {
   const preloader = document.getElementById('preloader');
@@ -313,7 +272,7 @@ class TextScramble {
 (function initTypewriter() {
   const el = document.getElementById('typewriter');
   if (!el) return;
-  const phrases = ['Innovating with code, Inspired by Creativity.', 'B.Tech CSE student at LPU.', 'Building Smart Agriculture solutions.', 'Creative developer & problem solver.'];
+  const phrases = ['Innovating with code inspired by creativity.', 'B.Tech CSE student at LPU.', 'Building Smart Agriculture solutions.', 'Creative developer & problem solver.'];
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) { el.textContent = phrases[0]; return; }
   let phraseIndex = 0, charIndex = 0, deleting = false;
@@ -803,5 +762,5 @@ document.addEventListener('keydown', (e) => {
 
 // Console easter egg
 console.log('%c Gulshan Kumar Portfolio ', 'background: linear-gradient(90deg, #00ffff, #ff00ff); color: #0a0a0f; font-size: 22px; font-weight: bold; padding: 12px 24px; border-radius: 12px; text-shadow: none;');
-console.log('%c Innovating with code, Inspired by Creativity. ', 'color: #00ffff; font-size: 14px; font-family: monospace;');
+console.log('%c Built with curiosity, code, and a lot of coffee. ', 'color: #00ffff; font-size: 14px; font-family: monospace;');
 console.log('%c Want to see how it works? Check the source! ', 'color: #ff00ff; font-size: 12px; font-family: monospace;');
