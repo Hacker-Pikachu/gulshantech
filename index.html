@@ -26,6 +26,24 @@
 <base target="_blank">
 </head>
 <body>
+<!-- Matrix Rain Background -->
+<canvas id="matrixRain" aria-hidden="true"></canvas>
+
+<!-- Wave Background -->
+<div class="wave-container" aria-hidden="true">
+  <div class="wave wave-1"></div>
+  <div class="wave wave-2"></div>
+  <div class="wave wave-3"></div>
+</div>
+
+<!-- Floating Orbs -->
+<div class="floating-orbs" aria-hidden="true">
+  <div class="f-orb f-orb-1"></div>
+  <div class="f-orb f-orb-2"></div>
+  <div class="f-orb f-orb-3"></div>
+  <div class="f-orb f-orb-4"></div>
+  <div class="f-orb f-orb-5"></div>
+</div>
 <a href="#main" class="skip-link">Skip to main content</a>
 
 <div class="preloader" id="preloader">
@@ -86,8 +104,8 @@
       <img src="images/profile.jpg" alt="Photo of Gulshan Kumar" loading="eager">
     </div>
     <div class="hero-text">
-      <p class="eyebrow" data-scramble><i class="fa-solid fa-seedling"></i> B.Tech CSE · Lovely Professional University</p>
-      <h1 class="gradient-text glitch-text" data-text="Greetings, I'm Gulshan">Greetings, I'm Gulshan</h1>
+      <p class="eyebrow" data-scramble><i class="fa-solid fa-seedling"></i> B.Tech CSE · Smart Agriculture</p>
+      <h1 class="gradient-text glitch-text" data-text="Hi, I'm Gulshan">Hi, I'm Gulshan</h1>
       <p class="hero-sub"><span id="typewriter"></span><span class="typewriter-cursor">|</span></p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary magnetic">See my work</a>
@@ -95,10 +113,10 @@
         <a href="assets/cv.pdf" class="btn btn-cv-large magnetic" id="cvDownloadHero" download><i class="fa-solid fa-download"></i> Download CV</a>
       </div>
       <div class="hero-socials">
-        <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="mailto:gulshan@example.com" class="social-icon magnetic" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-        <a href="https://twitter.com/your-handle" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://github.com/Hacker-Pikachu" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/gulshan-kumar-610703322?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:gun9006481@gmail.com" class="social-icon magnetic" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a href="https://www.instagram.com/_mr_devil_x_i" target="_blank" rel="noopener noreferrer" class="social-icon magnetic" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
       </div>
     </div>
   </div>
@@ -114,7 +132,7 @@
     <h2 data-scramble>About Me</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p class="section-text">I am Gulshan, currently pursuing a B.Tech in Computer Science at Lovely Professional University (LPU). I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with <strong>73.4%</strong> marks.</p>
+        <p class="section-text">I am Gulshan, currently pursuing a B.Tech in Computer Science at Lovely Professional University (LPU). I hold a Diploma in Computer Science from Government Polytechnic Gaya, Bihar, with <strong>CGPA 7.6</strong> marks.</p>
         <p class="section-text">My interests include web development, mobile computing, anime culture, and innovative projects like Smart Agriculture. I am passionate about building solutions that combine technology with real-world impact, and I actively participate in college fests and events to sharpen my exposure and creativity.</p>
         <div class="about-actions">
           <a href="assets/cv.pdf" class="btn btn-primary magnetic" download id="cvDownloadAbout"><i class="fa-solid fa-file-arrow-down"></i> Download My CV</a>
@@ -122,7 +140,7 @@
       </div>
       <div class="about-visual">
         <div class="about-stats">
-          <div class="stat-card reveal"><span class="stat-num" data-count="73.4">0</span><span class="stat-suffix">%</span><span class="stat-label">Diploma Score</span></div>
+          <div class="stat-card reveal"><span class="stat-num" data-count="7.6">0</span><span class="stat-suffix"> CGPA</span><span class="stat-label">Diploma Score</span></div>
           <div class="stat-card reveal"><span class="stat-num" data-count="5">0</span><span class="stat-suffix">+</span><span class="stat-label">Certificates Earned</span></div>
           <div class="stat-card reveal"><span class="stat-num" data-count="3">0</span><span class="stat-suffix">+</span><span class="stat-label">Projects Built</span></div>
           <div class="stat-card reveal"><span class="stat-num" data-count="2">0</span><span class="stat-suffix">+</span><span class="stat-label">Years Experience</span></div>
@@ -131,14 +149,81 @@
     </div>
   </section>
 
-  <section id="services" class="section reveal">
-    <p class="eyebrow" data-scramble>02 · What I do</p>
-    <h2 data-scramble>Services</h2>
-    <div class="service-grid">
-      <div class="service-card tilt reveal"><div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div><h3>Web Development</h3><p>Building responsive, performant websites with modern technologies and clean code architecture.</p><div class="service-tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span></div></div>
-      <div class="service-card tilt reveal"><div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div><h3>Mobile Apps</h3><p>Creating Android applications using Android Studio with intuitive UI/UX design principles.</p><div class="service-tags"><span class="tag">Android</span><span class="tag">Java</span><span class="tag">XML</span></div></div>
-      <div class="service-card tilt reveal"><div class="service-icon"><i class="fa-solid fa-seedling"></i></div><h3>IoT Solutions</h3><p>Designing smart agriculture systems with sensor integration and automation for better yield.</p><div class="service-tags"><span class="tag">IoT</span><span class="tag">Sensors</span><span class="tag">Automation</span></div></div>
-      <div class="service-card tilt reveal"><div class="service-icon"><i class="fa-solid fa-bug"></i></div><h3>Problem Solving</h3><p>Analytical approach to debugging and optimizing code for better performance and reliability.</p><div class="service-tags"><span class="tag">Algorithms</span><span class="tag">Debugging</span><span class="tag">Optimization</span></div></div>
+  <section id="education" class="section reveal">
+    <p class="eyebrow" data-scramble>02 · Academic Journey</p>
+    <h2 data-scramble>Education</h2>
+    <div class="education-grid">
+      <div class="edu-card tilt reveal">
+        <div class="edu-card-glow"></div>
+        <div class="edu-card-content">
+          <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div class="edu-badge">Currently Pursuing</div>
+          <h3>B.Tech in Computer Science</h3>
+          <div class="edu-institution">
+            <i class="fa-solid fa-university"></i>
+            <span>Lovely Professional University</span>
+          </div>
+          <div class="edu-location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Punjab, India</span>
+          </div>
+          <div class="edu-timeline">
+            <div class="edu-dot active"></div>
+            <div class="edu-line"></div>
+            <div class="edu-dot"></div>
+          </div>
+          <div class="edu-years">2023 — Present</div>
+          <p class="edu-desc">Pursuing B.Tech CSE with focus on emerging technologies, IoT, and full-stack development.</p>
+          <div class="edu-tags">
+            <span class="tag">Data Structures</span>
+            <span class="tag">Web Development</span>
+            <span class="tag">IoT</span>
+            <span class="tag">Android</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-card tilt reveal">
+        <div class="edu-card-glow"></div>
+        <div class="edu-card-content">
+          <div class="edu-icon"><i class="fa-solid fa-certificate"></i></div>
+          <div class="edu-badge completed">Completed</div>
+          <h3>Diploma in Computer Science</h3>
+          <div class="edu-institution">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>Government Polytechnic Gaya</span>
+          </div>
+          <div class="edu-location">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Bihar, India</span>
+          </div>
+          <div class="edu-timeline">
+            <div class="edu-dot completed"></div>
+            <div class="edu-line completed"></div>
+            <div class="edu-dot completed"></div>
+          </div>
+          <div class="edu-years">2020 — 2023</div>
+          <div class="edu-cgpa">
+            <div class="cgpa-ring">
+              <svg viewBox="0 0 100 100">
+                <circle class="cgpa-bg" cx="50" cy="50" r="42"/>
+                <circle class="cgpa-fill" cx="50" cy="50" r="42" data-percent="76"/>
+              </svg>
+              <div class="cgpa-text">
+                <span class="cgpa-value">7.6</span>
+                <span class="cgpa-label">CGPA</span>
+              </div>
+            </div>
+          </div>
+          <p class="edu-desc">Completed Diploma in Computer Science with hands-on project experience and strong fundamentals.</p>
+          <div class="edu-tags">
+            <span class="tag">C Programming</span>
+            <span class="tag">Java</span>
+            <span class="tag">Database</span>
+            <span class="tag">Networking</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -219,7 +304,7 @@
           <div class="project-image-placeholder"><i class="fa-solid fa-seedling"></i></div>
           <div class="project-overlay">
             <div class="project-links">
-              <a href="#" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="https://github.com/Hacker-Pikachu" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
               <a href="#" class="project-link magnetic" aria-label="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
           </div>
@@ -237,7 +322,7 @@
           <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));"><i class="fa-solid fa-globe"></i></div>
           <div class="project-overlay">
             <div class="project-links">
-              <a href="#" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="https://github.com/Hacker-Pikachu" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
               <a href="#" class="project-link magnetic" aria-label="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
           </div>
@@ -255,7 +340,7 @@
           <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1));"><i class="fa-solid fa-mobile-screen"></i></div>
           <div class="project-overlay">
             <div class="project-links">
-              <a href="#" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
+              <a href="https://github.com/Hacker-Pikachu" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
               <a href="#" class="project-link magnetic" aria-label="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
           </div>
@@ -317,7 +402,7 @@
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <span class="timeline-date">2020 — 2023</span>
-          <h3>Diploma — 73.4%</h3>
+          <h3>Diploma — CGPA 7.6</h3>
           <p>Government Polytechnic Gaya, Bihar — Diploma in Computer Science with hands-on project experience.</p>
         </div>
       </div>
@@ -377,19 +462,24 @@
           <i class="fa-solid fa-envelope"></i>
           <h4>Email</h4>
           <div class="info-card-row">
-            <a href="mailto:gulshan@example.com">gulshan@example.com</a>
-            <button type="button" class="copy-btn magnetic" id="copyEmailBtn" data-copy="gulshan@example.com" aria-label="Copy email address"><i class="fa-regular fa-copy"></i></button>
+            <a href="mailto:gun9006481@gmail.com">gulshan@example.com</a>
+            <button type="button" class="copy-btn magnetic" id="copyEmailBtn" data-copy="gun9006481@gmail.com" aria-label="Copy email address"><i class="fa-regular fa-copy"></i></button>
           </div>
         </div>
         <div class="info-card reveal">
           <i class="fa-brands fa-linkedin"></i>
           <h4>LinkedIn</h4>
-          <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">linkedin.com/in/your-profile</a>
+          <a href="https://www.linkedin.com/in/gulshan-kumar-610703322?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">linkedin.com/in/your-profile</a>
         </div>
         <div class="info-card reveal">
           <i class="fa-brands fa-github"></i>
           <h4>GitHub</h4>
-          <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">github.com/your-username</a>
+          <a href="https://github.com/Hacker-Pikachu" target="_blank" rel="noopener noreferrer">github.com/your-username</a>
+        </div>
+        <div class="info-card reveal">
+          <i class="fa-brands fa-instagram"></i>
+          <h4>Instagram</h4>
+          <a href="https://www.instagram.com/_mr_devil_x_i" target="_blank" rel="noopener noreferrer">@_mr_devil_x_i</a>
         </div>
         <div class="info-card reveal">
           <i class="fa-solid fa-location-dot"></i>
@@ -414,9 +504,9 @@
       <a href="#contact" class="magnetic">Contact</a>
     </div>
     <div class="footer-socials">
-      <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="magnetic" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-      <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" class="magnetic" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-      <a href="mailto:gulshan@example.com" class="magnetic" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://github.com/Hacker-Pikachu" target="_blank" rel="noopener noreferrer" class="magnetic" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/gulshan-kumar-610703322?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="magnetic" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="mailto:gun9006481@gmail.com" class="magnetic" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
     </div>
   </div>
   <div class="footer-bottom">
