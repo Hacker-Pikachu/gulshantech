@@ -391,3 +391,66 @@ footer { background:rgba(10,10,20,0.95); border-top:1px solid var(--line); paddi
 .card.tilt:hover { transform:perspective(800px) rotateX(var(--rx)) rotateY(var(--ry)) scale(1.02); }
 
 .magnetic { transition:transform 0.3s var(--easing-out); }
+
+/* ===== MATRIX RAIN BACKGROUND ===== */
+#matrixRain { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.08; }
+
+/* ===== WAVE BACKGROUND ===== */
+.wave-container { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.wave { position:absolute; bottom:0; left:0; width:200%; height:200px; background:linear-gradient(90deg, transparent, var(--glow-cyan), transparent, var(--glow-magenta), transparent); opacity:0.03; border-radius:50%; animation:wave-drift 20s linear infinite; }
+.wave-1 { bottom:-100px; animation-duration:25s; animation-delay:0s; }
+.wave-2 { bottom:-80px; animation-duration:20s; animation-delay:-5s; opacity:0.02; }
+.wave-3 { bottom:-60px; animation-duration:30s; animation-delay:-10s; opacity:0.015; }
+@keyframes wave-drift { 0% { transform:translateX(0) rotate(0deg); } 100% { transform:translateX(-50%) rotate(360deg); } }
+
+/* ===== FLOATING ORBS ===== */
+.floating-orbs { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+.f-orb { position:absolute; border-radius:50%; filter:blur(80px); opacity:0.12; }
+.f-orb-1 { width:300px; height:300px; background:var(--cyan); top:10%; left:5%; animation:float-orb-adv 15s ease-in-out infinite; }
+.f-orb-2 { width:250px; height:250px; background:var(--magenta); top:60%; right:8%; animation:float-orb-adv 18s ease-in-out infinite reverse; }
+.f-orb-3 { width:200px; height:200px; background:var(--gold); top:30%; left:60%; animation:float-orb-adv 22s ease-in-out infinite 5s; }
+.f-orb-4 { width:180px; height:180px; background:var(--cyan); bottom:20%; left:20%; animation:float-orb-adv 20s ease-in-out infinite 8s; opacity:0.08; }
+.f-orb-5 { width:220px; height:220px; background:var(--magenta); top:70%; left:40%; animation:float-orb-adv 25s ease-in-out infinite 12s; opacity:0.06; }
+@keyframes float-orb-adv { 0%,100% { transform:translate(0,0) scale(1) rotate(0deg); } 25% { transform:translate(60px,-80px) scale(1.2) rotate(90deg); } 50% { transform:translate(-40px,60px) scale(0.85) rotate(180deg); } 75% { transform:translate(30px,-30px) scale(1.1) rotate(270deg); } }
+
+/* ===== EDUCATION SECTION ===== */
+.education-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+.edu-card { position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; transition:all 0.5s var(--easing-out); }
+.edu-card:hover { transform:translateY(-12px) scale(1.02); border-color:var(--cyan); box-shadow:0 20px 60px var(--shadow), 0 0 50px var(--glow-cyan); }
+.edu-card-glow { position:absolute; inset:0; background:linear-gradient(135deg,var(--glow-cyan),transparent 50%,var(--glow-magenta)); opacity:0; transition:opacity 0.5s ease; pointer-events:none; }
+.edu-card:hover .edu-card-glow { opacity:1; }
+.edu-card-content { position:relative; z-index:1; padding:36px 32px; }
+.edu-icon { width:64px; height:64px; border-radius:16px; background:linear-gradient(135deg,var(--glow-cyan),var(--glow-magenta)); color:var(--cyan); display:flex; align-items:center; justify-content:center; font-size:1.8rem; margin-bottom:20px; transition:transform 0.4s ease; }
+.edu-card:hover .edu-icon { transform:scale(1.15) rotate(-8deg); }
+.edu-badge { display:inline-block; font-family:var(--font-mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; padding:6px 14px; border-radius:999px; background:linear-gradient(135deg,var(--cyan),var(--magenta)); color:#0a0a0f; font-weight:700; margin-bottom:16px; }
+.edu-badge.completed { background:linear-gradient(135deg,var(--gold),#ff8c00); color:#0a0a0f; }
+.edu-card h3 { font-size:1.35rem; margin-bottom:12px; color:var(--text); }
+.edu-institution, .edu-location { display:flex; align-items:center; gap:10px; color:var(--muted); font-size:0.95rem; margin-bottom:8px; }
+.edu-institution i, .edu-location i { color:var(--cyan); font-size:0.9rem; }
+.edu-timeline { display:flex; align-items:center; gap:0; margin:20px 0; }
+.edu-dot { width:12px; height:12px; border-radius:50%; background:var(--surface-alt); border:2px solid var(--line); transition:all 0.4s ease; }
+.edu-dot.active { background:var(--cyan); border-color:var(--cyan); box-shadow:0 0 15px var(--glow-cyan); }
+.edu-dot.completed { background:var(--gold); border-color:var(--gold); box-shadow:0 0 15px var(--glow-gold); }
+.edu-line { flex:1; height:2px; background:var(--line); position:relative; overflow:hidden; }
+.edu-line::after { content:''; position:absolute; left:0; top:0; height:100%; width:0%; background:linear-gradient(90deg,var(--cyan),var(--magenta)); transition:width 1.5s var(--easing-out); }
+.edu-card:hover .edu-line.completed::after { width:100%; }
+.edu-card:hover .edu-line::after { width:60%; }
+.edu-years { font-family:var(--font-mono); font-size:0.85rem; color:var(--cyan); margin-bottom:16px; letter-spacing:0.1em; }
+.edu-desc { color:var(--muted); font-size:0.95rem; line-height:1.7; margin-bottom:20px; }
+.edu-tags { display:flex; gap:10px; flex-wrap:wrap; }
+
+/* ===== CGPA RING ===== */
+.edu-cgpa { display:flex; justify-content:center; margin:20px 0; }
+.cgpa-ring { position:relative; width:120px; height:120px; }
+.cgpa-ring svg { width:100%; height:100%; transform:rotate(-90deg); }
+.cgpa-bg { fill:none; stroke:var(--surface-alt); stroke-width:6; }
+.cgpa-fill { fill:none; stroke:url(#cgpaGradient); stroke-width:6; stroke-linecap:round; stroke-dasharray:264; stroke-dashoffset:264; transition:stroke-dashoffset 2s var(--easing-out); }
+.edu-card:hover .cgpa-fill { stroke-dashoffset:calc(264 - (264 * 76 / 100)); }
+.cgpa-text { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.cgpa-value { font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--cyan); text-shadow:0 0 20px var(--glow-cyan); }
+.cgpa-label { font-family:var(--font-mono); font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.15em; }
+
+@media (max-width:900px) { .education-grid { grid-template-columns:1fr; } }
+
+/* ===== CURSOR TRAIL ===== */
+.cursor-trail { position:fixed; border-radius:50%; background:var(--cyan); pointer-events:none; z-index:9996; transform:translate(-50%,-50%); filter:blur(2px); }
