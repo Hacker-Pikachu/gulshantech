@@ -272,7 +272,7 @@ class TextScramble {
 (function initTypewriter() {
   const el = document.getElementById('typewriter');
   if (!el) return;
-  const phrases = ['Innovating with code inspired by creativity.', 'B.Tech CSE student at LPU.', 'Building Smart Agriculture solutions.', 'Creative developer & problem solver.'];
+  const phrases = ['I grow ideas the way I grow crops.', 'B.Tech CSE student at LPU.', 'Building Smart Agriculture solutions.', 'Creative developer & problem solver.'];
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) { el.textContent = phrases[0]; return; }
   let phraseIndex = 0, charIndex = 0, deleting = false;
