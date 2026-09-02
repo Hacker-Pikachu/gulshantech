@@ -652,6 +652,34 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') prevLightbox();
 });
 
+
+// Hero photo lightbox
+(function initHeroPhotoLightbox() {
+  const heroPhotoBtn = document.getElementById('heroPhotoBtn');
+  if (!heroPhotoBtn) return;
+  heroPhotoBtn.addEventListener('click', () => {
+    const src = heroPhotoBtn.getAttribute('data-full');
+    const caption = heroPhotoBtn.getAttribute('data-caption') || '';
+    lightboxImg.src = src;
+    lightboxImg.alt = caption;
+    lightboxCaption.textContent = caption;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Hide nav arrows for single image
+    lightboxPrev.style.display = 'none';
+    lightboxNext.style.display = 'none';
+  });
+  // Restore nav arrows when lightbox closes
+  const originalCloseLightbox = closeLightbox;
+  closeLightbox = function() {
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+    lightboxPrev.style.display = '';
+    lightboxNext.style.display = '';
+  };
+})();
+
 // CV modal
 const cvModal = document.getElementById('cvModal');
 const cvModalBackdrop = document.getElementById('cvModalBackdrop');
