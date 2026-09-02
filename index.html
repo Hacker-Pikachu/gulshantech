@@ -219,9 +219,7 @@
     <p class="hint-text top-hint"><i class="fa-solid fa-hand-pointer"></i> Click a project card for full details.</p>
     <div class="project-filter" id="projectFilter">
       <button class="filter-btn active magnetic" data-filter="all">All</button>
-      <button class="filter-btn magnetic" data-filter="web">Web</button>
       <button class="filter-btn magnetic" data-filter="iot">IoT</button>
-      <button class="filter-btn magnetic" data-filter="mobile">Mobile</button>
     </div>
     <div class="project-cards" id="projectGrid">
       <div class="card project-card tilt reveal" data-category="iot" data-details="An IoT-based farming solution that continuously monitors soil moisture, temperature, and other climate conditions using connected sensors. Live sensor readings feed into automation logic so irrigation and alerts can respond in real time, aiming to improve yield efficiency and reduce manual monitoring.">
@@ -242,46 +240,16 @@
           <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
         </div>
       </div>
-      <div class="card project-card tilt reveal" data-category="web" data-details="A fully responsive personal portfolio built from scratch with cyberpunk aesthetics — an animated particle network, custom cursor, glitch and scramble text effects, and smooth scroll-triggered reveal animations throughout. Built with plain HTML, CSS, and JavaScript, with no external framework dependency.">
-        <div class="project-image">
-          <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));"><i class="fa-solid fa-globe"></i></div>
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="#" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
-              <a href="#" class="project-link magnetic" aria-label="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
+      <div class="card project-card placeholder-card reveal coming-soon-card">
+        <div class="coming-soon-animation">
+          <div class="project-icon"><i class="fa-solid fa-rocket"></i></div>
+          <div class="pulse-ring"></div>
+          <div class="pulse-ring delay-1"></div>
+          <div class="pulse-ring delay-2"></div>
         </div>
-        <div class="project-content">
-          <div class="project-icon"><i class="fa-solid fa-globe"></i></div>
-          <h3>Portfolio Website</h3>
-          <p>A fully responsive personal portfolio with cyberpunk aesthetics, particle effects, and smooth scroll animations.</p>
-          <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
-          <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
-      <div class="card project-card tilt reveal" data-category="mobile" data-details="A multi-purpose Android application built with Android Studio, focused on a clean, intuitive UI and a set of practical daily utilities packed into a single lightweight app.">
-        <div class="project-image">
-          <div class="project-image-placeholder" style="background: linear-gradient(135deg, rgba(255,0,255,0.1), rgba(0,255,255,0.1));"><i class="fa-solid fa-mobile-screen"></i></div>
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="#" class="project-link magnetic" aria-label="View Code"><i class="fa-brands fa-github"></i></a>
-              <a href="#" class="project-link magnetic" aria-label="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-          <h3>Android Utility App</h3>
-          <p>A multi-purpose Android application built with Android Studio featuring clean UI and practical daily utilities.</p>
-          <div class="tag-row"><span class="tag">Android</span><span class="tag">Java</span><span class="tag">XML</span></div>
-          <button type="button" class="project-view-more magnetic">View details <i class="fa-solid fa-arrow-right"></i></button>
-        </div>
-      </div>
-      <div class="card project-card placeholder-card reveal">
-        <div class="project-icon"><i class="fa-solid fa-plus"></i></div>
-        <h3>Add your next project</h3>
-        <p>Duplicate any project card above. Add a longer write-up in its <code>data-details="..."</code> attribute — it automatically shows in the details popup.</p>
+        <h3>Coming Soon...</h3>
+        <p>More exciting projects are in the pipeline. Stay tuned for upcoming work in web development, IoT, and mobile applications.</p>
+        <div class="tag-row"><span class="tag">Upcoming</span><span class="tag">In Progress</span></div>
       </div>
     </div>
   </section>
