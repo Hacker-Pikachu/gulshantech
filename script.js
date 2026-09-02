@@ -444,7 +444,7 @@ skillFills.forEach(fill => skillObserver.observe(fill));
   canvas.width = size * dpr; canvas.height = size * dpr;
   canvas.style.width = size + 'px'; canvas.style.height = size + 'px';
   ctx.scale(dpr, dpr);
-  const skills = [{ name: 'Java', value: 0.8 }, { name: 'Python', value: 0.75 }, { name: 'Web Dev', value: 0.85 }, { name: 'Android', value: 0.6 }, { name: 'SQL', value: 0.7 }];
+  const skills = [{ name: 'Python', value: 0.6 }, { name: 'Java', value: 0.4 }, { name: 'Web Dev', value: 0.5 }, { name: 'Database', value: 0.3 }];
   const centerX = size / 2, centerY = size / 2, radius = 100;
   const angleStep = (Math.PI * 2) / skills.length;
   ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)'; ctx.lineWidth = 1;
