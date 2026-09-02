@@ -379,6 +379,87 @@ body.hovering .cursor-outline { width:56px; height:56px; border-color:var(--mage
 .placeholder-card { align-items:center; text-align:center; border:2px dashed var(--line); box-shadow:none; color:var(--muted); padding:48px 28px; cursor:default; }
 .placeholder-card p code { font-family:var(--font-mono); color:var(--cyan); background:var(--bg-1); padding:4px 8px; border-radius:6px; font-size:0.8rem; }
 .placeholder-card .project-icon { background:transparent; border:2px dashed var(--line); width:60px; height:60px; font-size:1.6rem; }
+.coming-soon-card {
+  align-items: center;
+  text-align: center;
+  border: 2px dashed var(--line);
+  background: linear-gradient(135deg, rgba(0,255,255,0.03), rgba(255,0,255,0.03));
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.coming-soon-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(0,255,255,0.05) 50%, transparent 60%);
+  animation: shimmer-sweep 3s ease-in-out infinite;
+}
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.coming-soon-animation {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.coming-soon-animation .project-icon {
+  background: linear-gradient(135deg, var(--glow-cyan), var(--glow-magenta));
+  color: var(--cyan);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  position: relative;
+  z-index: 2;
+  animation: rocket-float 2s ease-in-out infinite;
+}
+@keyframes rocket-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--cyan);
+  opacity: 0;
+  animation: pulse-ring-anim 2s ease-out infinite;
+}
+.pulse-ring.delay-1 { animation-delay: 0.5s; }
+.pulse-ring.delay-2 { animation-delay: 1s; }
+@keyframes pulse-ring-anim {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.coming-soon-card h3 {
+  color: var(--cyan);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.coming-soon-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 280px;
+  position: relative;
+  z-index: 1;
+}
+.coming-soon-card .tag-row {
+  margin-top: 16px;
+  position: relative;
+  z-index: 1;
+}
 .project-card.hidden { display:none; }
 
 .cert-slider-wrapper { position:relative; display:flex; align-items:center; gap:20px; }
